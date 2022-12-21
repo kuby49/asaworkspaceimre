@@ -1,0 +1,29 @@
+{
+	"name": "relationship-hbvhrydgpc",
+	"properties": {
+		"Name": "relationship-hbvhrydgpc",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "Imre_lake_DB"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "DyeType",
+		"ToTableName": "ApparelProduct",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "DyeTypeId",
+				"ToColumnName": "DyeTypeId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"DyeType.cdm.json/DyeType\",\"toEntity\":\"ApparelProduct.cdm.json/ApparelProduct\",\"joinPairs\":[{\"fromAttribute\":\"DyeTypeId\",\"toAttribute\":\"DyeTypeId\"}]}}"
+		},
+		"PublishStatus": "PUBLISHED",
+		"ObjectVersion": 1,
+		"ObjectId": "f80e0874-9218-4d20-bc39-9ae3ceb76559"
+	},
+	"type": "RELATIONSHIP"
+}

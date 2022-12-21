@@ -1,0 +1,262 @@
+{
+	"name": "Lab_04_Writing",
+	"properties": {
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "SparkPool01",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "28g",
+			"driverCores": 4,
+			"executorMemory": "28g",
+			"executorCores": 4,
+			"numExecutors": 2,
+			"runAsWorkspaceSystemIdentity": false,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "false",
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "2"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"synapse_widget": {
+				"version": "0.1",
+				"state": {
+					"d0c1424c-44cf-4163-a169-29dab11b6418": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"Quantity": 1,
+										"ProductId": 4741,
+										"CustomerId": 15,
+										"TotalAmount": 22.82,
+										"ProfitAmount": 7.09,
+										"Price": 22.82,
+										"StoreId": 9490,
+										"TransactionId": "39137418-490d-491c-99d5-4dfb1a8fe967",
+										"TransactionDate": 20190301,
+										"Hour": 20,
+										"Minute": 9
+									},
+									{
+										"Quantity": 1,
+										"ProductId": 1584,
+										"CustomerId": 15,
+										"TotalAmount": 22.57,
+										"ProfitAmount": 6.45,
+										"Price": 22.57,
+										"StoreId": 9490,
+										"TransactionId": "39137418-490d-491c-99d5-4dfb1a8fe967",
+										"TransactionDate": 20190301,
+										"Hour": 20,
+										"Minute": 9
+									},
+									{
+										"Quantity": 2,
+										"ProductId": 2930,
+										"CustomerId": 15,
+										"TotalAmount": 56,
+										"ProfitAmount": 15,
+										"Price": 28,
+										"StoreId": 9490,
+										"TransactionId": "39137418-490d-491c-99d5-4dfb1a8fe967",
+										"TransactionDate": 20190301,
+										"Hour": 20,
+										"Minute": 9
+									},
+									{
+										"Quantity": 1,
+										"ProductId": 4738,
+										"CustomerId": 15,
+										"TotalAmount": 20.1,
+										"ProfitAmount": 5.3,
+										"Price": 20.1,
+										"StoreId": 9490,
+										"TransactionId": "39137418-490d-491c-99d5-4dfb1a8fe967",
+										"TransactionDate": 20190301,
+										"Hour": 20,
+										"Minute": 9
+									},
+									{
+										"Quantity": 4,
+										"ProductId": 4036,
+										"CustomerId": 15,
+										"TotalAmount": 86.12,
+										"ProfitAmount": 27.2,
+										"Price": 21.53,
+										"StoreId": 9490,
+										"TransactionId": "39137418-490d-491c-99d5-4dfb1a8fe967",
+										"TransactionDate": 20190301,
+										"Hour": 20,
+										"Minute": 9
+									},
+									{
+										"Quantity": 3,
+										"ProductId": 936,
+										"CustomerId": 15,
+										"TotalAmount": 53.61,
+										"ProfitAmount": 17.34,
+										"Price": 17.87,
+										"StoreId": 9490,
+										"TransactionId": "39137418-490d-491c-99d5-4dfb1a8fe967",
+										"TransactionDate": 20190301,
+										"Hour": 20,
+										"Minute": 9
+									},
+									{
+										"Quantity": 1,
+										"ProductId": 53,
+										"CustomerId": 15,
+										"TotalAmount": 30.18,
+										"ProfitAmount": 8.04,
+										"Price": 30.18,
+										"StoreId": 9490,
+										"TransactionId": "39137418-490d-491c-99d5-4dfb1a8fe967",
+										"TransactionDate": 20190301,
+										"Hour": 20,
+										"Minute": 9
+									},
+									{
+										"Quantity": 1,
+										"ProductId": 64,
+										"CustomerId": 15,
+										"TotalAmount": 31.28,
+										"ProfitAmount": 9.69,
+										"Price": 31.28,
+										"StoreId": 9490,
+										"TransactionId": "39137418-490d-491c-99d5-4dfb1a8fe967",
+										"TransactionDate": 20190301,
+										"Hour": 20,
+										"Minute": 9
+									},
+									{
+										"Quantity": 2,
+										"ProductId": 103,
+										"CustomerId": 15,
+										"TotalAmount": 51.78,
+										"ProfitAmount": 14.1,
+										"Price": 25.89,
+										"StoreId": 9490,
+										"TransactionId": "39137418-490d-491c-99d5-4dfb1a8fe967",
+										"TransactionDate": 20190301,
+										"Hour": 20,
+										"Minute": 9
+									},
+									{
+										"Quantity": 4,
+										"ProductId": 190,
+										"CustomerId": 15,
+										"TotalAmount": 98.6,
+										"ProfitAmount": 26.8,
+										"Price": 24.65,
+										"StoreId": 9490,
+										"TransactionId": "39137418-490d-491c-99d5-4dfb1a8fe967",
+										"TransactionDate": 20190301,
+										"Hour": 20,
+										"Minute": 9
+									}
+								],
+								"schema": {
+									"TransactionId": "string",
+									"CustomerId": "int",
+									"ProductId": "smallint",
+									"Quantity": "tinyint",
+									"Price": "decimal",
+									"TotalAmount": "decimal",
+									"TransactionDate": "int",
+									"ProfitAmount": "decimal",
+									"Hour": "tinyint",
+									"Minute": "tinyint",
+									"StoreId": "smallint"
+								}
+							},
+							"isSummary": false,
+							"language": "scala"
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "sum",
+									"categoryFieldKeys": [
+										"TransactionId"
+									],
+									"seriesFieldKeys": [
+										"CustomerId"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					}
+				}
+			},
+			"kernelspec": {
+				"name": "synapse_pyspark",
+				"display_name": "Synapse PySpark"
+			},
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/fe5aef09-bf0f-4faf-9c28-311200cf35cd/resourceGroups/Synapse-WS-L400/providers/Microsoft.Synapse/workspaces/asaworkspaceimre/bigDataPools/SparkPool01",
+				"name": "SparkPool01",
+				"type": "Spark",
+				"endpoint": "https://asaworkspaceimre.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/SparkPool01",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net",
+					"authHeader": null
+				},
+				"sparkVersion": "2.4",
+				"nodeCount": 3,
+				"cores": 4,
+				"memory": 28,
+				"extraHeader": null
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "code",
+				"metadata": {
+					"microsoft": {
+						"language": "python"
+					},
+					"collapsed": false
+				},
+				"source": [
+					"%%pyspark\r\n",
+					"df = spark.read.load('abfss://wwi-02@asadatalakeimre.dfs.core.windows.net/sale-small/Year=2019/Quarter=Q1/Month=3/Day=20190301/sale-small-20190301-snappy.parquet', format='parquet')\r\n",
+					"display(df.limit(10))"
+				],
+				"execution_count": 2
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": true
+				},
+				"source": [
+					"df.write.parquet('abfss://wwi-02@asadatalakeimre.dfs.core.windows.net/sale-small/Year=2019/Quarter=Q1/Month=3/Day=20190301/sale-small-20190301-snappy-test.parquet')"
+				],
+				"execution_count": 3
+			}
+		]
+	}
+}

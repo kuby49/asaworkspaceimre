@@ -1,0 +1,129 @@
+{
+	"name": "ConstructionType",
+	"properties": {
+		"Name": "ConstructionType",
+		"EntityType": "TABLE",
+		"TableType": "EXTERNAL",
+		"Namespace": {
+			"SchemaName": null,
+			"DatabaseName": "Imre_lake_DB"
+		},
+		"StorageDescriptor": {
+			"Distribution": null,
+			"Columns": [
+				{
+					"Name": "ConstructionTypeId",
+					"Description": "The unique identifier of a construction type.",
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Length": 0,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "ConstructionType.cdm.json/ConstructionType",
+						"Name": "ConstructionTypeId"
+					}
+				},
+				{
+					"Name": "ConstructionTypeName",
+					"Description": "The name of a construction type.",
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 128,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "ConstructionType.cdm.json/ConstructionType",
+						"Name": "ConstructionTypeName"
+					}
+				},
+				{
+					"Name": "ConstructionTypeDescription",
+					"Description": "The description of a construction type.",
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 512,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "ConstructionType.cdm.json/ConstructionType",
+						"Name": "ConstructionTypeDescription"
+					}
+				}
+			],
+			"ColumnSetEntityName": "8a501913-6a6f-4984-a411-431fecf02632",
+			"Format": {
+				"InputFormat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat",
+				"FormatType": "parquet",
+				"SerializeLib": "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe",
+				"Properties": {
+					"path": "abfss://wwi-02@asadatalakeimre.dfs.core.windows.net/test/ConstructionType",
+					"FormatTypeSetToDatabaseDefault": true
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://wwi-02@asadatalakeimre.dfs.core.windows.net/test/ConstructionType",
+				"Properties": {
+					"LinkedServiceName": "asadatalakeimre",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ConstructionTypeId\":{\"entity\":\"ConstructionType.cdm.json/ConstructionType\",\"name\":\"ConstructionTypeId\"},\"ConstructionTypeName\":{\"entity\":\"ConstructionType.cdm.json/ConstructionType\",\"name\":\"ConstructionTypeName\"},\"ConstructionTypeDescription\":{\"entity\":\"ConstructionType.cdm.json/ConstructionType\",\"name\":\"ConstructionTypeDescription\"}}}"
+			},
+			"Compressed": false,
+			"SerDeInfo": null,
+			"IsStoredAsSubdirectories": false
+		},
+		"Owner": null,
+		"CreateTime": 0,
+		"LastAccessTime": 0,
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false,
+		"ViewOriginalText": null,
+		"ViewExpandedText": null,
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"OriginObjectId": null,
+		"IsSharedEntity": false,
+		"PublishStatus": "PUBLISHED",
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"ConstructionType\",\"path\":\"ConstructionType.cdm.json/ConstructionType\"},\"description\":\"The type of construction used to construct the garment or product.\\n\\nEx:\\nDrop stitch construction - is generally used on jersey and rib fabrics for either fabric design or for the separation of rib fabric pieces. Used in knit shirts and dress fabrics.\",\"primaryKey\":[\"ConstructionTypeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"name\":\"ConstructionTypeId\",\"attributeReference\":{\"entity\":\"ConstructionType.cdm.json/ConstructionType\",\"name\":\"ConstructionTypeId\"},\"dataType\":\"integer\"},{\"type\":\"Existing\",\"name\":\"ConstructionTypeName\",\"attributeReference\":{\"entity\":\"ConstructionType.cdm.json/ConstructionType\",\"name\":\"ConstructionTypeName\"},\"dataType\":\"string\",\"dataTypeLength\":128},{\"type\":\"Existing\",\"name\":\"ConstructionTypeDescription\",\"attributeReference\":{\"entity\":\"ConstructionType.cdm.json/ConstructionType\",\"name\":\"ConstructionTypeDescription\"},\"dataType\":\"string\",\"dataTypeLength\":512}]}}}",
+			"Description": "The type of construction used to construct the garment or product.\n\nEx:\nDrop stitch construction - is generally used on jersey and rib fabrics for either fabric design or for the separation of rib fabric pieces. Used in knit shirts and dress fabrics.",
+			"DisplayFolderInfo": "{\"name\":\"Product\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ConstructionTypeId",
+			"spark.sql.sources.provider": "parquet",
+			"spark.sql.sources.schema.numParts": "1",
+			"spark.sql.sources.schema.part.0": "{\"type\":\"struct\",\"fields\":[{\"name\":\"ConstructionTypeId\",\"type\":\"integer\",\"nullable\":false,\"metadata\":{}},{\"name\":\"ConstructionTypeName\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}},{\"name\":\"ConstructionTypeDescription\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}}]}",
+			"x-ms-usageinfo": "AzureSynapseDatabaseTemplate"
+		},
+		"ObjectVersion": 2,
+		"ObjectId": "01c9ac25-1a5f-4761-ad1f-3c6dcca40b9f",
+		"Description": "The type of construction used to construct the garment or product.\n\nEx:\nDrop stitch construction - is generally used on jersey and rib fabrics for either fabric design or for the separation of rib fabric pieces. Used in knit shirts and dress fabrics."
+	},
+	"type": "TABLE"
+}

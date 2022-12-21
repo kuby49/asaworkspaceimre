@@ -1,0 +1,17 @@
+{
+	"name": "asal400_saleheap_asa",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sqlpool01_import01",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "wwi_staging",
+			"table": "Sale_Heap"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

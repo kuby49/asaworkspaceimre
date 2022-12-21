@@ -1,0 +1,16 @@
+{
+	"name": "Challenge  - CustomerLoad",
+	"properties": {
+		"content": {
+			"query": "SET ANSI_NULLS ON\nGO\nSET QUOTED_IDENTIFIER ON\nGO\n\nCREATE TABLE [wwi_poc].[Customer_test]\n( \n\t[CustomerId] [int]  NOT NULL,\n\t[FirstName] [nvarchar](1000)  NOT NULL,\n\t[MiddleInitial] [nvarchar](10)  NULL,\n\t[LastName] [nvarchar](1000)  NOT NULL,\n\t[FullName] [nvarchar](2010)  NOT NULL,\n\t[Gender] [nvarchar](100)  NULL,\n\t[Age] [int]  NULL,\n\t[BirthDate] [date]  NULL,\n\t[Address_PostalCode] [nvarchar](200)  NULL,\n\t[Address_Street] [nvarchar](2000)  NULL,\n\t[Address_City] [nvarchar](2000)  NULL,\n\t[Address_Country] [nvarchar](2000)  NULL,\n\t[Mobile] [nvarchar](500)  NULL,\n\t[Email] [nvarchar](500)  NULL\n)\nWITH\n(\n\tDISTRIBUTION = ROUND_ROBIN,\n\tHEAP\n)\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"name": "SQLPool01",
+				"type": "SqlPool"
+			}
+		},
+		"type": "SqlQuery"
+	}
+}

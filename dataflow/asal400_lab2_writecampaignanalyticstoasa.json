@@ -1,0 +1,28 @@
+{
+	"name": "asal400_lab2_writecampaignanalyticstoasa",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "asal400_daily_counts3_source",
+						"type": "DatasetReference"
+					},
+					"name": "DailyCountsIn"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "asal400_wwi_dailycounts3_asa",
+						"type": "DatasetReference"
+					},
+					"name": "CampaignAnalyticsASA"
+				}
+			],
+			"transformations": [],
+			"script": "source(output(\n\t\tDate as string,\n\t\tA as integer,\n\t\tB as integer,\n\t\tC as integer,\n\t\tD as integer,\n\t\tE as integer\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tmultiLineRow: true) ~> DailyCountsIn\nDailyCountsIn sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tDate as string,\n\t\tNorthAmerica as integer,\n\t\tSouthAmerica as integer,\n\t\tEurope as integer,\n\t\tAfrica as integer,\n\t\tAsia as integer\n\t),\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\ttruncate:true,\n\tformat: 'table',\n\tstaged: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\tDate,\n\t\tNorthAmerica = A,\n\t\tSouthAmerica = B,\n\t\tDate = C,\n\t\tAfrica = D,\n\t\tAsia = E\n\t)) ~> CampaignAnalyticsASA"
+		}
+	}
+}

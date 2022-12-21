@@ -1,0 +1,29 @@
+{
+	"name": "relationship-mahgqyhwwl",
+	"properties": {
+		"Name": "relationship-mahgqyhwwl",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "Imre_lake_DB"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "ApparelProduct",
+		"ToTableName": "ApparelProductFinishingProcess",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "ProductId",
+				"ToColumnName": "ProductId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"ApparelProduct.cdm.json/ApparelProduct\",\"toEntity\":\"ApparelProductFinishingProcess.cdm.json/ApparelProductFinishingProcess\",\"joinPairs\":[{\"fromAttribute\":\"ProductId\",\"toAttribute\":\"ProductId\"}]}}"
+		},
+		"PublishStatus": "PUBLISHED",
+		"ObjectVersion": 1,
+		"ObjectId": "94a312c5-6484-4cb6-a098-b138eb94128b"
+	},
+	"type": "RELATIONSHIP"
+}

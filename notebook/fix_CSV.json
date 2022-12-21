@@ -1,0 +1,221 @@
+{
+	"name": "fix_CSV",
+	"properties": {
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "SparkPool01",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "28g",
+			"driverCores": 4,
+			"executorMemory": "28g",
+			"executorCores": 4,
+			"numExecutors": 2,
+			"runAsWorkspaceSystemIdentity": false,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "false",
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "2"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"kernelspec": {
+				"name": "synapse_pyspark",
+				"display_name": "Synapse PySpark"
+			},
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/fe5aef09-bf0f-4faf-9c28-311200cf35cd/resourceGroups/Synapse-WS-L400/providers/Microsoft.Synapse/workspaces/asaworkspaceimre/bigDataPools/SparkPool01",
+				"name": "SparkPool01",
+				"type": "Spark",
+				"endpoint": "https://asaworkspaceimre.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/SparkPool01",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net",
+					"authHeader": null
+				},
+				"sparkVersion": "2.4",
+				"nodeCount": 3,
+				"cores": 4,
+				"memory": 28
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "code",
+				"source": [
+					"rdd = sc.wholeTextFiles(\"abfss://wwi-02@asadatalakeimre.dfs.core.windows.net/campaign-analytics/ZTSI_ACTR.LF.TMP_BILKODE_LKV_POLICA.csv\") # this can be a path to a folder with multiple gz files per table\r\n",
+					""
+				],
+				"execution_count": 1
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": true
+				},
+				"source": [
+					"rddtemp = rdd.map(lambda s: s.replace(\"\\\\\\n\",\"<ESCAPEDNEWLINE>\")).flatMap(lambda s: s.split(\"\\n\"))\r\n",
+					"rddtemp.collect()\r\n",
+					""
+				],
+				"execution_count": 44
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": true
+				},
+				"source": [
+					"rdd2 = (rdd.map(lambda s: s[1].replace(\"\\\\\\n\",\"<ESCAPEDNEWLINE>\"))\r\n",
+					"        .flatMap(lambda s: s.split(\"\\n\"))\r\n",
+					"        .map(lambda s: s.replace(r\"\\;\", \"<ESCAPEDDELIM>\"))\r\n",
+					"        .map(lambda s: s.split(';'))\r\n",
+					"        .map(lambda s: [(('\"' + c + '\"')\r\n",
+					"                         .replace(\"<ESCAPEDDELIM>\", \"\\\\;\")\r\n",
+					"                         .replace(\"<ESCAPEDNEWLINE>\", \"\\\\\\n\"))  for c in s]\r\n",
+					"                         )        \r\n",
+					"        )\r\n",
+					"\r\n",
+					""
+				],
+				"execution_count": 2
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": true
+				},
+				"source": [
+					"rdd2 = (rdd.map(lambda s: s[1].replace(\"\\\\\\n\",\"<ESCAPEDNEWLINE>\"))\r\n",
+					"        .flatMap(lambda s: s.split(\"\\n\"))\r\n",
+					"        .map(lambda s: s.replace(r\"\\;\", \"<ESCAPEDDELIM>\"))\r\n",
+					"        .map(lambda s: s.split(';'))\r\n",
+					"        .map(lambda s: [(('\"' + c + '\"')\r\n",
+					"                         .replace(\"<ESCAPEDDELIM>\", \";\") # insteaf of  replace(\"<ESCAPEDDELIM>\", \"\\\\;\")\r\n",
+					"                         .replace(\"<ESCAPEDNEWLINE>\", \"\\n\"))  for c in s] #instead of .replace(\"<ESCAPEDNEWLINE>\", \"\\\\\\n\"))\r\n",
+					"                         )        \r\n",
+					"        )\r\n",
+					"\r\n",
+					"\r\n",
+					""
+				],
+				"execution_count": 50
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": true
+				},
+				"source": [
+					"rdd3 = rdd2.map(lambda s: \";\".join(s))\r\n",
+					""
+				],
+				"execution_count": 3
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": true
+				},
+				"source": [
+					"df = spark.read.csv(rdd3, sep =\";\", header = \"false\", inferSchema=\"true\" ) #inferSchema is slow, on the big RDDS better to infer/construct schema on one file and plug it into DataFrame\r\n",
+					"df.schema\r\n",
+					"#df.write.parquet(\"...path\") # if you wish to convert to parquet"
+				],
+				"execution_count": 11
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": true
+				},
+				"source": [
+					"display(df)"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": true
+				},
+				"source": [
+					"(rdd3\r\n",
+					"    .coalesce(1) #only if you want to compress everything into 1 CSV file (performance killer)\r\n",
+					"    .saveAsTextFile(\"abfss://wwi-02@asadatalakeimre.dfs.core.windows.net/campaign-analytics/ZTSI_ACTR.LF.TMP_BILKODE_LKV_POLICA.out\") #this is going to become a folder with 1 or more csv files\r\n",
+					")"
+				],
+				"execution_count": 4
+			}
+		]
+	}
+}

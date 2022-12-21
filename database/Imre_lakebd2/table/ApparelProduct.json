@@ -1,0 +1,299 @@
+{
+	"name": "ApparelProduct",
+	"properties": {
+		"Name": "ApparelProduct",
+		"EntityType": "TABLE",
+		"TableType": "EXTERNAL",
+		"Namespace": {
+			"SchemaName": null,
+			"DatabaseName": "Imre_lakebd2"
+		},
+		"StorageDescriptor": {
+			"Distribution": null,
+			"Columns": [
+				{
+					"Name": "ProductId",
+					"Description": "The unique identifier of a Product.",
+					"OriginDataTypeName": {
+						"TypeName": "long",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Length": 0,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "long"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "ApparelProduct.cdm.json/ApparelProduct",
+						"Name": "ProductId"
+					}
+				},
+				{
+					"Name": "ThreadCount",
+					"Description": "Thread count is measured by adding the number of warp ends per inch and filling picks per square inch in the woven fabric. \n\nThe higher the number, the more dense the yarns are packed together, but unfortunately thread count has come to be the major determinant of quality in the U.S. customer's eyes. \n\nThe quality of the cotton and the finishing process after weaving can often be more important to the soft hand and durability of a fabric than a high thread count.",
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 0,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "ApparelProduct.cdm.json/ApparelProduct",
+						"Name": "ThreadCount"
+					}
+				},
+				{
+					"Name": "StyleId",
+					"Description": "The unique identifier of a style.",
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 0,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "ApparelProduct.cdm.json/ApparelProduct",
+						"Name": "StyleId"
+					}
+				},
+				{
+					"Name": "SizeId",
+					"Description": "The unique identifier of a size.",
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 0,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "ApparelProduct.cdm.json/ApparelProduct",
+						"Name": "SizeId"
+					}
+				},
+				{
+					"Name": "FabricHandId",
+					"Description": "The unique identifier of a fabric hand.",
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 0,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "ApparelProduct.cdm.json/ApparelProduct",
+						"Name": "FabricHandId"
+					}
+				},
+				{
+					"Name": "DyeTypeId",
+					"Description": "The unique identifier of a dye type.",
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 0,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "ApparelProduct.cdm.json/ApparelProduct",
+						"Name": "DyeTypeId"
+					}
+				},
+				{
+					"Name": "CoatingId",
+					"Description": "The unique identifier of a coating.",
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 0,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "ApparelProduct.cdm.json/ApparelProduct",
+						"Name": "CoatingId"
+					}
+				},
+				{
+					"Name": "WeaveTypeId",
+					"Description": "The unique identifier of a weave type.",
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 0,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "ApparelProduct.cdm.json/ApparelProduct",
+						"Name": "WeaveTypeId"
+					}
+				},
+				{
+					"Name": "ConstructionTypeId",
+					"Description": "The unique identifier of a construction type.",
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 0,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "ApparelProduct.cdm.json/ApparelProduct",
+						"Name": "ConstructionTypeId"
+					}
+				},
+				{
+					"Name": "FiberId",
+					"Description": "The unique identifier of a fabric.",
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 0,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "ApparelProduct.cdm.json/ApparelProduct",
+						"Name": "FiberId"
+					}
+				},
+				{
+					"Name": "FabricId",
+					"Description": "The unique identifier of a Fabric.",
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 0,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "ApparelProduct.cdm.json/ApparelProduct",
+						"Name": "FabricId"
+					}
+				},
+				{
+					"Name": "ApparelProductTypeId",
+					"Description": "The unique identifier of an apparel product type.",
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 0,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "ApparelProduct.cdm.json/ApparelProduct",
+						"Name": "ApparelProductTypeId"
+					}
+				}
+			],
+			"ColumnSetEntityName": "0cff9b80-7485-40dc-b57f-78a907f21ad0",
+			"Format": {
+				"InputFormat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat",
+				"FormatType": "parquet",
+				"SerializeLib": "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe",
+				"Properties": {
+					"path": "abfss://tempdata@asadatalakeimre.dfs.core.windows.net/Imre_lakebd2/ApparelProduct",
+					"FormatTypeSetToDatabaseDefault": true
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://tempdata@asadatalakeimre.dfs.core.windows.net/Imre_lakebd2/ApparelProduct",
+				"Properties": {
+					"LinkedServiceName": "asaworkspaceimre-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ProductId\":{\"entity\":\"ApparelProduct.cdm.json/ApparelProduct\",\"name\":\"ProductId\"},\"ThreadCount\":{\"entity\":\"ApparelProduct.cdm.json/ApparelProduct\",\"name\":\"ThreadCount\"},\"StyleId\":{\"entity\":\"ApparelProduct.cdm.json/ApparelProduct\",\"name\":\"StyleId\"},\"SizeId\":{\"entity\":\"ApparelProduct.cdm.json/ApparelProduct\",\"name\":\"SizeId\"},\"FabricHandId\":{\"entity\":\"ApparelProduct.cdm.json/ApparelProduct\",\"name\":\"FabricHandId\"},\"DyeTypeId\":{\"entity\":\"ApparelProduct.cdm.json/ApparelProduct\",\"name\":\"DyeTypeId\"},\"CoatingId\":{\"entity\":\"ApparelProduct.cdm.json/ApparelProduct\",\"name\":\"CoatingId\"},\"WeaveTypeId\":{\"entity\":\"ApparelProduct.cdm.json/ApparelProduct\",\"name\":\"WeaveTypeId\"},\"ConstructionTypeId\":{\"entity\":\"ApparelProduct.cdm.json/ApparelProduct\",\"name\":\"ConstructionTypeId\"},\"FiberId\":{\"entity\":\"ApparelProduct.cdm.json/ApparelProduct\",\"name\":\"FiberId\"},\"FabricId\":{\"entity\":\"ApparelProduct.cdm.json/ApparelProduct\",\"name\":\"FabricId\"},\"ApparelProductTypeId\":{\"entity\":\"ApparelProduct.cdm.json/ApparelProduct\",\"name\":\"ApparelProductTypeId\"}}}"
+			},
+			"Compressed": false,
+			"SerDeInfo": null,
+			"IsStoredAsSubdirectories": false
+		},
+		"Owner": null,
+		"CreateTime": 0,
+		"LastAccessTime": 0,
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false,
+		"ViewOriginalText": null,
+		"ViewExpandedText": null,
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"OriginObjectId": null,
+		"IsSharedEntity": false,
+		"PublishStatus": "PUBLISHED",
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"ApparelProduct\",\"path\":\"ApparelProduct.cdm.json/ApparelProduct\"},\"description\":\"An apparel product.\",\"primaryKey\":[\"ProductId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"name\":\"ProductId\",\"attributeReference\":{\"entity\":\"ApparelProduct.cdm.json/ApparelProduct\",\"name\":\"ProductId\"},\"dataType\":\"long\"},{\"type\":\"Existing\",\"name\":\"ThreadCount\",\"attributeReference\":{\"entity\":\"ApparelProduct.cdm.json/ApparelProduct\",\"name\":\"ThreadCount\"},\"dataType\":\"integer\"},{\"type\":\"Existing\",\"name\":\"StyleId\",\"attributeReference\":{\"entity\":\"ApparelProduct.cdm.json/ApparelProduct\",\"name\":\"StyleId\"},\"dataType\":\"integer\"},{\"type\":\"Existing\",\"name\":\"SizeId\",\"attributeReference\":{\"entity\":\"ApparelProduct.cdm.json/ApparelProduct\",\"name\":\"SizeId\"},\"dataType\":\"integer\"},{\"type\":\"Existing\",\"name\":\"FabricHandId\",\"attributeReference\":{\"entity\":\"ApparelProduct.cdm.json/ApparelProduct\",\"name\":\"FabricHandId\"},\"dataType\":\"integer\"},{\"type\":\"Existing\",\"name\":\"DyeTypeId\",\"attributeReference\":{\"entity\":\"ApparelProduct.cdm.json/ApparelProduct\",\"name\":\"DyeTypeId\"},\"dataType\":\"integer\"},{\"type\":\"Existing\",\"name\":\"CoatingId\",\"attributeReference\":{\"entity\":\"ApparelProduct.cdm.json/ApparelProduct\",\"name\":\"CoatingId\"},\"dataType\":\"integer\"},{\"type\":\"Existing\",\"name\":\"WeaveTypeId\",\"attributeReference\":{\"entity\":\"ApparelProduct.cdm.json/ApparelProduct\",\"name\":\"WeaveTypeId\"},\"dataType\":\"integer\"},{\"type\":\"Existing\",\"name\":\"ConstructionTypeId\",\"attributeReference\":{\"entity\":\"ApparelProduct.cdm.json/ApparelProduct\",\"name\":\"ConstructionTypeId\"},\"dataType\":\"integer\"},{\"type\":\"Existing\",\"name\":\"FiberId\",\"attributeReference\":{\"entity\":\"ApparelProduct.cdm.json/ApparelProduct\",\"name\":\"FiberId\"},\"dataType\":\"integer\"},{\"type\":\"Existing\",\"name\":\"FabricId\",\"attributeReference\":{\"entity\":\"ApparelProduct.cdm.json/ApparelProduct\",\"name\":\"FabricId\"},\"dataType\":\"integer\"},{\"type\":\"Existing\",\"name\":\"ApparelProductTypeId\",\"attributeReference\":{\"entity\":\"ApparelProduct.cdm.json/ApparelProduct\",\"name\":\"ApparelProductTypeId\"},\"dataType\":\"integer\"}]}}}",
+			"Description": "An apparel product.",
+			"DisplayFolderInfo": "{\"name\":\"Product\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ProductId",
+			"spark.sql.sources.provider": "parquet",
+			"spark.sql.sources.schema.numParts": "1",
+			"spark.sql.sources.schema.part.0": "{\"type\":\"struct\",\"fields\":[{\"name\":\"ProductId\",\"type\":\"long\",\"nullable\":false,\"metadata\":{}},{\"name\":\"ThreadCount\",\"type\":\"integer\",\"nullable\":true,\"metadata\":{}},{\"name\":\"StyleId\",\"type\":\"integer\",\"nullable\":true,\"metadata\":{}},{\"name\":\"SizeId\",\"type\":\"integer\",\"nullable\":true,\"metadata\":{}},{\"name\":\"FabricHandId\",\"type\":\"integer\",\"nullable\":true,\"metadata\":{}},{\"name\":\"DyeTypeId\",\"type\":\"integer\",\"nullable\":true,\"metadata\":{}},{\"name\":\"CoatingId\",\"type\":\"integer\",\"nullable\":true,\"metadata\":{}},{\"name\":\"WeaveTypeId\",\"type\":\"integer\",\"nullable\":true,\"metadata\":{}},{\"name\":\"ConstructionTypeId\",\"type\":\"integer\",\"nullable\":true,\"metadata\":{}},{\"name\":\"FiberId\",\"type\":\"integer\",\"nullable\":true,\"metadata\":{}},{\"name\":\"FabricId\",\"type\":\"integer\",\"nullable\":true,\"metadata\":{}},{\"name\":\"ApparelProductTypeId\",\"type\":\"integer\",\"nullable\":true,\"metadata\":{}}]}"
+		},
+		"ObjectVersion": 1,
+		"ObjectId": "9ac859e1-3d1c-4bb8-9586-d0ebe93c458e",
+		"Description": "An apparel product."
+	},
+	"type": "TABLE"
+}

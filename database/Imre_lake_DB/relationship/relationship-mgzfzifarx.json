@@ -1,0 +1,29 @@
+{
+	"name": "relationship-mgzfzifarx",
+	"properties": {
+		"Name": "relationship-mgzfzifarx",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "Imre_lake_DB"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "Fabric",
+		"ToTableName": "ApparelProduct",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "FabricId",
+				"ToColumnName": "FabricId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"Fabric.cdm.json/Fabric\",\"toEntity\":\"ApparelProduct.cdm.json/ApparelProduct\",\"joinPairs\":[{\"fromAttribute\":\"FabricId\",\"toAttribute\":\"FabricId\"}]}}"
+		},
+		"PublishStatus": "PUBLISHED",
+		"ObjectVersion": 1,
+		"ObjectId": "056b8fda-84ce-4276-8792-441e4f59636e"
+	},
+	"type": "RELATIONSHIP"
+}

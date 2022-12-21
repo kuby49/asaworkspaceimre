@@ -1,0 +1,129 @@
+{
+	"name": "WeaveType",
+	"properties": {
+		"Name": "WeaveType",
+		"EntityType": "TABLE",
+		"TableType": "EXTERNAL",
+		"Namespace": {
+			"SchemaName": null,
+			"DatabaseName": "Imre_lake_DB"
+		},
+		"StorageDescriptor": {
+			"Distribution": null,
+			"Columns": [
+				{
+					"Name": "WeaveTypeId",
+					"Description": "The unique identifier of a weave type.",
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Length": 0,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "WeaveType.cdm.json/WeaveType",
+						"Name": "WeaveTypeId"
+					}
+				},
+				{
+					"Name": "WeaveTypeName",
+					"Description": "The name of a weave type.",
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 128,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "WeaveType.cdm.json/WeaveType",
+						"Name": "WeaveTypeName"
+					}
+				},
+				{
+					"Name": "WeaveTypeDescription",
+					"Description": "The description of a weave type.",
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 512,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "WeaveType.cdm.json/WeaveType",
+						"Name": "WeaveTypeDescription"
+					}
+				}
+			],
+			"ColumnSetEntityName": "1286f327-1301-4883-bf7f-1a571a87c701",
+			"Format": {
+				"InputFormat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat",
+				"FormatType": "parquet",
+				"SerializeLib": "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe",
+				"Properties": {
+					"path": "abfss://wwi-02@asadatalakeimre.dfs.core.windows.net/test/WeaveType",
+					"FormatTypeSetToDatabaseDefault": true
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://wwi-02@asadatalakeimre.dfs.core.windows.net/test/WeaveType",
+				"Properties": {
+					"LinkedServiceName": "asadatalakeimre",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"WeaveTypeId\":{\"entity\":\"WeaveType.cdm.json/WeaveType\",\"name\":\"WeaveTypeId\"},\"WeaveTypeName\":{\"entity\":\"WeaveType.cdm.json/WeaveType\",\"name\":\"WeaveTypeName\"},\"WeaveTypeDescription\":{\"entity\":\"WeaveType.cdm.json/WeaveType\",\"name\":\"WeaveTypeDescription\"}}}"
+			},
+			"Compressed": false,
+			"SerDeInfo": null,
+			"IsStoredAsSubdirectories": false
+		},
+		"Owner": null,
+		"CreateTime": 0,
+		"LastAccessTime": 0,
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false,
+		"ViewOriginalText": null,
+		"ViewExpandedText": null,
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"OriginObjectId": null,
+		"IsSharedEntity": false,
+		"PublishStatus": "PUBLISHED",
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"WeaveType\",\"path\":\"WeaveType.cdm.json/WeaveType\"},\"description\":\"The style of weave used to construct the clothing product.\\n\\nWeaving   is an ancient art of making fabric, with no new types of weaves having been developed since 1747. \\n\\nThe warp yarns and weft yarns are interlaced (woven) with each other to make a fabric (vs. a knit where the yarns are looped together). There are three basic weaving constructions.\\n\\nPlain weave : The Plain Weave is made by weaving one weft yarn over and under each warp yarn, alternating each row. It is the most common type of weave. \\n\\nTwill weave: The twill weave is similar to a satin weave in the sense that the loom is floating the warp or weft yarns over yarns of the opposite direction, but with a twill the yarn is only passing over two of the opposite yarns. A twill is distinctive by the diagonal lines that appear in the fabric. A twill weave, like a satin weave, usually results in a softer fabric than a plain weave. It is excellent for brushed or napped cotton, and is superior for a feather pillow ticking because of its strength. \\n\\nSatin weave: the satin weave is made by \\\"floating\\\" the warp or weft yarns across several yarns to bring them to the surface. Bringing the yarns to the surface gives the fabric sheen because light is reflected off the yarn surface, not absorbed by the intersections of yarns such as in a plain weave. \\n\\nCambric: a plain weave construction, Cambric fabric is also calendared (passed between rollers under heat and pressure) to give the surface a shine. Originally made in Cambrai, France. \\n\\nSateen: a satin weave construction, usually made of mercerized combed cotton, where the weave and quality of cotton give the fabric a wonderful shine and softness. \\n\\nWarp: the yarns that run the length of the loom. The warp yarns are pulled through the loom as the weft or filling yarns are woven across the warp to make the fabric. \\n\\nWeft or Filling: The yarns that are woven across the loom, with Weft being the English term and Filling being the American term. The individual yarns are also known as Picks.\",\"primaryKey\":[\"WeaveTypeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"name\":\"WeaveTypeId\",\"attributeReference\":{\"entity\":\"WeaveType.cdm.json/WeaveType\",\"name\":\"WeaveTypeId\"},\"dataType\":\"integer\"},{\"type\":\"Existing\",\"name\":\"WeaveTypeName\",\"attributeReference\":{\"entity\":\"WeaveType.cdm.json/WeaveType\",\"name\":\"WeaveTypeName\"},\"dataType\":\"string\",\"dataTypeLength\":128},{\"type\":\"Existing\",\"name\":\"WeaveTypeDescription\",\"attributeReference\":{\"entity\":\"WeaveType.cdm.json/WeaveType\",\"name\":\"WeaveTypeDescription\"},\"dataType\":\"string\",\"dataTypeLength\":512}]}}}",
+			"Description": "The style of weave used to construct the clothing product.\n\nWeaving   is an ancient art of making fabric, with no new types of weaves having been developed since 1747. \n\nThe warp yarns and weft yarns are interlaced (woven) with each other to make a fabric (vs. a knit where the yarns are looped together). There are three basic weaving constructions.\n\nPlain weave : The Plain Weave is made by weaving one weft yarn over and under each warp yarn, alternating each row. It is the most common type of weave. \n\nTwill weave: The twill weave is similar to a satin weave in the sense that the loom is floating the warp or weft yarns over yarns of the opposite direction, but with a twill the yarn is only passing over two of the opposite yarns. A twill is distinctive by the diagonal lines that appear in the fabric. A twill weave, like a satin weave, usually results in a softer fabric than a plain weave. It is excellent for brushed or napped cotton, and is superior for a feather pillow ticking because of its strength. \n\nSatin weave: the satin weave is made by \"floating\" the warp or weft yarns across several yarns to bring them to the surface. Bringing the yarns to the surface gives the fabric sheen because light is reflected off the yarn surface, not absorbed by the intersections of yarns such as in a plain weave. \n\nCambric: a plain weave construction, Cambric fabric is also calendared (passed between rollers under heat and pressure) to give the surface a shine. Originally made in Cambrai, France. \n\nSateen: a satin weave construction, usually made of mercerized combed cotton, where the weave and quality of cotton give the fabric a wonderful shine and softness. \n\nWarp: the yarns that run the length of the loom. The warp yarns are pulled through the loom as the weft or filling yarns are woven across the warp to make the fabric. \n\nWeft or Filling: The yarns that are woven across the loom, with Weft being the English term and Filling being the American term. The individual yarns are also known as Picks.",
+			"DisplayFolderInfo": "{\"name\":\"Product\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "WeaveTypeId",
+			"spark.sql.sources.provider": "parquet",
+			"spark.sql.sources.schema.numParts": "1",
+			"spark.sql.sources.schema.part.0": "{\"type\":\"struct\",\"fields\":[{\"name\":\"WeaveTypeId\",\"type\":\"integer\",\"nullable\":false,\"metadata\":{}},{\"name\":\"WeaveTypeName\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}},{\"name\":\"WeaveTypeDescription\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}}]}",
+			"x-ms-usageinfo": "AzureSynapseDatabaseTemplate"
+		},
+		"ObjectVersion": 2,
+		"ObjectId": "1b350717-85e7-434f-a35b-314490c0a83e",
+		"Description": "The style of weave used to construct the clothing product.\n\nWeaving   is an ancient art of making fabric, with no new types of weaves having been developed since 1747. \n\nThe warp yarns and weft yarns are interlaced (woven) with each other to make a fabric (vs. a knit where the yarns are looped together). There are three basic weaving constructions.\n\nPlain weave : The Plain Weave is made by weaving one weft yarn over and under each warp yarn, alternating each row. It is the most common type of weave. \n\nTwill weave: The twill weave is similar to a satin weave in the sense that the loom is floating the warp or weft yarns over yarns of the opposite direction, but with a twill the yarn is only passing over two of the opposite yarns. A twill is distinctive by the diagonal lines that appear in the fabric. A twill weave, like a satin weave, usually results in a softer fabric than a plain weave. It is excellent for brushed or napped cotton, and is superior for a feather pillow ticking because of its strength. \n\nSatin weave: the satin weave is made by \"floating\" the warp or weft yarns across several yarns to bring them to the surface. Bringing the yarns to the surface gives the fabric sheen because light is reflected off the yarn surface, not absorbed by the intersections of yarns such as in a plain weave. \n\nCambric: a plain weave construction, Cambric fabric is also calendared (passed between rollers under heat and pressure) to give the surface a shine. Originally made in Cambrai, France. \n\nSateen: a satin weave construction, usually made of mercerized combed cotton, where the weave and quality of cotton give the fabric a wonderful shine and softness. \n\nWarp: the yarns that run the length of the loom. The warp yarns are pulled through the loom as the weft or filling yarns are woven across the warp to make the fabric. \n\nWeft or Filling: The yarns that are woven across the loom, with Weft being the English term and Filling being the American term. The individual yarns are also known as Picks."
+	},
+	"type": "TABLE"
+}

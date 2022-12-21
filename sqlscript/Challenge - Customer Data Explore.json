@@ -1,0 +1,16 @@
+{
+	"name": "Challenge - Customer Data Explore",
+	"properties": {
+		"content": {
+			"query": "-- This is auto-generated code\nSELECT\n    top 10 *\nFROM\n    OPENROWSET(\n        BULK 'https://asadatalakeimre.dfs.core.windows.net/wwi-02/data-generators/generator-customer.csv',\n        FORMAT = 'CSV',\n        FIRSTROW = 2,\n        PARSER_VERSION='2.0'\n    ) AS [result]\n\nSELECT MIN(c1), MAX(c1) FROM \n OPENROWSET(\n        BULK 'https://asadatalakeimre.dfs.core.windows.net/wwi-02/data-generators/generator-customer.csv',\n        FORMAT = 'CSV',\n        FIRSTROW = 2,\n        PARSER_VERSION='2.0'\n    ) AS [result]\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"name": "master",
+				"type": "SqlOnDemand"
+			}
+		},
+		"type": "SqlQuery"
+	}
+}

@@ -1,0 +1,23 @@
+{
+	"name": "AzureSynapse_keyVault",
+	"type": "Microsoft.Synapse/workspaces/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDW",
+		"typeProperties": {
+			"connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=asaworkspaceimre.database.windows.net;Initial Catalog=SQLPool01;User ID=asa.sql.admin",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "asakeyvaultimre",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "SqlPassword"
+			}
+		},
+		"connectVia": {
+			"referenceName": "AutoResolveIntegrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

@@ -1,0 +1,895 @@
+{
+	"name": "SparkPool1MetastoreConfig",
+	"properties": {
+		"folder": {
+			"name": "Metastore"
+		},
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "SparkPool01",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "28g",
+			"driverCores": 4,
+			"executorMemory": "28g",
+			"executorCores": 4,
+			"numExecutors": 2,
+			"runAsWorkspaceSystemIdentity": false,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "false",
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "2",
+				"spark.autotune.trackingId": "cf0e9b9f-65e9-4f06-a543-83e825dddd8f"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"synapse_widget": {
+				"version": "0.1",
+				"state": {
+					"93148b91-6ccc-4473-bf53-1e28f1b68ef4": {
+						"type": "Synapse.DataFrame",
+						"sync_state": {
+							"table": {
+								"rows": [
+									{
+										"0": "spark.sparkContextAfterInit.plugins",
+										"1": "org.apache.spark.microsoft.tools.api.plugin.MSToolsSparkContextAfterInitPlugin"
+									},
+									{
+										"0": "spark.sql.warehouse.dir",
+										"1": "abfss://tempdata@asadatalakeimre.dfs.core.windows.net/synapse/workspaces/asaworkspaceimre/warehouse"
+									},
+									{
+										"0": "spark.driver.cores",
+										"1": "4"
+									},
+									{
+										"0": "spark.databricks.delta.vacuum.parallelDelete.enabled",
+										"1": "true"
+									},
+									{
+										"0": "spark.serializer",
+										"1": "org.apache.spark.serializer.JavaSerializer"
+									},
+									{
+										"0": "spark.ui.advise.hub.impl.class",
+										"1": "org.apache.spark.advise.DefaultAdviseHub"
+									},
+									{
+										"0": "spark.yarn.containerLauncherMaxThreads",
+										"1": "25"
+									},
+									{
+										"0": "spark.hadoop.javax.jdo.option.ConnectionUserName",
+										"1": ""
+									},
+									{
+										"0": "spark.shuffle.io.serverThreads",
+										"1": "128"
+									},
+									{
+										"0": "spark.livy.server.session.timeout",
+										"1": "1800000"
+									},
+									{
+										"0": "spark.yarn.jars",
+										"1": "local:///opt/spark/jars/*"
+									},
+									{
+										"0": "spark.sql.hive.metastore.version",
+										"1": "2.3.2"
+									},
+									{
+										"0": "spark.dotnet.ignoreSparkPatchVersionCheck",
+										"1": "true"
+									},
+									{
+										"0": "spark.shuffle.file.buffer",
+										"1": "1m"
+									},
+									{
+										"0": "spark.cluster.environment.type",
+										"1": "PROD"
+									},
+									{
+										"0": "spark.dotnet.nuget.fallbackPackagesPath",
+										"1": "/usr/local/lib/sparkdotnet/.nuget/packages"
+									},
+									{
+										"0": "spark.arcadia.session.token",
+										"1": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNyc2Etc2hhMjU2Iiwia2lkIjoiMUEzRDU5QzI2ODg3NjUzMkZGOEU4QkEwNDUxMjRDOENDQkYyRThFMCIsInR5cCI6IkpXVCJ9.eyJhdXRoVG9rZW4iOiJBQUVBRkJvOVdjSm9oMlV5LzQ2TG9FVVNUSXpMOHVqZ0FRQnk4QkxCWHFtZUdDWU04SGQ1K2wwK3BwNDVWZ2NGZ0dXZGF3ZVZLSlRzbG5jeWFSS0Z5ZjhxRHNrZjFwVnNZMzF6YzhFMEpNTkI5dnl2V2xGeExEK04raXBkTGdZeTB3ZHhkclhva25wbmNBWUJ3U1RERlpUL0lFWEc5cnhjbWM2TFIwQkFxbGFOVXpkbFBocW83WFM5R3dMc0JWdmsxZFFkend4MmFOVml5RUVXUmVXRWxaZkF2aVFUeGZFbVMvYkhVZUlNeUhDbzd6eFd1WUpJeUhhVW5waVJFOTBwRVZBVFZPNFVIdHJjRDZZYkJNeG1HRm03cVJIWjZQRXhzWlA5Vk9LTUE2dEJqNnI1Vko2U1hMOGRCbkZQeVo0cU9CamgyMktsay94WFRhemMwaVNGeE5ndU1nNHF6VW1MWUZ6MUM5Tzh2SlVUNWhiS05USmdGdHluQUJEYkowdkdQSHVVL0NTZHJJaHRLWE5VQVdBbDBjaHNrN1FFaUVod3Zod1VYYkNvNzFqZHlMMlZCdytuWnFLaW8vVDlQdWtqQjVCblc4NG5LbVZ4OEQwbmJyWXI2cjJUdzc1eTNsaENEbm1QS25SNm91aFhpMmRUWVp4UVg2KzJGM1RRUGRDUkRIcElRMlBuTXF3bDUwMGdNa1BlT04vWGVPQy9sNWhqMjFQVDNFRnBFZHAvM1hsRlhySExSdTVlTlc1c1RqK1NwR29LUjhPREZLL1FaZzQ0Sk5lYjNkQnNDeW45MG5RK0xIRmRvL2UyYWxGb0FDWXhQN0dTNVZFLzBHdFkvSXBrVVE2NExvUEk1OW15blUyb25nTzMyU2hYc2JLQ2FKSHhBWHNqWnU1cGxoSGVBcE9NRTJleUdEbHZ1TlVzWXhMelV6ZW9HbnZsZk1RUnk1bUxhUkU0K0NPWkxjbFUwUjlZdXE0RXFIYXU5MG0rb0FPRDZiaCtEbW1MRXRidm9qMCsrZERKRXFoWEZYWlRNMUQ2eDF3RlR1L1VNV21qNzVTRXZQbnEvZUFtWHVtKzgxSGhVVjRET2dLNHU3Ykc2SnNrZEthRzZ4bWI2Zk5QUExRSmgrM1U2eWRrenRJb0RlYUIxdFUxTHQvMSIsInNpZ25hdHVyZVBheWxvYWQiOnsidXNlcklkIjoiNzRmYWI5ZWQtOTI0NS00NTQ0LWE2YjQtOWM0YWFiOWJmYjVmIiwiam9iSWQiOiIwIiwiY2x1c3RlcklkIjoiN2ZiNjZmZTUtZDRhZS00ODQ0LThmMjMtZTc5YzVlZjBjYTEyIiwid29ya3NwYWNlTmFtZSI6ImFzYXdvcmtzcGFjZWltcmUiLCJ3b3Jrc3BhY2VUeXBlIjoiU3luYXBzZSIsIndvcmtzcGFjZVVJRCI6ImNmYzdiYTdiLWNkZTUtNGI3My1hOTI4LThlOGUyMDYyZGI0MyIsImNvbXB1dGVOYW1lIjoiU3BhcmtQb29sMDEiLCJqb2JUeXBlIjoiU3BhcmtTZXJ2aWNlU2Vzc2lvbiJ9LCJmYWN0b3J5TG9jYXRpb24iOiJlYXN0dXMifQ.kHXXbrprLqU3FvjSvog47PQTLII-RwWg8FFNhXDGyB1N9ZIeAHBQwL2IcFSvB-Zj6U5Nk-FzCHpw130Wpt064hXMNjA42S6WAOWFd8OhQHYvwn8eKZ9q8gHqgscHM5AyPLyzwc8crGq5EBCAzsqQ0zUlufG24sbHx1SxiltxOCxN2R8OKZJKZxqHqCvqnmffQB3CVPxVpl9TWfJrgieJApChaMsddGzUaXM2pPw2GpAmgYNMyYOP9GSHk2Cn8O4kJFrGfsvx-EwIJBrTYdCfbJTvOzZn0HZSbHAXrtCfientbV-0D87XIJF78eUMxA_idihgNWqLounxnon1Ox50sQ"
+									},
+									{
+										"0": "spark.advise.nameToClass.TimeSkew",
+										"1": "com.microsoft.impulse.insights.TimeSkewInsight"
+									},
+									{
+										"0": "spark.sql.window.sort.optimization.enabled",
+										"1": "false"
+									},
+									{
+										"0": "spark.yarn.app.id",
+										"1": "application_1670000821406_0001"
+									},
+									{
+										"0": "spark.delta.logStore.class",
+										"1": "org.apache.spark.sql.delta.storage.AzureLogStore"
+									},
+									{
+										"0": "spark.autotune.trackingId",
+										"1": "dc4044e1-9159-4abc-bf84-202473d0d1ef"
+									},
+									{
+										"0": "spark.sql.legacy.replaceDatabricksSparkAvro.enabled",
+										"1": "false"
+									},
+									{
+										"0": "spark.hadoop.fs.azure.block.blob.with.compaction.dir",
+										"1": "wasbs://61531924-6c3a-4b37-955b-80bdd38ebe73@d6wxk2b70qpfb1pt9xx1wb40.blob.core.windows.net/events/0/eventLogs/"
+									},
+									{
+										"0": "spark.sql.catalyst.optimizer.blitz.enabled",
+										"1": "true"
+									},
+									{
+										"0": "spark.yarn.nodeStateNotification.enabled",
+										"1": "true"
+									},
+									{
+										"0": "spark.synapse.history.rpc.update.retry.maxNumber",
+										"1": "3"
+									},
+									{
+										"0": "spark.synapse.diagnostic.emitter.ShoeboxEmitter.type",
+										"1": "Shoebox"
+									},
+									{
+										"0": "spark.synapse.clusteridentifier",
+										"1": "7fb66fe5-d4ae-4844-8f23-e79c5ef0ca12"
+									},
+									{
+										"0": "spark.advise.nameToClass.SparkStopAdvise",
+										"1": "org.apache.spark.advise.SparkStopAdvise"
+									},
+									{
+										"0": "spark.dynamicAllocation.disableIfMinMaxNotSpecified.enabled",
+										"1": "true"
+									},
+									{
+										"0": "spark.dynamicAllocation.maxExecutors",
+										"1": "2"
+									},
+									{
+										"0": "spark.livy.spark_major_version",
+										"1": "2"
+									},
+									{
+										"0": "spark.repl.class.outputDir",
+										"1": "/mnt/var/hadoop/tmp/nm-local-dir/usercache/trusted-service-user/appcache/application_1670000821406_0001/container_1670000821406_0001_01_000001/tmp/spark7329507379425084425"
+									},
+									{
+										"0": "spark.synapse.session.token",
+										"1": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNyc2Etc2hhMjU2Iiwia2lkIjoiMUEzRDU5QzI2ODg3NjUzMkZGOEU4QkEwNDUxMjRDOENDQkYyRThFMCIsInR5cCI6IkpXVCJ9.eyJhdXRoVG9rZW4iOiJBQUVBRkJvOVdjSm9oMlV5LzQ2TG9FVVNUSXpMOHVqZ0FRQnk4QkxCWHFtZUdDWU04SGQ1K2wwK3BwNDVWZ2NGZ0dXZGF3ZVZLSlRzbG5jeWFSS0Z5ZjhxRHNrZjFwVnNZMzF6YzhFMEpNTkI5dnl2V2xGeExEK04raXBkTGdZeTB3ZHhkclhva25wbmNBWUJ3U1RERlpUL0lFWEc5cnhjbWM2TFIwQkFxbGFOVXpkbFBocW83WFM5R3dMc0JWdmsxZFFkend4MmFOVml5RUVXUmVXRWxaZkF2aVFUeGZFbVMvYkhVZUlNeUhDbzd6eFd1WUpJeUhhVW5waVJFOTBwRVZBVFZPNFVIdHJjRDZZYkJNeG1HRm03cVJIWjZQRXhzWlA5Vk9LTUE2dEJqNnI1Vko2U1hMOGRCbkZQeVo0cU9CamgyMktsay94WFRhemMwaVNGeE5ndU1nNHF6VW1MWUZ6MUM5Tzh2SlVUNWhiS05USmdGdHluQUJEYkowdkdQSHVVL0NTZHJJaHRLWE5VQVdBbDBjaHNrN1FFaUVod3Zod1VYYkNvNzFqZHlMMlZCdytuWnFLaW8vVDlQdWtqQjVCblc4NG5LbVZ4OEQwbmJyWXI2cjJUdzc1eTNsaENEbm1QS25SNm91aFhpMmRUWVp4UVg2KzJGM1RRUGRDUkRIcElRMlBuTXF3bDUwMGdNa1BlT04vWGVPQy9sNWhqMjFQVDNFRnBFZHAvM1hsRlhySExSdTVlTlc1c1RqK1NwR29LUjhPREZLL1FaZzQ0Sk5lYjNkQnNDeW45MG5RK0xIRmRvL2UyYWxGb0FDWXhQN0dTNVZFLzBHdFkvSXBrVVE2NExvUEk1OW15blUyb25nTzMyU2hYc2JLQ2FKSHhBWHNqWnU1cGxoSGVBcE9NRTJleUdEbHZ1TlVzWXhMelV6ZW9HbnZsZk1RUnk1bUxhUkU0K0NPWkxjbFUwUjlZdXE0RXFIYXU5MG0rb0FPRDZiaCtEbW1MRXRidm9qMCsrZERKRXFoWEZYWlRNMUQ2eDF3RlR1L1VNV21qNzVTRXZQbnEvZUFtWHVtKzgxSGhVVjRET2dLNHU3Ykc2SnNrZEthRzZ4bWI2Zk5QUExRSmgrM1U2eWRrenRJb0RlYUIxdFUxTHQvMSIsInNpZ25hdHVyZVBheWxvYWQiOnsidXNlcklkIjoiNzRmYWI5ZWQtOTI0NS00NTQ0LWE2YjQtOWM0YWFiOWJmYjVmIiwiam9iSWQiOiIwIiwiY2x1c3RlcklkIjoiN2ZiNjZmZTUtZDRhZS00ODQ0LThmMjMtZTc5YzVlZjBjYTEyIiwid29ya3NwYWNlTmFtZSI6ImFzYXdvcmtzcGFjZWltcmUiLCJ3b3Jrc3BhY2VUeXBlIjoiU3luYXBzZSIsIndvcmtzcGFjZVVJRCI6ImNmYzdiYTdiLWNkZTUtNGI3My1hOTI4LThlOGUyMDYyZGI0MyIsImNvbXB1dGVOYW1lIjoiU3BhcmtQb29sMDEiLCJqb2JUeXBlIjoiU3BhcmtTZXJ2aWNlU2Vzc2lvbiJ9LCJmYWN0b3J5TG9jYXRpb24iOiJlYXN0dXMifQ.kHXXbrprLqU3FvjSvog47PQTLII-RwWg8FFNhXDGyB1N9ZIeAHBQwL2IcFSvB-Zj6U5Nk-FzCHpw130Wpt064hXMNjA42S6WAOWFd8OhQHYvwn8eKZ9q8gHqgscHM5AyPLyzwc8crGq5EBCAzsqQ0zUlufG24sbHx1SxiltxOCxN2R8OKZJKZxqHqCvqnmffQB3CVPxVpl9TWfJrgieJApChaMsddGzUaXM2pPw2GpAmgYNMyYOP9GSHk2Cn8O4kJFrGfsvx-EwIJBrTYdCfbJTvOzZn0HZSbHAXrtCfientbV-0D87XIJF78eUMxA_idihgNWqLounxnon1Ox50sQ"
+									},
+									{
+										"0": "spark.blockmanager.decommission.enabled",
+										"1": "true"
+									},
+									{
+										"0": "spark.history.store.path",
+										"1": "/var/lib/spark2/shs_db"
+									},
+									{
+										"0": "spark.sql.cbo.enabled",
+										"1": "true"
+									},
+									{
+										"0": "spark.jarLoadOrder.userJarFirst",
+										"1": "true"
+									},
+									{
+										"0": "spark.synapse.jobidentifier",
+										"1": "asaworkspaceimre.SparkPool01.0"
+									},
+									{
+										"0": "spark.sql.preaggregation.enabled",
+										"1": "true"
+									},
+									{
+										"0": "spark.submit.deployMode",
+										"1": "cluster"
+									},
+									{
+										"0": "spark.driver.port",
+										"1": "33971"
+									},
+									{
+										"0": "spark.org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter.param.PROXY_HOSTS",
+										"1": "vm-9c776164,vm-dbb75841"
+									},
+									{
+										"0": "spark.org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter.param.PROXY_URI_BASES",
+										"1": "http://vm-9c776164:8088/proxy/application_1670000821406_0001,http://vm-dbb75841:8088/proxy/application_1670000821406_0001"
+									},
+									{
+										"0": "spark.sql.catalyst.optimizer.blitz.boundedOutput.enabled",
+										"1": "true"
+									},
+									{
+										"0": "spark.advise.nameToClass.TaskError",
+										"1": "com.microsoft.impulse.insights.TaskErrorInsight"
+									},
+									{
+										"0": "spark.sqlanalyticsconnector.stagingdir.prefix",
+										"1": "abfss://tempdata@asadatalakeimre.dfs.core.windows.net/synapse/workspaces/asaworkspaceimre/sparkpools/SparkPool01/sparkpoolinstances/74fab9ed-9245-4544-a6b4-9c4aab9bfb5f/livysessions/2022/12/02/0/tempdata/"
+									},
+									{
+										"0": "spark.yarn.app.container.log.dir",
+										"1": "/var/log/yarn-nm/userlogs/application_1670000821406_0001/container_1670000821406_0001_01_000001"
+									},
+									{
+										"0": "spark.executor.cores",
+										"1": "4"
+									},
+									{
+										"0": "spark.history.fs.cleaner.interval",
+										"1": "30d"
+									},
+									{
+										"0": "spark.synapse.diagnostic.builtinEmitters",
+										"1": "ShoeboxEmitter"
+									},
+									{
+										"0": "spark.yarn.preserve.staging.files",
+										"1": "false"
+									},
+									{
+										"0": "spark.hadoop.fs.azure.client.correlationid ",
+										"1": "e4003b4c-d8a5-49d2-915b-4a2bc547dfa4"
+									},
+									{
+										"0": "spark.sql.crossJoin.enabled",
+										"1": "true"
+									},
+									{
+										"0": "spark.submit.pyFiles",
+										"1": "local:///opt/spark/python/lib/pyspark.zip,local:///opt/spark/python/lib/py4j-0.10.7-src.zip"
+									},
+									{
+										"0": "spark.executor.instances",
+										"1": "2"
+									},
+									{
+										"0": "spark.driver.maxResultSize",
+										"1": "4096m"
+									},
+									{
+										"0": "spark.yarn.secondary.jars",
+										"1": "local:///opt/livy/rsc-jars/livy-rsc.jar,local:///opt/livy/rsc-jars/livy-api.jar,local:///opt/livy/rsc-jars/netty-all-4.1.17.Final.jar,local:///opt/livy/rsc-jars/log4j-api.jar,local:///opt/livy/rsc-jars/log4j-core.jar,local:///opt/livy/rsc-jars/livy-logging.jar,local:///opt/livy/repl_2.11-jars/livy-repl.jar,local:///opt/livy/repl_2.11-jars/livy-core.jar,local:///opt/livy/repl_2.11-jars/commons-codec-1.9.jar,local:///opt/livy/repl_2.11-jars/livy-logging.jar"
+									},
+									{
+										"0": "spark.tokenServiceEndpoint",
+										"1": "tokenservice1.eastus.azuresynapse.net:443"
+									},
+									{
+										"0": "spark.synapse.nbs.kernelid",
+										"1": "528684d6-de82-40c7-bb14-da4e277f9942"
+									},
+									{
+										"0": "spark.yarn.appMasterEnv.PYSPARK3_PYTHON",
+										"1": "/home/trusted-service-user/cluster-env/env/bin/python3"
+									},
+									{
+										"0": "spark.sql.extensions",
+										"1": "io.delta.sql.DeltaSparkSessionExtension,com.microsoft.azure.synapse.cardinalEstimate.CardinalExtensionBuilder,com.microsoft.peregrine.spark.extensions.SparkExtensionsSynapse,org.apache.spark.advise.input.AdviseSqlExtension"
+									},
+									{
+										"0": "spark.app.name",
+										"1": "SynapseCredentialPy"
+									},
+									{
+										"0": "spark.driver.host",
+										"1": "vm-9c776164"
+									},
+									{
+										"0": "spark.synapse.context.pipelinejobid",
+										"1": ""
+									},
+									{
+										"0": "spark.driver.extraLibraryPath",
+										"1": "/usr/hdp/current/hadoop-client/lib/native"
+									},
+									{
+										"0": "spark.livy.synapse.cancelImprovement.enabled",
+										"1": "true"
+									},
+									{
+										"0": "spark.livy.synapse.sql.displayFormatter.enabled",
+										"1": "True"
+									},
+									{
+										"0": "spark.yarn.stagingDir",
+										"1": "wasbs://61531924-6c3a-4b37-955b-80bdd38ebe73@d6wxk2b70qpfb1pt9xx1wb40.blob.core.windows.net/user/trusted-service-user/"
+									},
+									{
+										"0": "spark.synapse.history.rpc.update.retry.waitMs",
+										"1": "5000"
+									},
+									{
+										"0": "spark.synapse.history.rpc.sparkContext.enabled",
+										"1": "true"
+									},
+									{
+										"0": "spark.inputOutput.data.enabled",
+										"1": "true"
+									},
+									{
+										"0": "spark.nonjvm.error.buffer.size",
+										"1": "10400"
+									},
+									{
+										"0": "spark.hyperspace.eventLoggerClass",
+										"1": "com.microsoft.hyperspace.telemetry.synapse.SynapseLogger"
+									},
+									{
+										"0": "spark.appLiveStatusPlugins",
+										"1": "org.apache.spark.ui.EnhancementLiveStatusPlugin,org.apache.spark.diagnostic.synapse.SparkDiagnosticPlugin,org.apache.spark.deploy.history.rpc.app.RpcAppLivePlugin"
+									},
+									{
+										"0": "spark.master",
+										"1": "yarn"
+									},
+									{
+										"0": "spark.driver.memoryOverhead",
+										"1": "384"
+									},
+									{
+										"0": "spark.sql.orc.filterPushdown",
+										"1": "true"
+									},
+									{
+										"0": "spark.shuffle.io.backLog",
+										"1": "8192"
+									},
+									{
+										"0": "spark.livy.synapse.skipSplitCodeExecution.enabled",
+										"1": "true"
+									},
+									{
+										"0": "spark.synapse.history.rpc.update.intervalMs",
+										"1": "1000"
+									},
+									{
+										"0": "spark.synapse.rpc.listener.historyServer.address",
+										"1": "${hadoopconf-yarn.resourcemanager.hostname.rm1}"
+									},
+									{
+										"0": "spark.cluster.region",
+										"1": "eastus"
+									},
+									{
+										"0": "spark.eventLog.buffer.kb",
+										"1": "4k"
+									},
+									{
+										"0": "spark.cluster.name",
+										"1": "7fb66fe5-d4ae-4844-8f23-e79c5ef0ca12"
+									},
+									{
+										"0": "spark.unsafe.sorter.spill.reader.buffer.size",
+										"1": "1m"
+									},
+									{
+										"0": "spark.nonjvm.error.forwarding.enabled",
+										"1": "True"
+									},
+									{
+										"0": "spark.ui.enhancement.enabled",
+										"1": "true"
+									},
+									{
+										"0": "spark.eventLog.enabled",
+										"1": "true"
+									},
+									{
+										"0": "spark.synapse.history.rpc.update.timeoutMs",
+										"1": "5000"
+									},
+									{
+										"0": "spark.sql.hive.metastore.jars",
+										"1": "/opt/hive-metastore/lib/*"
+									},
+									{
+										"0": "spark.synapse.history.rpc.waitAppStart.enabled",
+										"1": "true"
+									},
+									{
+										"0": "spark.driver.extraClassPath",
+										"1": "/usr/lib/library-manager/bin/libraries/scala/*"
+									},
+									{
+										"0": "spark.shuffle.service.client.class",
+										"1": "org.apache.spark.network.shuffle.ExternalFsShuffleClientWithMetrics"
+									},
+									{
+										"0": "spark.synapse.history.rpc.update.delayMs",
+										"1": "2000"
+									},
+									{
+										"0": "spark.executor.decommissioning.enabled",
+										"1": "true"
+									},
+									{
+										"0": "spark.executor.memoryOverhead",
+										"1": "384"
+									},
+									{
+										"0": "spark.shuffle.service.decommissioning.enabled",
+										"1": "true"
+									},
+									{
+										"0": "spark.extraListeners",
+										"1": "com.microsoft.hdinsight.spark.metrics.SparkMetricsListener,com.microsoft.peregrine.spark.listeners.PeregrineListenerSynapse,org.apache.spark.listeners.LogAnalyticsSparkListener,com.microsoft.impulse.analyze.eventLog.ImpulseListener"
+									},
+									{
+										"0": "spark.sql.hive.convertMetastoreOrc",
+										"1": "true"
+									},
+									{
+										"0": "spark.driver.extraJavaOptions",
+										"1": "-Dlog4j2.configurationFile=/opt/livy/conf/log4j2-client.xml -Detwlogger.component=sparkdriver -DlogFilter.filename=SparkLogFilters.xml -DpatternGroup.filename=SparkPatternGroups.xml -Dlog4jspark.root.logger=INFO,console,RFA,ETW,Anonymizer -Dlog4jspark.log.dir=/var/log/sparkapp/${user.name} -Dlog4jspark.log.file=sparkdriver.log -Dlog4j.configuration=file:/usr/hdp/current/spark2-client/conf/driver-log4j.properties -Djavax.xml.parsers.SAXParserFactory=com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl -XX:+UseParallelGC -XX:+UseParallelOldGC -XX:+TieredCompilation -XX:Tier4CompileThreshold=150000 -noverify"
+									},
+									{
+										"0": "spark.repl.class.uri",
+										"1": "spark://vm-9c776164:33971/classes"
+									},
+									{
+										"0": "spark.sql.autoBroadcastJoinThreshold",
+										"1": "26214400"
+									},
+									{
+										"0": "spark.shuffle.service.shuffleCleanup.enabled",
+										"1": "true"
+									},
+									{
+										"0": "spark.advise.nameToClass.RandomSplitInconsistentAdvise",
+										"1": "org.apache.spark.advise.RandomSplitInconsistentAdvise"
+									},
+									{
+										"0": "spark.ui.filters",
+										"1": "org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter"
+									},
+									{
+										"0": "spark.synapse.context.notebookname",
+										"1": "SparkPool1MetastoreConfig"
+									},
+									{
+										"0": "spark.yarn.scheduler.heartbeat.interval-ms",
+										"1": "1000"
+									},
+									{
+										"0": "spark.livy.session.type",
+										"1": "interactive"
+									},
+									{
+										"0": "spark.dotnet.shell.command",
+										"1": "/usr/share/dotnet-tools/dotnet-interactive,[synapse],stdio,--default-kernel,csharp"
+									},
+									{
+										"0": "spark.yarn.am.waitTime",
+										"1": "600s"
+									},
+									{
+										"0": "spark.synapse.diagnostic.emitter.ShoeboxEmitter.proxyServiceIp",
+										"1": ""
+									},
+									{
+										"0": "spark.advise.nameToClass.DriverError",
+										"1": "com.microsoft.impulse.insights.DriverErrorInsight"
+									},
+									{
+										"0": "spark.yarn.dist.pyFiles",
+										"1": "local:///opt/spark/python/lib/pyspark.zip,local:///opt/spark/python/lib/py4j-0.10.7-src.zip"
+									},
+									{
+										"0": "spark.synapse.pool.name",
+										"1": "SparkPool01"
+									},
+									{
+										"0": "spark.locality.wait",
+										"1": "1"
+									},
+									{
+										"0": "spark.app.id",
+										"1": "application_1670000821406_0001"
+									},
+									{
+										"0": "spark.dotnet.packages",
+										"1": "nuget:Microsoft.Spark,1.0.1;nuget:Microsoft.Spark.Extensions.DotNet.Interactive,1.0.1;nuget:Microsoft.Spark.Extensions.Delta,1.0.1;nuget:Microsoft.Spark.Extensions.Hyperspace,1.0.1;nuget:Microsoft.Spark.Extensions.Azure.Synapse.Analytics,0.15.0"
+									},
+									{
+										"0": "spark.executor.id",
+										"1": "driver"
+									},
+									{
+										"0": "spark.stop.improvement.enabled",
+										"1": "true"
+									},
+									{
+										"0": "spark.synapse.rpc.listener.nodeInfo.path",
+										"1": "/etc/bbc/nodes.json"
+									},
+									{
+										"0": "spark.sql.orc.impl",
+										"1": "native"
+									},
+									{
+										"0": "spark.rdd.compress",
+										"1": "true"
+									},
+									{
+										"0": "spark.executor.memory",
+										"1": "28g"
+									},
+									{
+										"0": "spark.cluster.environment.name",
+										"1": "Arcadia-Cluster-Service-PROD-EastUS"
+									},
+									{
+										"0": "spark.livy.synapse.ipythonInterpreter.enabled",
+										"1": "true"
+									},
+									{
+										"0": "spark.livy.pipeInteractiveConsoleBacktoSparkConsole.enabled",
+										"1": "true"
+									},
+									{
+										"0": "spark.sql.catalogImplementation",
+										"1": "hive"
+									},
+									{
+										"0": "spark.cluster.node.name",
+										"1": "vm-dbb75841"
+									},
+									{
+										"0": "spark.synapse.context.activityrunid",
+										"1": ""
+									},
+									{
+										"0": "spark.synapse.history.rpc.port",
+										"1": "18082"
+									},
+									{
+										"0": "spark.advisor.enabled",
+										"1": "true"
+									},
+									{
+										"0": "spark.executor.extraClassPath",
+										"1": "/usr/lib/library-manager/bin/libraries/scala/*"
+									},
+									{
+										"0": "spark.history.fs.cleaner.enabled",
+										"1": "false"
+									},
+									{
+										"0": "spark.dynamicAllocation.enabled",
+										"1": "false"
+									},
+									{
+										"0": "spark.yarn.appMasterEnv.MMLSPARK_PLATFORM_INFO",
+										"1": "synapse"
+									},
+									{
+										"0": "spark.yarn.dist.jars",
+										"1": "local:///opt/livy/rsc-jars/livy-rsc.jar,local:///opt/livy/rsc-jars/livy-api.jar,local:///opt/livy/rsc-jars/netty-all-4.1.17.Final.jar,local:///opt/livy/rsc-jars/log4j-api.jar,local:///opt/livy/rsc-jars/log4j-core.jar,local:///opt/livy/rsc-jars/livy-logging.jar,local:///opt/livy/repl_2.11-jars/livy-repl.jar,local:///opt/livy/repl_2.11-jars/livy-core.jar,local:///opt/livy/repl_2.11-jars/commons-codec-1.9.jar,local:///opt/livy/repl_2.11-jars/livy-logging.jar"
+									},
+									{
+										"0": "spark.sql.execution.arrow.enabled",
+										"1": "true"
+									},
+									{
+										"0": "spark.redaction.regex",
+										"1": "(?i)secret|password|session.token"
+									},
+									{
+										"0": "spark.advise.nameToClass.ExecutorError",
+										"1": "com.microsoft.impulse.insights.ExecutorErrorInsight"
+									},
+									{
+										"0": "spark.org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter.param.RM_HA_URLS",
+										"1": "vm-9c776164:8088,vm-dbb75841:8088"
+									},
+									{
+										"0": "spark.advise.nameToClass.DataSkew",
+										"1": "com.microsoft.impulse.insights.DataSkewInsight"
+									},
+									{
+										"0": "spark.yarn.submit.waitAppCompletion",
+										"1": "false"
+									},
+									{
+										"0": "spark.sql.bloom.enabled",
+										"1": "false"
+									},
+									{
+										"0": "spark.synapse.history.rpc.message.maxSize",
+										"1": "10485760"
+									},
+									{
+										"0": "spark.eventLog.dir",
+										"1": "wasbs://61531924-6c3a-4b37-955b-80bdd38ebe73@d6wxk2b70qpfb1pt9xx1wb40.blob.core.windows.net/events/0/eventLogs/"
+									},
+									{
+										"0": "spark.yarn.tags",
+										"1": "livy-session-0-qwZJRU4K"
+									},
+									{
+										"0": "spark.executor.extraJavaOptions",
+										"1": "-Detwlogger.component=sparkexecutor -DlogFilter.filename=SparkLogFilters.xml -DpatternGroup.filename=SparkPatternGroups.xml -Dlog4jspark.root.logger=INFO,console,RFA,ETW,Anonymizer -Dlog4jspark.log.dir=/var/log/sparkapp/${user.name} -Dlog4jspark.log.file=sparkexecutor.log -Dlog4j.configuration=file:/usr/hdp/current/spark2-client/conf/executor-log4j.properties -Djavax.xml.parsers.SAXParserFactory=com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl -XX:+UseG1GC"
+									},
+									{
+										"0": "spark.sql.statistics.fallBackToHdfs",
+										"1": "true"
+									},
+									{
+										"0": "spark.synapse.customercorrelationid",
+										"1": "e4003b4c-d8a5-49d2-915b-4a2bc547dfa4"
+									},
+									{
+										"0": "spark.synapse.rpc.listener.nodeInfo.enabled",
+										"1": "true"
+									},
+									{
+										"0": "spark.yarn.maxAppAttempts",
+										"1": "1"
+									},
+									{
+										"0": "spark.synapse.workspace.name",
+										"1": "asaworkspaceimre"
+									},
+									{
+										"0": "spark.synapse.vhd.id",
+										"1": "3f127d2e-1537-4eb2-999d-8ef67bdc0add"
+									},
+									{
+										"0": "spark.ui.prometheus.enabled",
+										"1": "true"
+									},
+									{
+										"0": "spark.hadoop.javax.jdo.option.ConnectionDriverName",
+										"1": "com.microsoft.sqlserver.jdbc.SQLServerDriver"
+									},
+									{
+										"0": "spark.hadoop.javax.jdo.option.ConnectionURL",
+										"1": ";"
+									},
+									{
+										"0": "spark.yarn.appMasterEnv.PYSPARK_PYTHON",
+										"1": "/home/trusted-service-user/cluster-env/env/bin/python"
+									},
+									{
+										"0": "spark.sql.cbo.joinReorder.enabled",
+										"1": "true"
+									},
+									{
+										"0": "spark.sql.cardinalityEstimation.enabled",
+										"1": "true"
+									},
+									{
+										"0": "spark.history.ui.port",
+										"1": "18080"
+									},
+									{
+										"0": "spark.shuffle.service.closeHostConnectionsToUnusableHost.enabled",
+										"1": "true"
+									},
+									{
+										"0": "spark.shuffle.service.enabled",
+										"1": "true"
+									},
+									{
+										"0": "spark.sql.execution.arrow.fallback.enabled",
+										"1": "true"
+									},
+									{
+										"0": "spark.synapse.history.rpc.batch.size",
+										"1": "2000"
+									},
+									{
+										"0": "spark.dynamicAllocation.minExecutors",
+										"1": "2"
+									},
+									{
+										"0": "spark.executor.extraLibraryPath",
+										"1": "/usr/hdp/current/hadoop-client/lib/native"
+									},
+									{
+										"0": "spark.yarn.queue",
+										"1": "default"
+									},
+									{
+										"0": "spark.executorEnv.PYTHONPATH",
+										"1": "/opt/spark/python/lib/pyspark.zip<CPS>/opt/spark/python/lib/py4j-0.10.7-src.zip<CPS>/opt/spark/python/lib/pyspark.zip<CPS>/opt/spark/python/lib/py4j-0.10.7-src.zip"
+									},
+									{
+										"0": "spark.hadoop.javax.jdo.option.ConnectionPassword",
+										"1": ""
+									},
+									{
+										"0": "spark.yarn.dist.archives",
+										"1": "local:///opt/spark/R/lib/sparkr.zip#sparkr"
+									},
+									{
+										"0": "spark.ui.port",
+										"1": "0"
+									},
+									{
+										"0": "spark.io.compression.lz4.blockSize",
+										"1": "128kb"
+									},
+									{
+										"0": "spark.synapse.dep.enabled",
+										"1": "false"
+									},
+									{
+										"0": "spark.vegas.setoptimizer",
+										"1": "true"
+									},
+									{
+										"0": "spark.driver.memory",
+										"1": "28g"
+									},
+									{
+										"0": "spark.shuffle.unsafe.file.output.buffer",
+										"1": "5m"
+									},
+									{
+										"0": "spark.pythonRunnerOutputStream.plugin",
+										"1": "org.apache.spark.microsoft.tools.api.plugin.MSToolsPythonRunnerOutputStreamPlugin"
+									},
+									{
+										"0": "spark.yarn.isPython",
+										"1": "true"
+									},
+									{
+										"0": "spark.executor.cachedIdle.decommission.enabled",
+										"1": "false"
+									},
+									{
+										"0": "spark.sql.files.maxPartitionBytes",
+										"1": "134217728"
+									}
+								],
+								"schema": [
+									{
+										"key": "0",
+										"name": "_1",
+										"type": "string"
+									},
+									{
+										"key": "1",
+										"name": "_2",
+										"type": "string"
+									}
+								],
+								"truncated": false
+							},
+							"isSummary": false,
+							"language": "scala"
+						},
+						"persist_state": {
+							"view": {
+								"type": "details",
+								"chartOptions": {
+									"chartType": "bar",
+									"aggregationType": "count",
+									"categoryFieldKeys": [
+										"0"
+									],
+									"seriesFieldKeys": [
+										"0"
+									],
+									"isStacked": false
+								}
+							}
+						}
+					}
+				}
+			},
+			"enableDebugMode": false,
+			"kernelspec": {
+				"name": "synapse_pyspark",
+				"display_name": "Synapse PySpark"
+			},
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/fe5aef09-bf0f-4faf-9c28-311200cf35cd/resourceGroups/Synapse-WS-L400/providers/Microsoft.Synapse/workspaces/asaworkspaceimre/bigDataPools/SparkPool01",
+				"name": "SparkPool01",
+				"type": "Spark",
+				"endpoint": "https://asaworkspaceimre.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/SparkPool01",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net",
+					"authHeader": null
+				},
+				"sparkVersion": "2.4",
+				"nodeCount": 3,
+				"cores": 4,
+				"memory": 28,
+				"extraHeader": null
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "code",
+				"metadata": {
+					"collapsed": false
+				},
+				"source": [
+					"a = spark.conf.get(\"spark.sql.warehouse.dir\")\r\n",
+					"b = spark.conf.get(\"spark.sql.hive.metastore.version\")\r\n",
+					"c = spark.sparkContext.getConf().getAll()\r\n",
+					"\r\n",
+					"# c = spark.conf.get(\"hive.metastore.uris\")\r\n",
+					"# c =spark.catalog.listFunctions()\r\n",
+					"ll = spark.sparkContext.parallelize(c).toDF()\r\n",
+					"d = spark.conf.get(\"spark.sql.catalogImplementation\")\r\n",
+					"e = spark.conf.get(\"spark.hadoop.javax.jdo.option.ConnectionDriverName\")\r\n",
+					"f = spark.conf.get(\"spark.hadoop.javax.jdo.option.ConnectionURL\") \r\n",
+					"g = spark.conf.get(\"spark.hadoop.javax.jdo.option.ConnectionPassword\") \r\n",
+					"h = spark.conf.get(\"spark.hadoop.javax.jdo.option.ConnectionUserName\")\r\n",
+					"#i = spark.conf.get(\"spark.sql.hive.security.metastore.authorization.manager\")\r\n",
+					"\r\n",
+					"\r\n",
+					"print(\"spark.sql.warehouse.dir:\", a)\r\n",
+					"print(\"spark.sql.hive.metastore.version:\", b)\r\n",
+					"print (c)\r\n",
+					"print (\"spark.sql.catalogImplementation: \", d)\r\n",
+					"print(\"spark.hadoop.javax.jdo.option.ConnectionDriverName: \" , e)\r\n",
+					"print(\"spark.hadoop.javax.jdo.option.ConnectionURL: \", f)\r\n",
+					"print(\"spark.hadoop.javax.jdo.option.ConnectionPassword: \", g)\r\n",
+					"print(\"spark.hadoop.javax.jdo.option.ConnectionUserName: \", h)\r\n",
+					"#println(\"hive.security.metastore.authorization.manager:\", i)\r\n",
+					"display (ll)"
+				],
+				"execution_count": 15
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"microsoft": {
+						"language": "sparksql"
+					},
+					"collapsed": false
+				},
+				"source": [
+					"%%sql\r\n",
+					"\r\n",
+					"USE imre_spark;\r\n",
+					"SHOW Tables;\r\n",
+					"SELECT COUNT(*) FROM imre_spark_test;\r\n",
+					"\r\n",
+					"\r\n",
+					"\r\n",
+					"\r\n",
+					""
+				]
+			}
+		]
+	}
+}

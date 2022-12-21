@@ -1,0 +1,129 @@
+{
+	"name": "Fabric",
+	"properties": {
+		"Name": "Fabric",
+		"EntityType": "TABLE",
+		"TableType": "EXTERNAL",
+		"Namespace": {
+			"SchemaName": null,
+			"DatabaseName": "Imre_lake_DB"
+		},
+		"StorageDescriptor": {
+			"Distribution": null,
+			"Columns": [
+				{
+					"Name": "FabricId",
+					"Description": "The unique identifier of a Fabric.",
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Length": 0,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "Fabric.cdm.json/Fabric",
+						"Name": "FabricId"
+					}
+				},
+				{
+					"Name": "FabricName",
+					"Description": "The name of a Fabric.",
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 128,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "Fabric.cdm.json/Fabric",
+						"Name": "FabricName"
+					}
+				},
+				{
+					"Name": "FabricDescription",
+					"Description": "The description of a Fabric.",
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 512,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "Fabric.cdm.json/Fabric",
+						"Name": "FabricDescription"
+					}
+				}
+			],
+			"ColumnSetEntityName": "4db0af5c-d980-45b2-807c-520a20ac24a0",
+			"Format": {
+				"InputFormat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat",
+				"FormatType": "parquet",
+				"SerializeLib": "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe",
+				"Properties": {
+					"path": "abfss://wwi-02@asadatalakeimre.dfs.core.windows.net/test/Fabric",
+					"FormatTypeSetToDatabaseDefault": true
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://wwi-02@asadatalakeimre.dfs.core.windows.net/test/Fabric",
+				"Properties": {
+					"LinkedServiceName": "asadatalakeimre",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"FabricId\":{\"entity\":\"Fabric.cdm.json/Fabric\",\"name\":\"FabricId\"},\"FabricName\":{\"entity\":\"Fabric.cdm.json/Fabric\",\"name\":\"FabricName\"},\"FabricDescription\":{\"entity\":\"Fabric.cdm.json/Fabric\",\"name\":\"FabricDescription\"}}}"
+			},
+			"Compressed": false,
+			"SerDeInfo": null,
+			"IsStoredAsSubdirectories": false
+		},
+		"Owner": null,
+		"CreateTime": 0,
+		"LastAccessTime": 0,
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false,
+		"ViewOriginalText": null,
+		"ViewExpandedText": null,
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"OriginObjectId": null,
+		"IsSharedEntity": false,
+		"PublishStatus": "PUBLISHED",
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"Fabric\",\"path\":\"Fabric.cdm.json/Fabric\"},\"description\":\"A material that resembles cloth, which is sometimes used as a generic term for \\\"fabric\\\".   \\n\\nEx:\\n\\nABACA -  a naturally occurring fiber found in the stem of the abaca plant. A member of the banana family, Musa Textilis.  The fiber is also called Manila Hemp, and is used extensively in the manufacture of marine cordage, abrasive backing papers, tea bags, and other products requiring high tensile strength. \\n\\nBAIZE -  a coarse woolen or cotton fabric napped to imitate felt.\\n\\nYARN -  a generic term for a continuous strand spun from a group of natural or synthetic staple fibers, or filaments, used in weaving, knitting to form textile fabrics\\n\\nBATIK -  a fabric printed by batik, namely an Indonesian method of hand-printing textiles by coating with wax the parts not to be dyed\\n\\nBOUCLE - a fabric of bouclÉ yarn, namely an uneven yarn of three piles one of which forms loops at intervals.  Wool, also in rayon, silk, cotton, linen, blends, hair fibers.   Any weave, knit.  From the French for \\\"buckled\\\" or \\\"ringed\\\".  A drawn out or ringed, looped yarn is used to give it a kinky appearance at intervals.  Made in a variety of weights.  Boucle yarns are usually in both the filling and the warp. Fabrics are usually springy to handle on account of the highly twisted yarns used to achieve the boucle effect.  Often ravels easily.\\n\\nBROCADE - a rich oriental silk fabric with raised patterns in gold and silver.  Cotton brocade often has the ground of cotton and the pattern of rayon and silk.  Pattern is in low relief.  Generally weaved in Jacquard and dobby.  Rich, heavy, elaborate design effect. Sometimes with colored or metallic threads making the design usually against a satin weave background.  This makes the figures stand out.  The figures in brocade are rather loose, while in damask the figure threads are actually bound into the material.  The pattern may be satin on a twill ground or twill on a satin ground.   Often reversible. The motifs may be of flowers, foliage, scrollwork, pastoral scenes, or other designs.\\n\\nBULL DENIM -  a 3x1 twill weave piece dyed fabric, made from coarse yarns. Weights can vary from 9 oz/sq yard up to the standard 14 oz/sq yard. Bull Denim is essentially a denim without indigo.\\n\\nBURLAP -  a coarse heavy plain-woven fabric usually of jute or hemp used for bagging and wrapping and in furniture and linoleum manufacture.\\n\\nCANVAS -  a firm closely woven cloth usually of linen, hemp, or cotton used for clothing and formerly much used for tents and sails.  Plain weave.  Mostly rugged, heavy material made from plied yarns. Has body and strength. It is usually manufactured in the grey state but some is dyed for different uses.\\n\\nCHAMOIS CLOTH -  a cotton fabric.   Fabric is napped, sheared, and dyed to simulate chamois leather. It is stiffer than kasha and thicker, softer and more durable than flannelette.\\n\\nCHEESECLOTH -  originally used as a wrapping material for pressing cheese. Loosely woven, thin, light in weight, open in construction, and soft.  Carded yarns are always used.   It is also called gauze weave.  When woven in 36\\\" widths it is called tobacco cloth.  When an applied finish is added, it is called buckram, crinoline, or bunting.  In the gray cloth, it is used for covering tobacco plants, tea bags and wiping cloths.  Finished cloth is used for curtains, bandages, dust cloths, cheap bunting, hat lining, surgical gauze, fly nets, food wrapping, e.g. meat and cheese, costumes and basket tops\\n\\nCHENILLE -  warp yarn of any major textile fiber. Filling of chenille yarns (has a pile protruding all around at right angles).  The word is French for caterpillar and fabric looks hairy.  A fuzzy yarn whose pile resembles a caterpillar.    Do not confuse with tufted effects obtained without the use of true Chenille filling.  Used for millinery, rugs, decorative fabrics, trimmings, upholstery.  Sometimes used broadly to define a fabric woven from chenille yarns.\\n\\nCORDUROY - cut pile fabric woven with either wide or narrow wales formed by using extra filling.  Back may be either plain or twill weave, the latter being better quality.\\n\\nCREPE -  fabric characterized by a broad range of crinkled or grained surface effect.\\n\\n.\",\"primaryKey\":[\"FabricId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"name\":\"FabricId\",\"attributeReference\":{\"entity\":\"Fabric.cdm.json/Fabric\",\"name\":\"FabricId\"},\"dataType\":\"integer\"},{\"type\":\"Existing\",\"name\":\"FabricName\",\"attributeReference\":{\"entity\":\"Fabric.cdm.json/Fabric\",\"name\":\"FabricName\"},\"dataType\":\"string\",\"dataTypeLength\":128},{\"type\":\"Existing\",\"name\":\"FabricDescription\",\"attributeReference\":{\"entity\":\"Fabric.cdm.json/Fabric\",\"name\":\"FabricDescription\"},\"dataType\":\"string\",\"dataTypeLength\":512}]}}}",
+			"Description": "A material that resembles cloth, which is sometimes used as a generic term for \"fabric\".   \n\nEx:\n\nABACA -  a naturally occurring fiber found in the stem of the abaca plant. A member of the banana family, Musa Textilis.  The fiber is also called Manila Hemp, and is used extensively in the manufacture of marine cordage, abrasive backing papers, tea bags, and other products requiring high tensile strength. \n\nBAIZE -  a coarse woolen or cotton fabric napped to imitate felt.\n\nYARN -  a generic term for a continuous strand spun from a group of natural or synthetic staple fibers, or filaments, used in weaving, knitting to form textile fabrics\n\nBATIK -  a fabric printed by batik, namely an Indonesian method of hand-printing textiles by coating with wax the parts not to be dyed\n\nBOUCLE - a fabric of bouclÉ yarn, namely an uneven yarn of three piles one of which forms loops at intervals.  Wool, also in rayon, silk, cotton, linen, blends, hair fibers.   Any weave, knit.  From the French for \"buckled\" or \"ringed\".  A drawn out or ringed, looped yarn is used to give it a kinky appearance at intervals.  Made in a variety of weights.  Boucle yarns are usually in both the filling and the warp. Fabrics are usually springy to handle on account of the highly twisted yarns used to achieve the boucle effect.  Often ravels easily.\n\nBROCADE - a rich oriental silk fabric with raised patterns in gold and silver.  Cotton brocade often has the ground of cotton and the pattern of rayon and silk.  Pattern is in low relief.  Generally weaved in Jacquard and dobby.  Rich, heavy, elaborate design effect. Sometimes with colored or metallic threads making the design usually against a satin weave background.  This makes the figures stand out.  The figures in brocade are rather loose, while in damask the figure threads are actually bound into the material.  The pattern may be satin on a twill ground or twill on a satin ground.   Often reversible. The motifs may be of flowers, foliage, scrollwork, pastoral scenes, or other designs.\n\nBULL DENIM -  a 3x1 twill weave piece dyed fabric, made from coarse yarns. Weights can vary from 9 oz/sq yard up to the standard 14 oz/sq yard. Bull Denim is essentially a denim without indigo.\n\nBURLAP -  a coarse heavy plain-woven fabric usually of jute or hemp used for bagging and wrapping and in furniture and linoleum manufacture.\n\nCANVAS -  a firm closely woven cloth usually of linen, hemp, or cotton used for clothing and formerly much used for tents and sails.  Plain weave.  Mostly rugged, heavy material made from plied yarns. Has body and strength. It is usually manufactured in the grey state but some is dyed for different uses.\n\nCHAMOIS CLOTH -  a cotton fabric.   Fabric is napped, sheared, and dyed to simulate chamois leather. It is stiffer than kasha and thicker, softer and more durable than flannelette.\n\nCHEESECLOTH -  originally used as a wrapping material for pressing cheese. Loosely woven, thin, light in weight, open in construction, and soft.  Carded yarns are always used.   It is also called gauze weave.  When woven in 36\" widths it is called tobacco cloth.  When an applied finish is added, it is called buckram, crinoline, or bunting.  In the gray cloth, it is used for covering tobacco plants, tea bags and wiping cloths.  Finished cloth is used for curtains, bandages, dust cloths, cheap bunting, hat lining, surgical gauze, fly nets, food wrapping, e.g. meat and cheese, costumes and basket tops\n\nCHENILLE -  warp yarn of any major textile fiber. Filling of chenille yarns (has a pile protruding all around at right angles).  The word is French for caterpillar and fabric looks hairy.  A fuzzy yarn whose pile resembles a caterpillar.    Do not confuse with tufted effects obtained without the use of true Chenille filling.  Used for millinery, rugs, decorative fabrics, trimmings, upholstery.  Sometimes used broadly to define a fabric woven from chenille yarns.\n\nCORDUROY - cut pile fabric woven with either wide or narrow wales formed by using extra filling.  Back may be either plain or twill weave, the latter being better quality.\n\nCREPE -  fabric characterized by a broad range of crinkled or grained surface effect.\n\n.",
+			"DisplayFolderInfo": "{\"name\":\"Product\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "FabricId",
+			"spark.sql.sources.provider": "parquet",
+			"spark.sql.sources.schema.numParts": "1",
+			"spark.sql.sources.schema.part.0": "{\"type\":\"struct\",\"fields\":[{\"name\":\"FabricId\",\"type\":\"integer\",\"nullable\":false,\"metadata\":{}},{\"name\":\"FabricName\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}},{\"name\":\"FabricDescription\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}}]}",
+			"x-ms-usageinfo": "AzureSynapseDatabaseTemplate"
+		},
+		"ObjectVersion": 2,
+		"ObjectId": "427f3262-e401-4eba-a4c1-f95509199b2c",
+		"Description": "A material that resembles cloth, which is sometimes used as a generic term for \"fabric\".   \n\nEx:\n\nABACA -  a naturally occurring fiber found in the stem of the abaca plant. A member of the banana family, Musa Textilis.  The fiber is also called Manila Hemp, and is used extensively in the manufacture of marine cordage, abrasive backing papers, tea bags, and other products requiring high tensile strength. \n\nBAIZE -  a coarse woolen or cotton fabric napped to imitate felt.\n\nYARN -  a generic term for a continuous strand spun from a group of natural or synthetic staple fibers, or filaments, used in weaving, knitting to form textile fabrics\n\nBATIK -  a fabric printed by batik, namely an Indonesian method of hand-printing textiles by coating with wax the parts not to be dyed\n\nBOUCLE - a fabric of bouclÉ yarn, namely an uneven yarn of three piles one of which forms loops at intervals.  Wool, also in rayon, silk, cotton, linen, blends, hair fibers.   Any weave, knit.  From the French for \"buckled\" or \"ringed\".  A drawn out or ringed, looped yarn is used to give it a kinky appearance at intervals.  Made in a variety of weights.  Boucle yarns are usually in both the filling and the warp. Fabrics are usually springy to handle on account of the highly twisted yarns used to achieve the boucle effect.  Often ravels easily.\n\nBROCADE - a rich oriental silk fabric with raised patterns in gold and silver.  Cotton brocade often has the ground of cotton and the pattern of rayon and silk.  Pattern is in low relief.  Generally weaved in Jacquard and dobby.  Rich, heavy, elaborate design effect. Sometimes with colored or metallic threads making the design usually against a satin weave background.  This makes the figures stand out.  The figures in brocade are rather loose, while in damask the figure threads are actually bound into the material.  The pattern may be satin on a twill ground or twill on a satin ground.   Often reversible. The motifs may be of flowers, foliage, scrollwork, pastoral scenes, or other designs.\n\nBULL DENIM -  a 3x1 twill weave piece dyed fabric, made from coarse yarns. Weights can vary from 9 oz/sq yard up to the standard 14 oz/sq yard. Bull Denim is essentially a denim without indigo.\n\nBURLAP -  a coarse heavy plain-woven fabric usually of jute or hemp used for bagging and wrapping and in furniture and linoleum manufacture.\n\nCANVAS -  a firm closely woven cloth usually of linen, hemp, or cotton used for clothing and formerly much used for tents and sails.  Plain weave.  Mostly rugged, heavy material made from plied yarns. Has body and strength. It is usually manufactured in the grey state but some is dyed for different uses.\n\nCHAMOIS CLOTH -  a cotton fabric.   Fabric is napped, sheared, and dyed to simulate chamois leather. It is stiffer than kasha and thicker, softer and more durable than flannelette.\n\nCHEESECLOTH -  originally used as a wrapping material for pressing cheese. Loosely woven, thin, light in weight, open in construction, and soft.  Carded yarns are always used.   It is also called gauze weave.  When woven in 36\" widths it is called tobacco cloth.  When an applied finish is added, it is called buckram, crinoline, or bunting.  In the gray cloth, it is used for covering tobacco plants, tea bags and wiping cloths.  Finished cloth is used for curtains, bandages, dust cloths, cheap bunting, hat lining, surgical gauze, fly nets, food wrapping, e.g. meat and cheese, costumes and basket tops\n\nCHENILLE -  warp yarn of any major textile fiber. Filling of chenille yarns (has a pile protruding all around at right angles).  The word is French for caterpillar and fabric looks hairy.  A fuzzy yarn whose pile resembles a caterpillar.    Do not confuse with tufted effects obtained without the use of true Chenille filling.  Used for millinery, rugs, decorative fabrics, trimmings, upholstery.  Sometimes used broadly to define a fabric woven from chenille yarns.\n\nCORDUROY - cut pile fabric woven with either wide or narrow wales formed by using extra filling.  Back may be either plain or twill weave, the latter being better quality.\n\nCREPE -  fabric characterized by a broad range of crinkled or grained surface effect.\n\n."
+	},
+	"type": "TABLE"
+}

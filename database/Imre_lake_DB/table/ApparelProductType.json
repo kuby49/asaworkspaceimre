@@ -1,0 +1,129 @@
+{
+	"name": "ApparelProductType",
+	"properties": {
+		"Name": "ApparelProductType",
+		"EntityType": "TABLE",
+		"TableType": "EXTERNAL",
+		"Namespace": {
+			"SchemaName": null,
+			"DatabaseName": "Imre_lake_DB"
+		},
+		"StorageDescriptor": {
+			"Distribution": null,
+			"Columns": [
+				{
+					"Name": "ApparelProductTypeId",
+					"Description": "The unique identifier of an apparel product type.",
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Length": 0,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "ApparelProductType.cdm.json/ApparelProductType",
+						"Name": "ApparelProductTypeId"
+					}
+				},
+				{
+					"Name": "ApparelProductTypeName",
+					"Description": "The name of an apparel product type.",
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 128,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "ApparelProductType.cdm.json/ApparelProductType",
+						"Name": "ApparelProductTypeName"
+					}
+				},
+				{
+					"Name": "ApparelProductTypeDescription",
+					"Description": "The description of an apparel product type.",
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 512,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "ApparelProductType.cdm.json/ApparelProductType",
+						"Name": "ApparelProductTypeDescription"
+					}
+				}
+			],
+			"ColumnSetEntityName": "3d8bb008-e496-47aa-a465-f7a90d1fca07",
+			"Format": {
+				"InputFormat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat",
+				"FormatType": "parquet",
+				"SerializeLib": "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe",
+				"Properties": {
+					"path": "abfss://wwi-02@asadatalakeimre.dfs.core.windows.net/test/ApparelProductType",
+					"FormatTypeSetToDatabaseDefault": true
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://wwi-02@asadatalakeimre.dfs.core.windows.net/test/ApparelProductType",
+				"Properties": {
+					"LinkedServiceName": "asadatalakeimre",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ApparelProductTypeId\":{\"entity\":\"ApparelProductType.cdm.json/ApparelProductType\",\"name\":\"ApparelProductTypeId\"},\"ApparelProductTypeName\":{\"entity\":\"ApparelProductType.cdm.json/ApparelProductType\",\"name\":\"ApparelProductTypeName\"},\"ApparelProductTypeDescription\":{\"entity\":\"ApparelProductType.cdm.json/ApparelProductType\",\"name\":\"ApparelProductTypeDescription\"}}}"
+			},
+			"Compressed": false,
+			"SerDeInfo": null,
+			"IsStoredAsSubdirectories": false
+		},
+		"Owner": null,
+		"CreateTime": 0,
+		"LastAccessTime": 0,
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false,
+		"ViewOriginalText": null,
+		"ViewExpandedText": null,
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"OriginObjectId": null,
+		"IsSharedEntity": false,
+		"PublishStatus": "PUBLISHED",
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"ApparelProductType\",\"path\":\"ApparelProductType.cdm.json/ApparelProductType\"},\"description\":\"The type of apparel product.\\n\\nEx:\\n- Activewear\\n- Backpack\\n- Belt\\n- Blazer\\n- Boots\\n- Cap\\n- Casual Pant\\n- Chinos\\n- Dress\\n- Gloves\\n- Hat\\n- Intimate\\n- Jacket\\n- Jean\\n- Jewelry\\n- Knit Top\\n- Necktie\\n- Pajama\\n- Parka\\n- Polo Shirt\\n- Raincoat\\n- Robe\\n- Scarf\\n- Shirt / Blouse\\n- Shoes\\n- Skirt\\n- Sleepwear\\n- Slippers\\n- Socks / Hosiery\\n- Software\\n- Suit\\n- Sweater\\n- Swimsuit\\n- Tailored Pant\\n- Tights\\n- Tote / Bag\\n- T-Shirt\\n- Turtleneck / Mock\\n- Underwear\\n- Vest\\n- Weather Boots\",\"primaryKey\":[\"ApparelProductTypeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"name\":\"ApparelProductTypeId\",\"attributeReference\":{\"entity\":\"ApparelProductType.cdm.json/ApparelProductType\",\"name\":\"ApparelProductTypeId\"},\"dataType\":\"integer\"},{\"type\":\"Existing\",\"name\":\"ApparelProductTypeName\",\"attributeReference\":{\"entity\":\"ApparelProductType.cdm.json/ApparelProductType\",\"name\":\"ApparelProductTypeName\"},\"dataType\":\"string\",\"dataTypeLength\":128},{\"type\":\"Existing\",\"name\":\"ApparelProductTypeDescription\",\"attributeReference\":{\"entity\":\"ApparelProductType.cdm.json/ApparelProductType\",\"name\":\"ApparelProductTypeDescription\"},\"dataType\":\"string\",\"dataTypeLength\":512}]}}}",
+			"Description": "The type of apparel product.\n\nEx:\n- Activewear\n- Backpack\n- Belt\n- Blazer\n- Boots\n- Cap\n- Casual Pant\n- Chinos\n- Dress\n- Gloves\n- Hat\n- Intimate\n- Jacket\n- Jean\n- Jewelry\n- Knit Top\n- Necktie\n- Pajama\n- Parka\n- Polo Shirt\n- Raincoat\n- Robe\n- Scarf\n- Shirt / Blouse\n- Shoes\n- Skirt\n- Sleepwear\n- Slippers\n- Socks / Hosiery\n- Software\n- Suit\n- Sweater\n- Swimsuit\n- Tailored Pant\n- Tights\n- Tote / Bag\n- T-Shirt\n- Turtleneck / Mock\n- Underwear\n- Vest\n- Weather Boots",
+			"DisplayFolderInfo": "{\"name\":\"Product\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ApparelProductTypeId",
+			"spark.sql.sources.provider": "parquet",
+			"spark.sql.sources.schema.numParts": "1",
+			"spark.sql.sources.schema.part.0": "{\"type\":\"struct\",\"fields\":[{\"name\":\"ApparelProductTypeId\",\"type\":\"integer\",\"nullable\":false,\"metadata\":{}},{\"name\":\"ApparelProductTypeName\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}},{\"name\":\"ApparelProductTypeDescription\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}}]}",
+			"x-ms-usageinfo": "AzureSynapseDatabaseTemplate"
+		},
+		"ObjectVersion": 2,
+		"ObjectId": "f284b2c8-eb9a-4417-8fd4-c6741b6fa7b1",
+		"Description": "The type of apparel product.\n\nEx:\n- Activewear\n- Backpack\n- Belt\n- Blazer\n- Boots\n- Cap\n- Casual Pant\n- Chinos\n- Dress\n- Gloves\n- Hat\n- Intimate\n- Jacket\n- Jean\n- Jewelry\n- Knit Top\n- Necktie\n- Pajama\n- Parka\n- Polo Shirt\n- Raincoat\n- Robe\n- Scarf\n- Shirt / Blouse\n- Shoes\n- Skirt\n- Sleepwear\n- Slippers\n- Socks / Hosiery\n- Software\n- Suit\n- Sweater\n- Swimsuit\n- Tailored Pant\n- Tights\n- Tote / Bag\n- T-Shirt\n- Turtleneck / Mock\n- Underwear\n- Vest\n- Weather Boots"
+	},
+	"type": "TABLE"
+}

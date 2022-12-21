@@ -1,0 +1,29 @@
+{
+	"name": "relationship-fsvnhtyqxm",
+	"properties": {
+		"Name": "relationship-fsvnhtyqxm",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "Imre_lake_DB"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "Size",
+		"ToTableName": "ApparelProduct",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "SizeId",
+				"ToColumnName": "SizeId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"Size.cdm.json/Size\",\"toEntity\":\"ApparelProduct.cdm.json/ApparelProduct\",\"joinPairs\":[{\"fromAttribute\":\"SizeId\",\"toAttribute\":\"SizeId\"}]}}"
+		},
+		"PublishStatus": "PUBLISHED",
+		"ObjectVersion": 1,
+		"ObjectId": "af775746-bda7-4d1d-ae51-83cea18d79ab"
+	},
+	"type": "RELATIONSHIP"
+}

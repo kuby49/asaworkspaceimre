@@ -1,0 +1,32 @@
+{
+	"name": "sparkjob2",
+	"properties": {
+		"targetBigDataPool": {
+			"referenceName": "SparkPool002",
+			"type": "BigDataPoolReference"
+		},
+		"requiredSparkVersion": "3.1",
+		"language": "scala",
+		"scanFolder": false,
+		"jobProperties": {
+			"name": "sparkjob2",
+			"file": "abfss://tempdata@asadatalakeimre.dfs.core.windows.net/synapse/workspaces/asaworkspaceimre/batchjobs/Spark%20job%20definition%201/sparkexamples.jar",
+			"className": "JavaPageRank",
+			"conf": {
+				"spark.dynamicAllocation.enabled": "true",
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "8",
+				"spark.autotune.trackingId": "729ce12f-01b1-4d98-beac-771653455ee0"
+			},
+			"args": [],
+			"jars": [],
+			"pyFiles": [],
+			"files": [],
+			"driverMemory": "56g",
+			"driverCores": 8,
+			"executorMemory": "56g",
+			"executorCores": 8,
+			"numExecutors": 2
+		}
+	}
+}

@@ -1,0 +1,129 @@
+{
+	"name": "ApparelProductFeature",
+	"properties": {
+		"Name": "ApparelProductFeature",
+		"EntityType": "TABLE",
+		"TableType": "EXTERNAL",
+		"Namespace": {
+			"SchemaName": null,
+			"DatabaseName": "Imre_lake_DB"
+		},
+		"StorageDescriptor": {
+			"Distribution": null,
+			"Columns": [
+				{
+					"Name": "ProductId",
+					"Description": "The unique identifier of a Product.",
+					"OriginDataTypeName": {
+						"TypeName": "long",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Length": 0,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "long"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "ApparelProductFeature.cdm.json/ApparelProductFeature",
+						"Name": "ProductId"
+					}
+				},
+				{
+					"Name": "ApparelProductFeatureTypeId",
+					"Description": "The unique identifier of an Apparel Product Feature Type.",
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Length": 0,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "ApparelProductFeature.cdm.json/ApparelProductFeature",
+						"Name": "ApparelProductFeatureTypeId"
+					}
+				},
+				{
+					"Name": "ApparelProductFeatureNote",
+					"Description": "A note, comment or additional information regarding the apparel product feature.",
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 1024,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "ApparelProductFeature.cdm.json/ApparelProductFeature",
+						"Name": "ApparelProductFeatureNote"
+					}
+				}
+			],
+			"ColumnSetEntityName": "075d6a08-bb18-4cfa-a535-c068cac6dd45",
+			"Format": {
+				"InputFormat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat",
+				"FormatType": "parquet",
+				"SerializeLib": "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe",
+				"Properties": {
+					"path": "abfss://wwi-02@asadatalakeimre.dfs.core.windows.net/test/ApparelProductFeature",
+					"FormatTypeSetToDatabaseDefault": true
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://wwi-02@asadatalakeimre.dfs.core.windows.net/test/ApparelProductFeature",
+				"Properties": {
+					"LinkedServiceName": "asadatalakeimre",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"ProductId\":{\"entity\":\"ApparelProductFeature.cdm.json/ApparelProductFeature\",\"name\":\"ProductId\"},\"ApparelProductFeatureTypeId\":{\"entity\":\"ApparelProductFeature.cdm.json/ApparelProductFeature\",\"name\":\"ApparelProductFeatureTypeId\"},\"ApparelProductFeatureNote\":{\"entity\":\"ApparelProductFeature.cdm.json/ApparelProductFeature\",\"name\":\"ApparelProductFeatureNote\"}}}"
+			},
+			"Compressed": false,
+			"SerDeInfo": null,
+			"IsStoredAsSubdirectories": false
+		},
+		"Owner": null,
+		"CreateTime": 0,
+		"LastAccessTime": 0,
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false,
+		"ViewOriginalText": null,
+		"ViewExpandedText": null,
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"OriginObjectId": null,
+		"IsSharedEntity": false,
+		"PublishStatus": "PUBLISHED",
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"ApparelProductFeature\",\"path\":\"ApparelProductFeature.cdm.json/ApparelProductFeature\"},\"description\":\"The apparel product feature(s) that characterize or describe the associated apparel product\",\"primaryKey\":[\"ProductId\",\"ApparelProductFeatureTypeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"name\":\"ProductId\",\"attributeReference\":{\"entity\":\"ApparelProductFeature.cdm.json/ApparelProductFeature\",\"name\":\"ProductId\"},\"dataType\":\"long\"},{\"type\":\"Existing\",\"name\":\"ApparelProductFeatureTypeId\",\"attributeReference\":{\"entity\":\"ApparelProductFeature.cdm.json/ApparelProductFeature\",\"name\":\"ApparelProductFeatureTypeId\"},\"dataType\":\"integer\"},{\"type\":\"Existing\",\"name\":\"ApparelProductFeatureNote\",\"attributeReference\":{\"entity\":\"ApparelProductFeature.cdm.json/ApparelProductFeature\",\"name\":\"ApparelProductFeatureNote\"},\"dataType\":\"string\",\"dataTypeLength\":1024}]}}}",
+			"Description": "The apparel product feature(s) that characterize or describe the associated apparel product",
+			"DisplayFolderInfo": "{\"name\":\"Product\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "ProductId,ApparelProductFeatureTypeId",
+			"spark.sql.sources.provider": "parquet",
+			"spark.sql.sources.schema.numParts": "1",
+			"spark.sql.sources.schema.part.0": "{\"type\":\"struct\",\"fields\":[{\"name\":\"ProductId\",\"type\":\"long\",\"nullable\":false,\"metadata\":{}},{\"name\":\"ApparelProductFeatureTypeId\",\"type\":\"integer\",\"nullable\":false,\"metadata\":{}},{\"name\":\"ApparelProductFeatureNote\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}}]}",
+			"x-ms-usageinfo": "AzureSynapseDatabaseTemplate"
+		},
+		"ObjectVersion": 2,
+		"ObjectId": "55a02929-6321-494d-ad3f-5702b3c656df",
+		"Description": "The apparel product feature(s) that characterize or describe the associated apparel product"
+	},
+	"type": "TABLE"
+}

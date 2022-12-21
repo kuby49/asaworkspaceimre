@@ -1,0 +1,17 @@
+{
+	"name": "DataSkewQuery",
+	"properties": {
+		"content": {
+			"query": "with DataDistribution as (\nSELECT\ns.name as [Schema Name]\n,t.name as  [Table Name]\n,t.object_id as [ObjectID]\n,tp.[distribution_policy_desc] as  [Distribution Policy Name]\n,sum([row_count]) as  [Table Row Count]\n,max(row_count) as  [Max Distribution Row Count]\n,min(row_count) as  [Min Distribution Row Count]\n,avg(row_count) as  [Avg Distribution Row Count]\n,ncs.column_id as [ColumnID]\n,ncs.distribution_ordinal as [ColumnDist]\nfrom\n    sys.schemas s\nJOIN sys.tables t\n    ON s.[schema_id] = t.[schema_id]\nJOIN sys.pdw_table_distribution_properties tp\n    ON t.[object_id] = tp.[object_id]\nJOIN sys.pdw_table_mappings tm\n    ON t.[object_id] = tm.[object_id]\nJOIN sys.pdw_nodes_tables nt\n    ON tm.[physical_name] = nt.[name]\nJOIN sys.dm_pdw_nodes pn\n    ON  nt.[pdw_node_id] = pn.[pdw_node_id]\nJOIN sys.pdw_distributions di\n    ON  nt.[distribution_id] = di.[distribution_id]\nJOIN sys.dm_pdw_nodes_db_partition_stats nps\nON nt.[object_id] = nps.[object_id]\n    AND nt.[pdw_node_id] = nps.[pdw_node_id]\n    AND nt.[distribution_id] = nps.[distribution_id]\nJOIN sys.pdw_column_distribution_properties ncs\nON t.[object_id] = ncs.[object_id] \n-- AND  ncs.distribution_ordinal= 1 \nwhere tp.[distribution_policy_desc] ='HASH'\n-- AND t.name = @tbl\nGROUP BY\ns.name\n,t.name\n,t.object_id\n,ncs.column_id\n,ncs.distribution_ordinal\n,tp.[distribution_policy_desc]\n)\n\nSelect [Schema Name],\n                 d.[Table Name],\n                 d.[ObjectID],\n                 d.[Distribution Policy Name],\n                 d.[ColumnID],\n                 c.[name] as [ColumnName],\n                 d.[ColumnDist],\n                 d.[Table Row Count],\n                 d.[Max Distribution Row Count],\n                 d.[Min Distribution Row Count],\n                 d.[Avg Distribution Row Count],\n                 CASE WHEN [Table Row Count] = 0 then -1\n                 else abs(d.[Max Distribution Row Count] * 1.0 - d.[Min Distribution Row Count]*1.0) / d.[Max Distribution Row Count] * 100.0\n                 END  as [Table Skew Percent]\nFROM DataDistribution d\nJOIN sys.columns c\nON d.[ObjectId] = c.[object_id] \nAND d.[ColumnId] = c.[column_id]\nWHERE d.[ColumnDist] <> 0\n \n\n/* Select \n                 DISTINCT ([ColumnDist])\nFROM DataDistribution\n*/ \n\n/*\nSELECT TOP 100 \nFROM sys.pdw_column_distribution_properties\nwhere distribution_ordinal <> 0\n*/\n\nSELECT * FROM SYS.COLUMNS",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "SQLPool01",
+				"poolName": "SQLPool01"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

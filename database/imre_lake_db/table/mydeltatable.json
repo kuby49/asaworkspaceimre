@@ -1,0 +1,65 @@
+{
+	"name": "mydeltatable",
+	"properties": {
+		"Name": "mydeltatable",
+		"EntityType": "TABLE",
+		"TableType": "EXTERNAL",
+		"Namespace": {
+			"SchemaName": null,
+			"DatabaseName": "imre_lake_db"
+		},
+		"StorageDescriptor": {
+			"Distribution": null,
+			"Columns": [],
+			"ColumnSetEntityName": "0f8f4e7a-cebb-43d7-bf97-093783290908",
+			"Format": {
+				"InputFormat": "org.apache.hadoop.mapred.SequenceFileInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat",
+				"FormatType": "delta",
+				"SerializeLib": "org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe",
+				"Properties": {
+					"path": "abfss://wwi-02@asadatalakeimre.dfs.core.windows.net/test/mydeltatable",
+					"serialization.format": "1"
+				}
+			},
+			"Source": {
+				"Location": "abfss://wwi-02@asadatalakeimre.dfs.core.windows.net/test/mydeltatable",
+				"Properties": {
+					"LocationSetToDatabaseDefault": false
+				}
+			},
+			"Properties": {
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{}}"
+			},
+			"Compressed": false,
+			"SerDeInfo": null,
+			"IsStoredAsSubdirectories": false
+		},
+		"Owner": "trusted-service-user",
+		"CreateTime": 1636648316,
+		"LastAccessTime": 0,
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false,
+		"ViewOriginalText": null,
+		"ViewExpandedText": null,
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"OriginObjectId": null,
+		"IsSharedEntity": false,
+		"PublishStatus": "PUBLISHED",
+		"Properties": {
+			"Transient_lastDdlTime": "1636648316",
+			"spark.sql.sources.schema.part.0": "{\"type\":\"struct\",\"fields\":[]}",
+			"spark.sql.partitionProvider": "catalog",
+			"spark.sql.sources.schema.numParts": "1",
+			"spark.sql.sources.provider": "delta",
+			"spark.sql.create.version": "3.1.2.5.0-50228337",
+			"PrimaryKeys": ""
+		},
+		"ObjectVersion": 1,
+		"ObjectId": "598012fc-fb02-44b3-a92f-cef227a6ba65"
+	},
+	"type": "TABLE"
+}

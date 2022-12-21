@@ -1,0 +1,16 @@
+{
+	"name": "Activity 03 - Columnar Month Partition",
+	"properties": {
+		"content": {
+			"query": "SET ANSI_NULLS ON\nGO\nSET QUOTED_IDENTIFIER ON\nGO\n\nCREATE TABLE [wwi_perf].[Sale_Partition01]\n( \n\t[TransactionId] [uniqueidentifier]  NOT NULL,\n\t[CustomerId] [int]  NOT NULL,\n\t[ProductId] [smallint]  NOT NULL,\n\t[Quantity] [tinyint]  NOT NULL,\n\t[Price] [decimal](9,2)  NOT NULL,\n\t[TotalAmount] [decimal](9,2)  NOT NULL,\n\t[TransactionDateId] [int]  NOT NULL,\n\t[ProfitAmount] [decimal](9,2)  NOT NULL,\n\t[Hour] [tinyint]  NOT NULL,\n\t[Minute] [tinyint]  NOT NULL,\n\t[StoreId] [smallint]  NOT NULL\n)\nWITH\n(\n\tDISTRIBUTION = HASH ( [CustomerId] ),\n\tCLUSTERED COLUMNSTORE INDEX,\n\tPARTITION\n\t(\n\t\t[TransactionDateId] RANGE RIGHT FOR VALUES (20190101, 20190201, 20190301, 20190401, 20190501, 20190601, 20190701, 20190801, 20190901, 20191001, 20191101, 20191201)\n\t)\n)\nGO\n\n\n-- columnstore table\n-- Distributed on customer ID, => all same customer IDs on same distribution \n-- Columnstore will take advantage of columnar compression, MIN / MAX values per ROW GROUP for quantity, count Distinct values\n-- Columstore will also allow to retrieve only columns impacted.\n-- Partitioned month;y. Partition size is SUBoptimal, because we have 20 million rows per partition (way less than the minimum 60 million)\n\nEXECUTE AS USER = 'asa.sql.highperf'\nGO\nSELECT CURRENT_USER;  \nGO  \n\nEXEC sp_addrolemember 'staticrc80', 'asa.sql.highperf'\nGO\n\nDROP Table [wwi_perf].[Sale_Result]\nGO\n\nCREATE TABLE [wwi_perf].[Sale_Result]\nWITH\n(\n\tDISTRIBUTION = ROUND_ROBIN,\n\tHEAP\n)\nAS\nSELECT \n    FS.CustomerID\n    ,MIN(FS.Quantity) as MinQuantity\n    ,MAX(FS.Quantity) as MaxQuantity\n    ,AVG(FS.Price) as AvgPrice\n    ,AVG(FS.TotalAmount) as AvgTotalAmount\n    ,AVG(FS.ProfitAmount) as AvgProfitAmount\n    ,COUNT(DISTINCT FS.StoreId) as DistinctStores\nFROM\n    wwi_perf.Sale_Partition01 FS\nGROUP BY\n    FS.CustomerId\nGO \n\n-- only one request step, no DMS, no shuffling\n-- DWU 2000 1st runtime 6 s, 2nd runtime 3 secs\n\nEXEC sp_droprolemember 'staticrc80', 'asa.sql.highperf'\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"name": "SQLPool01",
+				"type": "SqlPool"
+			}
+		},
+		"type": "SqlQuery"
+	}
+}

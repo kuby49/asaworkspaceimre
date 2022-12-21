@@ -1,0 +1,17 @@
+{
+	"name": "Sys_views_samples",
+	"properties": {
+		"content": {
+			"query": "select * from sys.database_credentials;\n\nselect * from sys.database_role_members;\n\nselect * from sys.database_permissions;\n\nselect * from sys.credentials;\n\nselect * from sys.database_principals;\n\nselect * from sys.database_scoped_credentials;\n\nCREATE USER imrepurview FROM EXTERNAL PROVIDER;\n\nEXEC sp_addrolemember'db_owner', 'imrepurview';\n\nSELECT top 100  * from sys.dm_pdw_exec_requests order by total_elapsed_time DESC;",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "SQLPool01",
+				"poolName": "SQLPool01"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

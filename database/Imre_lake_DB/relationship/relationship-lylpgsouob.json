@@ -1,0 +1,29 @@
+{
+	"name": "relationship-lylpgsouob",
+	"properties": {
+		"Name": "relationship-lylpgsouob",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "Imre_lake_DB"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "ApparelProduct",
+		"ToTableName": "ApparelProductFeature",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "ProductId",
+				"ToColumnName": "ProductId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"ApparelProduct.cdm.json/ApparelProduct\",\"toEntity\":\"ApparelProductFeature.cdm.json/ApparelProductFeature\",\"joinPairs\":[{\"fromAttribute\":\"ProductId\",\"toAttribute\":\"ProductId\"}]}}"
+		},
+		"PublishStatus": "PUBLISHED",
+		"ObjectVersion": 1,
+		"ObjectId": "bc54a371-501b-4ed8-896b-580e81acba14"
+	},
+	"type": "RELATIONSHIP"
+}

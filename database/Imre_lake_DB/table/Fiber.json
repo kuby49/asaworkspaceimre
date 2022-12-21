@@ -1,0 +1,224 @@
+{
+	"name": "Fiber",
+	"properties": {
+		"Name": "Fiber",
+		"EntityType": "TABLE",
+		"TableType": "EXTERNAL",
+		"Namespace": {
+			"SchemaName": null,
+			"DatabaseName": "Imre_lake_DB"
+		},
+		"StorageDescriptor": {
+			"Distribution": null,
+			"Columns": [
+				{
+					"Name": "FiberId",
+					"Description": "The unique identifier of a fabric.",
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Length": 0,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "Fiber.cdm.json/Fiber",
+						"Name": "FiberId"
+					}
+				},
+				{
+					"Name": "FiberName",
+					"Description": "The name of the fabric.",
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 128,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "Fiber.cdm.json/Fiber",
+						"Name": "FiberName"
+					}
+				},
+				{
+					"Name": "FiberDescription",
+					"Description": "The description of the fabric.",
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 512,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "Fiber.cdm.json/Fiber",
+						"Name": "FiberDescription"
+					}
+				},
+				{
+					"Name": "NaturalFiberIndicator",
+					"Description": "Indicates that the fiber is natural.",
+					"OriginDataTypeName": {
+						"TypeName": "boolean",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 0,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "boolean"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "Fiber.cdm.json/Fiber",
+						"Name": "NaturalFiberIndicator"
+					}
+				},
+				{
+					"Name": "SyntheticFiberIndicator",
+					"Description": "Indicates that the fiber is synthetic.",
+					"OriginDataTypeName": {
+						"TypeName": "boolean",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 0,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "boolean"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "Fiber.cdm.json/Fiber",
+						"Name": "SyntheticFiberIndicator"
+					}
+				},
+				{
+					"Name": "BlendIndicator",
+					"Description": "Indicates that the fiber is a blend.",
+					"OriginDataTypeName": {
+						"TypeName": "boolean",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 0,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "boolean"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "Fiber.cdm.json/Fiber",
+						"Name": "BlendIndicator"
+					}
+				},
+				{
+					"Name": "ElasticFiberIndicator",
+					"Description": "Indicates that the fiber is an elastic fabric usually made of yarns containing rubber.",
+					"OriginDataTypeName": {
+						"TypeName": "boolean",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 0,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "boolean"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "Fiber.cdm.json/Fiber",
+						"Name": "ElasticFiberIndicator"
+					}
+				},
+				{
+					"Name": "HypoAllergenicFiberIndicator",
+					"Description": "Indicates that the fiber is hypo-allergenic, which is a fiber or material is deemed hypo-allergenic if it has undergone a process that makes it less apt to cause an allergic reaction.",
+					"OriginDataTypeName": {
+						"TypeName": "boolean",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 0,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "boolean"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "Fiber.cdm.json/Fiber",
+						"Name": "HypoAllergenicFiberIndicator"
+					}
+				}
+			],
+			"ColumnSetEntityName": "fbbefe45-862e-4c40-a4bf-aaf916a1ab8a",
+			"Format": {
+				"InputFormat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat",
+				"FormatType": "parquet",
+				"SerializeLib": "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe",
+				"Properties": {
+					"path": "abfss://wwi-02@asadatalakeimre.dfs.core.windows.net/test/Fiber",
+					"FormatTypeSetToDatabaseDefault": true
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://wwi-02@asadatalakeimre.dfs.core.windows.net/test/Fiber",
+				"Properties": {
+					"LinkedServiceName": "asadatalakeimre",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"FiberId\":{\"entity\":\"Fiber.cdm.json/Fiber\",\"name\":\"FiberId\"},\"FiberName\":{\"entity\":\"Fiber.cdm.json/Fiber\",\"name\":\"FiberName\"},\"FiberDescription\":{\"entity\":\"Fiber.cdm.json/Fiber\",\"name\":\"FiberDescription\"},\"NaturalFiberIndicator\":{\"entity\":\"Fiber.cdm.json/Fiber\",\"name\":\"NaturalFiberIndicator\"},\"SyntheticFiberIndicator\":{\"entity\":\"Fiber.cdm.json/Fiber\",\"name\":\"SyntheticFiberIndicator\"},\"BlendIndicator\":{\"entity\":\"Fiber.cdm.json/Fiber\",\"name\":\"BlendIndicator\"},\"ElasticFiberIndicator\":{\"entity\":\"Fiber.cdm.json/Fiber\",\"name\":\"ElasticFiberIndicator\"},\"HypoAllergenicFiberIndicator\":{\"entity\":\"Fiber.cdm.json/Fiber\",\"name\":\"HypoAllergenicFiberIndicator\"}}}"
+			},
+			"Compressed": false,
+			"SerDeInfo": null,
+			"IsStoredAsSubdirectories": false
+		},
+		"Owner": null,
+		"CreateTime": 0,
+		"LastAccessTime": 0,
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false,
+		"ViewOriginalText": null,
+		"ViewExpandedText": null,
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"OriginObjectId": null,
+		"IsSharedEntity": false,
+		"PublishStatus": "PUBLISHED",
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"Fiber\",\"path\":\"Fiber.cdm.json/Fiber\"},\"description\":\"An elongated stringy natural, man-made or manufactured material.\\n\\nIn the case of natural fibers, they often tie together the parts of natural creatures. Natural vegetable fibers, generally consist of cellulose, examples include cotton, linen, and hemp. \\n\\nNatural animal fibers include spider silk, sinew, hair, and wool.\\n\\nEx:\\n- Acrylic\\n- Alpaca\\n- Cotton\\n- Angora\\n- Silk\\n- Camel hair\\n- Cashmere\\ncaddis  worsted yarn specifically a worsted ribbon or binding formerly used for garters and girdles.\\n- Wool\\n- Rayon\\ncheviot  wool originally and mostly made from wool from the Cheviot sheep but today also made of blends, spun synthetics, crossbred and reused wools.  Twill weave (modern version sometimes plain).  Very rugged, harsh, uneven surface that does not hold a crease and sags with wear. Resembles serge but is much more rugged and coarse and will not shine because of the rough surface.   Often sold as a homespun but true homespun has a plain weave and very heavy.  \\nDacron (trademark) used for a synthetic polyester textile fiber\\nLycra (trademark) used for a spandex synthetic fiber.\\nAll-Weather Microfiber- 100% Polyester Microfiber with waterproof coating and fully taped seams. 100% waterproof\",\"primaryKey\":[\"FiberId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"name\":\"FiberId\",\"attributeReference\":{\"entity\":\"Fiber.cdm.json/Fiber\",\"name\":\"FiberId\"},\"dataType\":\"integer\"},{\"type\":\"Existing\",\"name\":\"FiberName\",\"attributeReference\":{\"entity\":\"Fiber.cdm.json/Fiber\",\"name\":\"FiberName\"},\"dataType\":\"string\",\"dataTypeLength\":128},{\"type\":\"Existing\",\"name\":\"FiberDescription\",\"attributeReference\":{\"entity\":\"Fiber.cdm.json/Fiber\",\"name\":\"FiberDescription\"},\"dataType\":\"string\",\"dataTypeLength\":512},{\"type\":\"Existing\",\"name\":\"NaturalFiberIndicator\",\"attributeReference\":{\"entity\":\"Fiber.cdm.json/Fiber\",\"name\":\"NaturalFiberIndicator\"},\"dataType\":\"boolean\"},{\"type\":\"Existing\",\"name\":\"SyntheticFiberIndicator\",\"attributeReference\":{\"entity\":\"Fiber.cdm.json/Fiber\",\"name\":\"SyntheticFiberIndicator\"},\"dataType\":\"boolean\"},{\"type\":\"Existing\",\"name\":\"BlendIndicator\",\"attributeReference\":{\"entity\":\"Fiber.cdm.json/Fiber\",\"name\":\"BlendIndicator\"},\"dataType\":\"boolean\"},{\"type\":\"Existing\",\"name\":\"ElasticFiberIndicator\",\"attributeReference\":{\"entity\":\"Fiber.cdm.json/Fiber\",\"name\":\"ElasticFiberIndicator\"},\"dataType\":\"boolean\"},{\"type\":\"Existing\",\"name\":\"HypoAllergenicFiberIndicator\",\"attributeReference\":{\"entity\":\"Fiber.cdm.json/Fiber\",\"name\":\"HypoAllergenicFiberIndicator\"},\"dataType\":\"boolean\"}]}}}",
+			"Description": "An elongated stringy natural, man-made or manufactured material.\n\nIn the case of natural fibers, they often tie together the parts of natural creatures. Natural vegetable fibers, generally consist of cellulose, examples include cotton, linen, and hemp. \n\nNatural animal fibers include spider silk, sinew, hair, and wool.\n\nEx:\n- Acrylic\n- Alpaca\n- Cotton\n- Angora\n- Silk\n- Camel hair\n- Cashmere\ncaddis  worsted yarn specifically a worsted ribbon or binding formerly used for garters and girdles.\n- Wool\n- Rayon\ncheviot  wool originally and mostly made from wool from the Cheviot sheep but today also made of blends, spun synthetics, crossbred and reused wools.  Twill weave (modern version sometimes plain).  Very rugged, harsh, uneven surface that does not hold a crease and sags with wear. Resembles serge but is much more rugged and coarse and will not shine because of the rough surface.   Often sold as a homespun but true homespun has a plain weave and very heavy.  \nDacron (trademark) used for a synthetic polyester textile fiber\nLycra (trademark) used for a spandex synthetic fiber.\nAll-Weather Microfiber- 100% Polyester Microfiber with waterproof coating and fully taped seams. 100% waterproof",
+			"DisplayFolderInfo": "{\"name\":\"Product\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "FiberId",
+			"spark.sql.sources.provider": "parquet",
+			"spark.sql.sources.schema.numParts": "1",
+			"spark.sql.sources.schema.part.0": "{\"type\":\"struct\",\"fields\":[{\"name\":\"FiberId\",\"type\":\"integer\",\"nullable\":false,\"metadata\":{}},{\"name\":\"FiberName\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}},{\"name\":\"FiberDescription\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}},{\"name\":\"NaturalFiberIndicator\",\"type\":\"boolean\",\"nullable\":true,\"metadata\":{}},{\"name\":\"SyntheticFiberIndicator\",\"type\":\"boolean\",\"nullable\":true,\"metadata\":{}},{\"name\":\"BlendIndicator\",\"type\":\"boolean\",\"nullable\":true,\"metadata\":{}},{\"name\":\"ElasticFiberIndicator\",\"type\":\"boolean\",\"nullable\":true,\"metadata\":{}},{\"name\":\"HypoAllergenicFiberIndicator\",\"type\":\"boolean\",\"nullable\":true,\"metadata\":{}}]}",
+			"x-ms-usageinfo": "AzureSynapseDatabaseTemplate"
+		},
+		"ObjectVersion": 2,
+		"ObjectId": "041ef74c-0cec-4125-afce-8cd0ecbbff88",
+		"Description": "An elongated stringy natural, man-made or manufactured material.\n\nIn the case of natural fibers, they often tie together the parts of natural creatures. Natural vegetable fibers, generally consist of cellulose, examples include cotton, linen, and hemp. \n\nNatural animal fibers include spider silk, sinew, hair, and wool.\n\nEx:\n- Acrylic\n- Alpaca\n- Cotton\n- Angora\n- Silk\n- Camel hair\n- Cashmere\ncaddis  worsted yarn specifically a worsted ribbon or binding formerly used for garters and girdles.\n- Wool\n- Rayon\ncheviot  wool originally and mostly made from wool from the Cheviot sheep but today also made of blends, spun synthetics, crossbred and reused wools.  Twill weave (modern version sometimes plain).  Very rugged, harsh, uneven surface that does not hold a crease and sags with wear. Resembles serge but is much more rugged and coarse and will not shine because of the rough surface.   Often sold as a homespun but true homespun has a plain weave and very heavy.  \nDacron (trademark) used for a synthetic polyester textile fiber\nLycra (trademark) used for a spandex synthetic fiber.\nAll-Weather Microfiber- 100% Polyester Microfiber with waterproof coating and fully taped seams. 100% waterproof"
+	},
+	"type": "TABLE"
+}

@@ -1,0 +1,35 @@
+{
+	"name": "Sparkjob3",
+	"properties": {
+		"targetBigDataPool": {
+			"referenceName": "SparkPool002",
+			"type": "BigDataPoolReference"
+		},
+		"requiredSparkVersion": "3.1",
+		"language": "scala",
+		"scanFolder": false,
+		"jobProperties": {
+			"name": "Sparkjob3",
+			"file": "abfss://filesystem@asadatalakeimre.dfs.core.windows.net/sparkexamples.jar",
+			"className": "org.apache.spark.examples.JavaWordCount",
+			"conf": {
+				"spark.dynamicAllocation.enabled": "true",
+				"spark.dynamicAllocation.minExecutors": "1",
+				"spark.dynamicAllocation.maxExecutors": "3",
+				"spark.autotune.trackingId": "deadbc45-c1c9-45d5-a4eb-f6faec17df51"
+			},
+			"args": [
+				"abfss://filesystem@asadatalakeimre.dfs.core.windows.net/shakespeare.txt",
+				"abfss://filesystem@asadatalakeimre.dfs.core.windows.net/result/"
+			],
+			"jars": [],
+			"pyFiles": [],
+			"files": [],
+			"driverMemory": "28g",
+			"driverCores": 4,
+			"executorMemory": "28g",
+			"executorCores": 4,
+			"numExecutors": 1
+		}
+	}
+}

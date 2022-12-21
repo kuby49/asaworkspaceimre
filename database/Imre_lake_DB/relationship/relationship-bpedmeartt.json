@@ -1,0 +1,29 @@
+{
+	"name": "relationship-bpedmeartt",
+	"properties": {
+		"Name": "relationship-bpedmeartt",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "Imre_lake_DB"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "Fiber",
+		"ToTableName": "ApparelProduct",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "FiberId",
+				"ToColumnName": "FiberId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"Fiber.cdm.json/Fiber\",\"toEntity\":\"ApparelProduct.cdm.json/ApparelProduct\",\"joinPairs\":[{\"fromAttribute\":\"FiberId\",\"toAttribute\":\"FiberId\"}]}}"
+		},
+		"PublishStatus": "PUBLISHED",
+		"ObjectVersion": 1,
+		"ObjectId": "ee5bf4c9-fb11-4be9-b9c4-7afe339e1e08"
+	},
+	"type": "RELATIONSHIP"
+}

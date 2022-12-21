@@ -1,0 +1,43 @@
+{
+	"name": "SqlPoolLInkedServices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlPoolTable",
+		"schema": [
+			{
+				"name": "DateId",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Day",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Month",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Quarter",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "Year",
+				"type": "smallint",
+				"precision": 5
+			}
+		],
+		"typeProperties": {
+			"schema": "wwi",
+			"table": "Date"
+		},
+		"sqlPool": {
+			"referenceName": "SQLPool01",
+			"type": "SqlPoolReference"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

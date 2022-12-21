@@ -1,0 +1,467 @@
+{
+	"name": "SparkPool2MetastoreConfig",
+	"properties": {
+		"folder": {
+			"name": "Metastore"
+		},
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "SparkPool002",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "56g",
+			"driverCores": 8,
+			"executorMemory": "56g",
+			"executorCores": 8,
+			"numExecutors": 2,
+			"runAsWorkspaceSystemIdentity": false,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "false",
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "2",
+				"spark.autotune.trackingId": "35d27fe6-7938-4ef9-a0c2-843006559c73"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"synapse_widget": {
+				"version": "0.1"
+			},
+			"enableDebugMode": false,
+			"kernelspec": {
+				"name": "synapse_pyspark",
+				"display_name": "Synapse PySpark"
+			},
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/fe5aef09-bf0f-4faf-9c28-311200cf35cd/resourceGroups/Synapse-WS-L400/providers/Microsoft.Synapse/workspaces/asaworkspaceimre/bigDataPools/SparkPool002",
+				"name": "SparkPool002",
+				"type": "Spark",
+				"endpoint": "https://asaworkspaceimre.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/SparkPool002",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net",
+					"authHeader": null
+				},
+				"sparkVersion": "3.1",
+				"nodeCount": 3,
+				"cores": 8,
+				"memory": 56,
+				"extraHeader": null
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "code",
+				"source": [
+					"a = spark.conf.get(\"spark.sql.warehouse.dir\")\r\n",
+					"b = spark.conf.get(\"spark.sql.hive.metastore.version\")\r\n",
+					"c = spark.sparkContext.getConf().getAll()\r\n",
+					"c = spark.conf.get(\"hive.metastore.uris\")\r\n",
+					"# c =spark.catalog.listFunctions()\r\n",
+					"d = spark.conf.get(\"spark.sql.catalogImplementation\")\r\n",
+					"e = spark.conf.get(\"spark.hadoop.javax.jdo.option.ConnectionDriverName\")\r\n",
+					"f = spark.conf.get(\"spark.hadoop.javax.jdo.option.ConnectionURL\") \r\n",
+					"g = spark.conf.get(\"spark.hadoop.javax.jdo.option.ConnectionPassword\") \r\n",
+					"h = spark.conf.get(\"spark.hadoop.javax.jdo.option.ConnectionUserName\")\r\n",
+					"\r\n",
+					"print(\"spark.sql.warehouse.dir:\", a)\r\n",
+					"print(\"spark.sql.hive.metastore.version:\", b)\r\n",
+					"#print (c)\r\n",
+					"print (\"spark.sql.catalogImplementation: \", d)\r\n",
+					"print(\"spark.hadoop.javax.jdo.option.ConnectionDriverName: \" , e)\r\n",
+					"print(\"spark.hadoop.javax.jdo.option.ConnectionURL: \", f)\r\n",
+					"print(\"spark.hadoop.javax.jdo.option.ConnectionPassword: \", g)\r\n",
+					"print(\"spark.hadoop.javax.jdo.option.ConnectionUserName: \", h)"
+				],
+				"execution_count": 24
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"microsoft": {
+						"language": "scala"
+					}
+				},
+				"source": [
+					"%%spark \r\n",
+					"\r\n",
+					"import java.sql.DriverManager \r\n",
+					"/** this JDBC url could be copied from Azure portal > Azure SQL database > Connection strings > JDBC **/ \r\n",
+					"val url = s\"jdbc:sqlserver://imreserver.database.windows.net:1433;database=imrehivemetastore;user=sqladmin;password=manCHI11;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;\" \r\n",
+					"try { \r\n",
+					"    val connection = DriverManager.getConnection(url) \r\n",
+					"    val result = connection.createStatement().executeQuery(\"select t.SCHEMA_VERSION from VERSION t\") \r\n",
+					"    val result2 = connection.createStatement().executeQuery(\"select * from tbls\") \r\n",
+					"    result.next(); \r\n",
+					"    println(s\"Successful to test connection. Hive Metastore version is ${result.getString(1)}\") \r\n",
+					"} catch { \r\n",
+					"    case ex: Throwable => println(s\"Failed to establish connection:\\n $ex\") \r\n",
+					"}\r\n",
+					"\r\n",
+					""
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"%%configure -f\r\n",
+					"{\r\n",
+					"    \"conf\":{\r\n",
+					"        \"spark.sql.hive.metastore.version\":\"3.1\",\r\n",
+					"        \"spark.hadoop.hive.synapse.externalmetastore.linkedservice.name\":\"HMS_test\",\r\n",
+					"        \"spark.sql.hive.metastore.jars\":\"/opt/hive-metastore/lib-3.1/*:/usr/hdp/current/hadoop-client/lib/*\"\r\n",
+					"    }\r\n",
+					"}\r\n",
+					"\r\n",
+					""
+				],
+				"execution_count": 5
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"spark.sql(\"show databases\").show()"
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"microsoft": {
+						"language": "sparksql"
+					},
+					"collapsed": false
+				},
+				"source": [
+					"  %%sql\r\n",
+					"  \r\n",
+					" -- CREATE DATABASE mytestdb;\r\n",
+					"  CREATE TABLE mytestdb.myparquettable(id int, name string, birthdate date) USING Parquet;"
+				],
+				"execution_count": 7
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"microsoft": {
+						"language": "csharp"
+					}
+				},
+				"source": [
+					"%%csharp\r\n",
+					"\r\n",
+					"using Microsoft.Spark.Sql.Types;\r\n",
+					"\r\n",
+					"var data = new List<GenericRow>();\r\n",
+					"\r\n",
+					"data.Add(new GenericRow(new object[] { 1, \"Alice\", new Date(2010, 1, 1)}));\r\n",
+					"data.Add(new GenericRow(new object[] { 2, \"Bob\", new Date(1990, 1, 1)}));\r\n",
+					"\r\n",
+					"var schema = new StructType\r\n",
+					"    (new List<StructField>()\r\n",
+					"        {\r\n",
+					"            new StructField(\"id\", new IntegerType()),\r\n",
+					"            new StructField(\"name\", new StringType()),\r\n",
+					"            new StructField(\"birthdate\", new DateType())\r\n",
+					"        }\r\n",
+					"    );\r\n",
+					"\r\n",
+					"var df = spark.CreateDataFrame(data, schema);\r\n",
+					"df.Write().Mode(SaveMode.Append).InsertInto(\"mytestdb.myparquettable\");"
+				],
+				"execution_count": 3
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"microsoft": {
+						"language": "sparksql"
+					},
+					"collapsed": false
+				},
+				"source": [
+					"%%sql \r\n",
+					"\r\n",
+					"CREATE TABLE myexternalparquettable (id int, name string, birthdate date) \r\n",
+					"    USING Parquet\r\n",
+					"--    LOCATION \"abfss://asadatalakeimre.dfs.core.windows.net/imrehdihive40/myparquettable\"\r\n",
+					"    LOCATION \"abfss://tempdata@asadatalakeimre.dfs.core.windows.net/synapse/workspaces/asaworkspaceimre/warehouse/mytestdb.db/myparquettable\"\r\n",
+					""
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"microsoft": {
+						"language": "sparksql"
+					},
+					"collapsed": false
+				},
+				"source": [
+					"%%sql\r\n",
+					"\r\n",
+					"SELECT * from mytestdb.myparquettable;"
+				],
+				"execution_count": 4
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"microsoft": {
+						"language": "sparksql"
+					},
+					"collapsed": false
+				},
+				"source": [
+					"%%sql\r\n",
+					"\r\n",
+					"CREATE TABLE myexternalparquettable4 (id int, name string, birthdate date) \r\n",
+					"    USING Parquet\r\n",
+					"--    LOCATION \"abfss://asadatalakeimre.dfs.core.windows.net/imrehdihive40/myparquettable\"\r\n",
+					"    LOCATION \"abfss://wwi-02@asadatalakeimre.dfs.core.windows.net/mytestdb.db/myparquettable\"\r\n",
+					""
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"microsoft": {
+						"language": "sparksql"
+					},
+					"collapsed": false
+				},
+				"source": [
+					"%%sql\r\n",
+					"\r\n",
+					"USE default;\r\n",
+					"SHOW TABLES;"
+				],
+				"execution_count": 51
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"microsoft": {
+						"language": "sparksql"
+					},
+					"collapsed": false
+				},
+				"source": [
+					"%%sql\r\n",
+					"\r\n",
+					"Drop table myexternalparquettable7;"
+				],
+				"execution_count": 33
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"microsoft": {
+						"language": "sparksql"
+					},
+					"collapsed": false
+				},
+				"source": [
+					"%%sql \r\n",
+					"\r\n",
+					"CREATE EXTERNAL TABLE myexternalparquettable8 (id int, name string, birthdate date) \r\n",
+					"    USING Parquet\r\n",
+					"--    LOCATION \"abfss://asadatalakeimre.dfs.core.windows.net/imrehdihive40/myparquettable\"\r\n",
+					"    LOCATION \"abfss://wwi-02@asadatalakeimre.dfs.core.windows.net/mytestdb.db/myparquettable8\""
+				],
+				"execution_count": 40
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"\r\n",
+					"spark.conf.set (\"spark.hadoop.metastore.authorization.storage.checks\", \"true\");\r\n",
+					"a = spark.conf.get(\"spark.hadoop.metastore.authorization.storage.checks\")\r\n",
+					"\r\n",
+					"print(\"hive.metastore.authorization.storage.checks\", a)"
+				],
+				"execution_count": 41
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"microsoft": {
+						"language": "sparksql"
+					},
+					"collapsed": false
+				},
+				"source": [
+					"%%sql\r\n",
+					"\r\n",
+					" CREATE EXTERNAL TABLE myexternalparquettable8 (id int, name string, birthdate date) \r\n",
+					" --   USING Parquet\r\n",
+					"--    LOCATION \"abfss://asadatalakeimre.dfs.core.windows.net/imrehdihive40/myparquettable\"\r\n",
+					"    LOCATION \"abfss://wwi-02@asadatalakeimre.dfs.core.windows.net/mytestdb.db/myparquettable8\""
+				],
+				"execution_count": 49
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					""
+				]
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					""
+				]
+			}
+		]
+	}
+}

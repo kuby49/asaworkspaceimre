@@ -1,0 +1,16 @@
+{
+	"name": "Challenge Scratchpad",
+	"properties": {
+		"content": {
+			"query": "SELECT count(*) FROM  wwi_poc.Sale(nolock)\n\nSELECT top 10 * from [wwi_poc].[customer]\n\nSELECT MIN (CustomerID), MAX(CustomerID) from [wwi_poc].[customer]",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"name": "SQLPool01",
+				"type": "SqlPool"
+			}
+		},
+		"type": "SqlQuery"
+	}
+}

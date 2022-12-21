@@ -1,0 +1,71 @@
+{
+	"name": "asal400_challenge_salepoc_csv",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "asadatalakeimre",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "sale-20170501.csv",
+				"folderPath": "sale-poc",
+				"fileSystem": "wwi-02"
+			},
+			"columnDelimiter": ",",
+			"rowDelimiter": "ᄁ",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\\"
+		},
+		"schema": [
+			{
+				"name": "TransactionId",
+				"type": "String"
+			},
+			{
+				"name": "CustomerId",
+				"type": "String"
+			},
+			{
+				"name": "ProductId",
+				"type": "String"
+			},
+			{
+				"name": "Quantity",
+				"type": "String"
+			},
+			{
+				"name": "Price",
+				"type": "String"
+			},
+			{
+				"name": "TotalAmount",
+				"type": "String"
+			},
+			{
+				"name": "TransactionDate",
+				"type": "String"
+			},
+			{
+				"name": "ProfitAmount",
+				"type": "String"
+			},
+			{
+				"name": "Hour",
+				"type": "String"
+			},
+			{
+				"name": "Minute",
+				"type": "String"
+			},
+			{
+				"name": "StoreId",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

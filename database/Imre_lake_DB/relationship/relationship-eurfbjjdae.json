@@ -1,0 +1,29 @@
+{
+	"name": "relationship-eurfbjjdae",
+	"properties": {
+		"Name": "relationship-eurfbjjdae",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "Imre_lake_DB"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "Style",
+		"ToTableName": "ApparelProduct",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "StyleId",
+				"ToColumnName": "StyleId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"Style.cdm.json/Style\",\"toEntity\":\"ApparelProduct.cdm.json/ApparelProduct\",\"joinPairs\":[{\"fromAttribute\":\"StyleId\",\"toAttribute\":\"StyleId\"}]}}"
+		},
+		"PublishStatus": "PUBLISHED",
+		"ObjectVersion": 1,
+		"ObjectId": "3afbbe8e-9929-4d59-b714-52a25406f9fa"
+	},
+	"type": "RELATIONSHIP"
+}

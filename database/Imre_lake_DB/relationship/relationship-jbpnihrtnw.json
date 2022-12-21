@@ -1,0 +1,29 @@
+{
+	"name": "relationship-jbpnihrtnw",
+	"properties": {
+		"Name": "relationship-jbpnihrtnw",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "Imre_lake_DB"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "Coating",
+		"ToTableName": "ApparelProduct",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "CoatingId",
+				"ToColumnName": "CoatingId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"Coating.cdm.json/Coating\",\"toEntity\":\"ApparelProduct.cdm.json/ApparelProduct\",\"joinPairs\":[{\"fromAttribute\":\"CoatingId\",\"toAttribute\":\"CoatingId\"}]}}"
+		},
+		"PublishStatus": "PUBLISHED",
+		"ObjectVersion": 1,
+		"ObjectId": "d408d785-d6b9-4716-886a-ad5b79738d0a"
+	},
+	"type": "RELATIONSHIP"
+}

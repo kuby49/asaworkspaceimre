@@ -1,0 +1,16 @@
+{
+	"name": "LAB 3 table fixes",
+	"properties": {
+		"content": {
+			"query": "SET ANSI_NULLS ON\nGO\nSET QUOTED_IDENTIFIER ON\nGO\n\nCREATE TABLE [wwi_perf].[Sale_Hash_Ordered]\n( \n\t[TransactionId] [uniqueidentifier]  NOT NULL,\n\t[CustomerId] [int]  NOT NULL,\n\t[ProductId] [smallint]  NOT NULL,\n\t[Quantity] [tinyint]  NOT NULL,\n\t[Price] [decimal](9,2)  NOT NULL,\n\t[TotalAmount] [decimal](9,2)  NOT NULL,\n\t[TransactionDateId] [int]  NOT NULL,\n\t[ProfitAmount] [decimal](9,2)  NOT NULL,\n\t[Hour] [tinyint]  NOT NULL,\n\t[Minute] [tinyint]  NOT NULL,\n\t[StoreId] [smallint]  NOT NULL\n)\nWITH\n(\n\tDISTRIBUTION = HASH ( [CustomerId] ),\n\tCLUSTERED COLUMNSTORE INDEX\n)\nGO\n\ndrop table [wwi_perf].[Sale_Hash_Ordered]\n\nCREATE TABLE [wwi_perf].[Sale_Hash]\nWITH\n(\n    DISTRIBUTION = HASH ( [CustomerId] ),\n    CLUSTERED COLUMNSTORE INDEX \n)\nAS\nSELECT\n    *\nFROM\n    [wwi_perf].[Sale_Heap]\nOPTION  (LABEL  = 'CTAS : Sale_Hash', MAXDOP 1)\n\nCREATE TABLE [wwi_perf].[Sale_Hash_Ordered]\nWITH\n(\n    DISTRIBUTION = HASH ( [CustomerId] ),\n    CLUSTERED COLUMNSTORE INDEX ORDER( [CustomerId] )\n)\nAS\nSELECT\n    *\nFROM\n    [wwi_perf].[Sale_Heap]\nOPTION  (LABEL  = 'CTAS : Sale_Hash', MAXDOP 1)\n-- MAXDOP = Max degree of parallelism\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"name": "SQLPool01",
+				"type": "SqlPool"
+			}
+		},
+		"type": "SqlQuery"
+	}
+}

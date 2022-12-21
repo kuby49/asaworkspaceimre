@@ -1,0 +1,129 @@
+{
+	"name": "Coating",
+	"properties": {
+		"Name": "Coating",
+		"EntityType": "TABLE",
+		"TableType": "EXTERNAL",
+		"Namespace": {
+			"SchemaName": null,
+			"DatabaseName": "Imre_lake_DB"
+		},
+		"StorageDescriptor": {
+			"Distribution": null,
+			"Columns": [
+				{
+					"Name": "CoatingId",
+					"Description": "The unique identifier of a coating.",
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Length": 0,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "Coating.cdm.json/Coating",
+						"Name": "CoatingId"
+					}
+				},
+				{
+					"Name": "CoatingName",
+					"Description": "The name of a coating.",
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 128,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "Coating.cdm.json/Coating",
+						"Name": "CoatingName"
+					}
+				},
+				{
+					"Name": "CoatingDescription",
+					"Description": "The description of a coating.",
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 512,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "Coating.cdm.json/Coating",
+						"Name": "CoatingDescription"
+					}
+				}
+			],
+			"ColumnSetEntityName": "94384b55-0dd6-4bd3-9686-c5d6afdab226",
+			"Format": {
+				"InputFormat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat",
+				"FormatType": "parquet",
+				"SerializeLib": "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe",
+				"Properties": {
+					"path": "abfss://wwi-02@asadatalakeimre.dfs.core.windows.net/test/Coating",
+					"FormatTypeSetToDatabaseDefault": true
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://wwi-02@asadatalakeimre.dfs.core.windows.net/test/Coating",
+				"Properties": {
+					"LinkedServiceName": "asadatalakeimre",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"CoatingId\":{\"entity\":\"Coating.cdm.json/Coating\",\"name\":\"CoatingId\"},\"CoatingName\":{\"entity\":\"Coating.cdm.json/Coating\",\"name\":\"CoatingName\"},\"CoatingDescription\":{\"entity\":\"Coating.cdm.json/Coating\",\"name\":\"CoatingDescription\"}}}"
+			},
+			"Compressed": false,
+			"SerDeInfo": null,
+			"IsStoredAsSubdirectories": false
+		},
+		"Owner": null,
+		"CreateTime": 0,
+		"LastAccessTime": 0,
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false,
+		"ViewOriginalText": null,
+		"ViewExpandedText": null,
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"OriginObjectId": null,
+		"IsSharedEntity": false,
+		"PublishStatus": "PUBLISHED",
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"Coating\",\"path\":\"Coating.cdm.json/Coating\"},\"description\":\"A coating associated with an apparel product.\\n\\nEx:\\nCoating:  A finishing process in which a substance - like rubber, resin or synthetic compounds - covers the fabric on one or both sides.  Polyurethane is a common coating for outerwear.  Coating typically aids water-resistance.\\n\\nUrethane coated:  A thin layer of polyurethane is sprayed onto backside of fabric to waterproof, yet accommodates silkening.\",\"primaryKey\":[\"CoatingId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"name\":\"CoatingId\",\"attributeReference\":{\"entity\":\"Coating.cdm.json/Coating\",\"name\":\"CoatingId\"},\"dataType\":\"integer\"},{\"type\":\"Existing\",\"name\":\"CoatingName\",\"attributeReference\":{\"entity\":\"Coating.cdm.json/Coating\",\"name\":\"CoatingName\"},\"dataType\":\"string\",\"dataTypeLength\":128},{\"type\":\"Existing\",\"name\":\"CoatingDescription\",\"attributeReference\":{\"entity\":\"Coating.cdm.json/Coating\",\"name\":\"CoatingDescription\"},\"dataType\":\"string\",\"dataTypeLength\":512}]}}}",
+			"Description": "A coating associated with an apparel product.\n\nEx:\nCoating:  A finishing process in which a substance - like rubber, resin or synthetic compounds - covers the fabric on one or both sides.  Polyurethane is a common coating for outerwear.  Coating typically aids water-resistance.\n\nUrethane coated:  A thin layer of polyurethane is sprayed onto backside of fabric to waterproof, yet accommodates silkening.",
+			"DisplayFolderInfo": "{\"name\":\"Product\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "CoatingId",
+			"spark.sql.sources.provider": "parquet",
+			"spark.sql.sources.schema.numParts": "1",
+			"spark.sql.sources.schema.part.0": "{\"type\":\"struct\",\"fields\":[{\"name\":\"CoatingId\",\"type\":\"integer\",\"nullable\":false,\"metadata\":{}},{\"name\":\"CoatingName\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}},{\"name\":\"CoatingDescription\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}}]}",
+			"x-ms-usageinfo": "AzureSynapseDatabaseTemplate"
+		},
+		"ObjectVersion": 2,
+		"ObjectId": "816a927c-404d-4505-9e62-15b49e4f19de",
+		"Description": "A coating associated with an apparel product.\n\nEx:\nCoating:  A finishing process in which a substance - like rubber, resin or synthetic compounds - covers the fabric on one or both sides.  Polyurethane is a common coating for outerwear.  Coating typically aids water-resistance.\n\nUrethane coated:  A thin layer of polyurethane is sprayed onto backside of fabric to waterproof, yet accommodates silkening."
+	},
+	"type": "TABLE"
+}

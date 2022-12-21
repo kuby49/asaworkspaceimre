@@ -1,0 +1,17 @@
+{
+	"name": "Serverless_playgorund_1",
+	"properties": {
+		"content": {
+			"query": "CREATE EXTERNAL TABLE imre_test_grouped AS \nSELECT\n    r.filepath(1) as [year], r.filepath(2) as [quarter], count(*)\nFROM\n    OPENROWSET(\n        BULK 'https://asadatalakeimre.dfs.core.windows.net/wwi-02/sale-small/Year=*/Quarter=*/Month=*/Day=*/*snappy.parquet',\n        FORMAT='PARQUET'\n    )\n AS [r]\n where r.filepath(1)  IN (2012, 2013)\n group by r.filepath(1), r.filepath(2)",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "imre",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

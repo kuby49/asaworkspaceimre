@@ -1,0 +1,29 @@
+{
+	"name": "relationship-hopguhrdvw",
+	"properties": {
+		"Name": "relationship-hopguhrdvw",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "Imre_lake_DB"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "ConstructionType",
+		"ToTableName": "ApparelProduct",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "ConstructionTypeId",
+				"ToColumnName": "ConstructionTypeId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"ConstructionType.cdm.json/ConstructionType\",\"toEntity\":\"ApparelProduct.cdm.json/ApparelProduct\",\"joinPairs\":[{\"fromAttribute\":\"ConstructionTypeId\",\"toAttribute\":\"ConstructionTypeId\"}]}}"
+		},
+		"PublishStatus": "PUBLISHED",
+		"ObjectVersion": 1,
+		"ObjectId": "57ab96f8-9734-4bbe-a71d-bb05193cff1d"
+	},
+	"type": "RELATIONSHIP"
+}

@@ -1,0 +1,29 @@
+{
+	"name": "relationship-jnjxggjsgf",
+	"properties": {
+		"Name": "relationship-jnjxggjsgf",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "Imre_lake_DB"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "WeaveType",
+		"ToTableName": "ApparelProduct",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "WeaveTypeId",
+				"ToColumnName": "WeaveTypeId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"WeaveType.cdm.json/WeaveType\",\"toEntity\":\"ApparelProduct.cdm.json/ApparelProduct\",\"joinPairs\":[{\"fromAttribute\":\"WeaveTypeId\",\"toAttribute\":\"WeaveTypeId\"}]}}"
+		},
+		"PublishStatus": "PUBLISHED",
+		"ObjectVersion": 1,
+		"ObjectId": "ff38afee-ee64-493c-9b53-14fd44bfbce1"
+	},
+	"type": "RELATIONSHIP"
+}

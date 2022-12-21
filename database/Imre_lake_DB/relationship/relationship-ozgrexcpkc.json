@@ -1,0 +1,29 @@
+{
+	"name": "relationship-ozgrexcpkc",
+	"properties": {
+		"Name": "relationship-ozgrexcpkc",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "Imre_lake_DB"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "FabricHand",
+		"ToTableName": "ApparelProduct",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "FabricHandId",
+				"ToColumnName": "FabricHandId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"FabricHand.cdm.json/FabricHand\",\"toEntity\":\"ApparelProduct.cdm.json/ApparelProduct\",\"joinPairs\":[{\"fromAttribute\":\"FabricHandId\",\"toAttribute\":\"FabricHandId\"}]}}"
+		},
+		"PublishStatus": "PUBLISHED",
+		"ObjectVersion": 1,
+		"ObjectId": "4719ec5c-b0db-48ed-bb8a-2c763c8980bd"
+	},
+	"type": "RELATIONSHIP"
+}

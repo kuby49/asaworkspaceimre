@@ -1,0 +1,26 @@
+{
+	"name": "Imre_lakebd2",
+	"properties": {
+		"Name": "Imre_lakebd2",
+		"EntityType": "DATABASE",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"Properties": {
+			"IsSyMSCDMDatabase": true,
+			"DerivedModelDBInfo": "{\"ModelDirectives\":{\"BaseModel\":{\"Name\":\"Retail\",\"Version\":\"0.1.0\"}}}"
+		},
+		"Source": {
+			"Provider": "ADLS",
+			"Location": "abfss://tempdata@asadatalakeimre.dfs.core.windows.net/Imre_lakebd2",
+			"Properties": {
+				"FormatType": "parquet",
+				"LinkedServiceName": "asaworkspaceimre-WorkspaceDefaultStorage"
+			}
+		},
+		"PublishStatus": "PUBLISHED",
+		"ObjectVersion": 1,
+		"ObjectId": "096089cb-3572-4b27-9641-4d7d29361710"
+	},
+	"type": "DATABASE"
+}

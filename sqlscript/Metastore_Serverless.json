@@ -1,0 +1,20 @@
+{
+	"name": "Metastore_Serverless",
+	"properties": {
+		"folder": {
+			"name": "MetaStore"
+		},
+		"content": {
+			"query": "select * from imre_spark.dbo.imre_spark_test",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "imre",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

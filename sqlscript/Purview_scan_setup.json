@@ -1,0 +1,17 @@
+{
+	"name": "Purview_scan_setup",
+	"properties": {
+		"content": {
+			"query": "/* for serverless */\nCREATE LOGIN [imrepurviewga] FROM EXTERNAL PROVIDER;\nALTER SERVER ROLE sysadmin ADD MEMBER [imrepurviewga];\n\n\n\n/* for dedicated */ \nCREATE USER [imrepurviewga] FROM EXTERNAL PROVIDER;\nEXEC sp_addrolemember 'db_owner', 'imrepurviewga';",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "master",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

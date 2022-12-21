@@ -1,0 +1,29 @@
+{
+	"name": "relationship-qtwinoseqa",
+	"properties": {
+		"Name": "relationship-qtwinoseqa",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "Imre_lake_DB"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "ApparelProductType",
+		"ToTableName": "ApparelProduct",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "ApparelProductTypeId",
+				"ToColumnName": "ApparelProductTypeId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"ApparelProductType.cdm.json/ApparelProductType\",\"toEntity\":\"ApparelProduct.cdm.json/ApparelProduct\",\"joinPairs\":[{\"fromAttribute\":\"ApparelProductTypeId\",\"toAttribute\":\"ApparelProductTypeId\"}]}}"
+		},
+		"PublishStatus": "PUBLISHED",
+		"ObjectVersion": 1,
+		"ObjectId": "7cf52582-14c4-47d7-9f88-95a5eea1f303"
+	},
+	"type": "RELATIONSHIP"
+}

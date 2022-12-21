@@ -1,0 +1,180 @@
+{
+	"name": "Challenge-CopyCsvSalesData",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy Sales 2",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "wwi-02/sale-poc/"
+					},
+					{
+						"name": "Destination",
+						"value": "wwi_poc.Sale_test"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"preCopyScript": "TRUNCATE TABLE wwi_poc.sale_test;",
+						"allowCopyCommand": true,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"dataIntegrationUnits": 8,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "TransactionId",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TransactionId",
+									"type": "Guid"
+								}
+							},
+							{
+								"source": {
+									"name": "CustomerId",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "CustomerId",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "ProductId",
+									"type": "Int16"
+								},
+								"sink": {
+									"name": "ProductId",
+									"type": "Int16"
+								}
+							},
+							{
+								"source": {
+									"name": "Quantity",
+									"type": "Byte"
+								},
+								"sink": {
+									"name": "Quantity",
+									"type": "Byte"
+								}
+							},
+							{
+								"source": {
+									"name": "Price",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "Price",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "TotalAmount",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "TotalAmount",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "TransactionDate",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "TransactionDateId",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "ProfitAmount",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "ProfitAmount",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Hour",
+									"type": "Byte"
+								},
+								"sink": {
+									"name": "Hour",
+									"type": "Byte"
+								}
+							},
+							{
+								"source": {
+									"name": "Minute",
+									"type": "Byte"
+								},
+								"sink": {
+									"name": "Minute",
+									"type": "Byte"
+								}
+							},
+							{
+								"source": {
+									"name": "StoreId",
+									"type": "Int16"
+								},
+								"sink": {
+									"name": "StoreId",
+									"type": "Int16"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "asal400_challenge_salepoc_csv",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "asal400_saletestheap_asa",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2021-01-07T21:11:13Z"
+	},
+	"type": "Microsoft.Synapse/workspaces/pipelines"
+}

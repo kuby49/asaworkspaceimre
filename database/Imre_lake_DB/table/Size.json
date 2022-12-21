@@ -1,0 +1,129 @@
+{
+	"name": "Size",
+	"properties": {
+		"Name": "Size",
+		"EntityType": "TABLE",
+		"TableType": "EXTERNAL",
+		"Namespace": {
+			"SchemaName": null,
+			"DatabaseName": "Imre_lake_DB"
+		},
+		"StorageDescriptor": {
+			"Distribution": null,
+			"Columns": [
+				{
+					"Name": "SizeId",
+					"Description": "The unique identifier of a size.",
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Length": 0,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "Size.cdm.json/Size",
+						"Name": "SizeId"
+					}
+				},
+				{
+					"Name": "SizeName",
+					"Description": "The name of a size.",
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 128,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "Size.cdm.json/Size",
+						"Name": "SizeName"
+					}
+				},
+				{
+					"Name": "SizeDescription",
+					"Description": "The description of a size.",
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 512,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "Size.cdm.json/Size",
+						"Name": "SizeDescription"
+					}
+				}
+			],
+			"ColumnSetEntityName": "daa41e05-718f-4a20-a051-aefbe8804299",
+			"Format": {
+				"InputFormat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat",
+				"FormatType": "parquet",
+				"SerializeLib": "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe",
+				"Properties": {
+					"path": "abfss://wwi-02@asadatalakeimre.dfs.core.windows.net/test/Size",
+					"FormatTypeSetToDatabaseDefault": true
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://wwi-02@asadatalakeimre.dfs.core.windows.net/test/Size",
+				"Properties": {
+					"LinkedServiceName": "asadatalakeimre",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"SizeId\":{\"entity\":\"Size.cdm.json/Size\",\"name\":\"SizeId\"},\"SizeName\":{\"entity\":\"Size.cdm.json/Size\",\"name\":\"SizeName\"},\"SizeDescription\":{\"entity\":\"Size.cdm.json/Size\",\"name\":\"SizeDescription\"}}}"
+			},
+			"Compressed": false,
+			"SerDeInfo": null,
+			"IsStoredAsSubdirectories": false
+		},
+		"Owner": null,
+		"CreateTime": 0,
+		"LastAccessTime": 0,
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false,
+		"ViewOriginalText": null,
+		"ViewExpandedText": null,
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"OriginObjectId": null,
+		"IsSharedEntity": false,
+		"PublishStatus": "PUBLISHED",
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"Size\",\"path\":\"Size.cdm.json/Size\"},\"description\":\"The size associated with the product SKU.\\n\\nEx:\\n- Small\\n- Medium\\n- Large\\n- X-large\",\"primaryKey\":[\"SizeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"name\":\"SizeId\",\"attributeReference\":{\"entity\":\"Size.cdm.json/Size\",\"name\":\"SizeId\"},\"dataType\":\"integer\"},{\"type\":\"Existing\",\"name\":\"SizeName\",\"attributeReference\":{\"entity\":\"Size.cdm.json/Size\",\"name\":\"SizeName\"},\"dataType\":\"string\",\"dataTypeLength\":128},{\"type\":\"Existing\",\"name\":\"SizeDescription\",\"attributeReference\":{\"entity\":\"Size.cdm.json/Size\",\"name\":\"SizeDescription\"},\"dataType\":\"string\",\"dataTypeLength\":512}]}}}",
+			"Description": "The size associated with the product SKU.\n\nEx:\n- Small\n- Medium\n- Large\n- X-large",
+			"DisplayFolderInfo": "{\"name\":\"Product\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "SizeId",
+			"spark.sql.sources.provider": "parquet",
+			"spark.sql.sources.schema.numParts": "1",
+			"spark.sql.sources.schema.part.0": "{\"type\":\"struct\",\"fields\":[{\"name\":\"SizeId\",\"type\":\"integer\",\"nullable\":false,\"metadata\":{}},{\"name\":\"SizeName\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}},{\"name\":\"SizeDescription\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}}]}",
+			"x-ms-usageinfo": "AzureSynapseDatabaseTemplate"
+		},
+		"ObjectVersion": 2,
+		"ObjectId": "c7b17f86-7986-4fb8-a82f-93c52cbf1e16",
+		"Description": "The size associated with the product SKU.\n\nEx:\n- Small\n- Medium\n- Large\n- X-large"
+	},
+	"type": "TABLE"
+}

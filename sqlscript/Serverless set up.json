@@ -1,0 +1,17 @@
+{
+	"name": "Serverless set up",
+	"properties": {
+		"content": {
+			"query": "\nuse master\nGo\nCREATE LOGIN testlogin with PASSWORD = 'Pass&wd1_1968';\nGo\n\nuse master\ngo\nALTER SERVER ROLE sysadmin ADD MEMBER testlogin;\ngo\n\nDROP LOGIN [iaclarke]\n\nuse master\ngo\nCREATE LOGIN [iaclarke@microsoft.com] FROM EXTERNAL PROVIDER;\nALTER SERVER ROLE sysadmin ADD MEMBER [iaclarke@microsoft.com];\ngo\n\nuse master\ngo\nCREATE USER [eruskal@microsoft.com] FROM EXTERNAL PROVIDER;\n\n\n\nCREATE USER [iaclarke@microsoft.com] FROM LOGIN [iaclarke@microsoft.com]\nGo\n\nuse master\ngo\nALTER SERVER ROLE sysadmin ADD MEMBER [eruskal@microsoft.com];\nGo\n\nSELECT * FROM sys.database_principals\n\ncreate user [asa.sql.workload01] for login [asa.sql.workload01]\ncreate user [asa.sql.workload02] for login [asa.sql.workload02]\nexecute sp_addrolemember 'db_datareader', 'asa.sql.workload01' \nexecute sp_addrolemember 'db_datareader', 'asa.sql.workload02'\n\n\ncreate user [asa.sql.import01] for login [asa.sql.import01]\ncreate user [asa.sql.import02] for login [asa.sql.import02]\nexecute sp_addrolemember 'db_owner', 'asa.sql.import01'  \nexecute sp_addrolemember 'db_owner', 'asa.sql.import02' \n\n\ncreate user [asa.sql.highperf] for login [asa.sql.highperf]\nexecute sp_addrolemember 'db_owner', 'asa.sql.highperf' \nexecute sp_addrolemember 'staticrc80', 'asa.sql.highperf",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "imre",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

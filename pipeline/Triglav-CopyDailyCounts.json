@@ -1,0 +1,141 @@
+{
+	"name": "Triglav-CopyDailyCounts",
+	"properties": {
+		"activities": [
+			{
+				"name": "Triglav Copy DailyCounts",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "wwi-02/sale-poc/"
+					},
+					{
+						"name": "Destination",
+						"value": "wwi_poc.Sale_test"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"preCopyScript": "TRUNCATE TABLE wwi_staging.DailySalesCounts2;",
+						"allowPolyBase": true,
+						"polyBaseSettings": {
+							"rejectValue": 0,
+							"rejectType": "value",
+							"useTypeDefault": true
+						},
+						"disableMetricsCollection": false
+					},
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "asadatalakeimre",
+							"type": "LinkedServiceReference"
+						}
+					},
+					"dataIntegrationUnits": 8,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "Date",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Date",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "A",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NorthAmerica",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "B",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SouthAmerica",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "C",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Europe",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "D",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Africa",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Asia",
+									"type": "Int32"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "asal400_daily_counts3_source",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "asal400_wwi_dailycounts3_asa",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2021-01-11T08:51:26Z"
+	},
+	"type": "Microsoft.Synapse/workspaces/pipelines"
+}

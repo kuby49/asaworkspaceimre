@@ -1,0 +1,16 @@
+{
+	"name": "Table_CCI_verification",
+	"properties": {
+		"content": {
+			"query": "EXECUTE AS USER = 'asa.sql.highperf'\nGO\nSELECT CURRENT_USER;  \nGO  \n\nEXEC sp_addrolemember 'largerc', 'asa.sql.highperf'\nGO\n\nDROP Table [wwi_perf].[Sale_Result]\nGO\n\nSELECT TOP 100 * from [wwi_perf].[vColumnStoreRowGroupStats]\nwhere logical_table_name = 'Sale_Partition02'\n\nselect count(*) FROM wwi_perf.Sale_Partition02;\n\nSELECT count(*) from [wwi_perf].[vColumnStoreRowGroupStats]\nwhere logical_table_name = 'Sale_Partition02'\n\nEXECUTE AS USER = 'asa.sql.highperf'\nGO\nCREATE TABLE [wwi_perf].[Sales_Hash22] \nWITH \n(\tDISTRIBUTION = HASH ( [CustomerId]),\n\tCLUSTERED COLUMNSTORE INDEX\n)\nAS  SELECT * FROM wwi_perf.Sale_Partition02\nGO\n\nEXECUTE AS USER = 'asa.sql.highperf'\nGO\nCREATE TABLE [wwi_perf].[Sales_Hash23] \nWITH \n(\tDISTRIBUTION = HASH ( [CustomerId]),\n\tCLUSTERED COLUMNSTORE INDEX\n)\nAS  SELECT * FROM wwi_perf.Sale_Partition02\nOPTION (MAXDOP  1)\nGO\n\n\nSELECT count(*) from [wwi_perf].[vColumnStoreRowGroupStats]\nwhere logical_table_name = 'Sales_Hash22'\n\nSELECT * from [wwi_perf].[vColumnStoreRowGroupStats]\nwhere logical_table_name = 'Sales_Hash22'\nORDER BY TOTAL_ROWS DESC\n\nSELECT TRIM_REASON_DESC, SUM(TOTAL_ROWS) from [wwi_perf].[vColumnStoreRowGroupStats]\nwhere logical_table_name = 'Sales_Hash22'\nGROUP BY TRIM_REASON_DESC\n\nALTER INDEX ALL ON [wwi_perf].[Sales_Hash22] REBUILD;\n\nSELECT * from [wwi_perf].[vColumnStoreRowGroupStats]\nwhere logical_table_name = 'Sales_Hash23'\nORDER BY TOTAL_ROWS DESC\n\nSELECT TRIM_REASON_DESC, count(*) from [wwi_perf].[vColumnStoreRowGroupStats]\nwhere logical_table_name = 'Sales_Hash23'\nGROUP BY TRIM_REASON_DESC\n\n-- run 1000 or 2000 DWU\n-- create new user\n-- add to largerc\n-- run with MAXDOP 1 if can afford.\n-- alter indexes istead of running with MAXDOP\n\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "SQLPool01",
+				"poolName": "SQLPool01"
+			}
+		},
+		"type": "SqlQuery"
+	}
+}

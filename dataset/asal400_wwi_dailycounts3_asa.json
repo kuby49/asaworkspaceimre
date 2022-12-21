@@ -1,0 +1,47 @@
+{
+	"name": "asal400_wwi_dailycounts3_asa",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sqlpool01",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "Date",
+				"type": "nvarchar"
+			},
+			{
+				"name": "NorthAmerica",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "SouthAmerica",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Europe",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Africa",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Asia",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "wwi_staging",
+			"table": "DailySalesCounts2"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

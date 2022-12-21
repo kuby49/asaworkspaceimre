@@ -1,0 +1,129 @@
+{
+	"name": "DyeType",
+	"properties": {
+		"Name": "DyeType",
+		"EntityType": "TABLE",
+		"TableType": "EXTERNAL",
+		"Namespace": {
+			"SchemaName": null,
+			"DatabaseName": "Imre_lake_DB"
+		},
+		"StorageDescriptor": {
+			"Distribution": null,
+			"Columns": [
+				{
+					"Name": "DyeTypeId",
+					"Description": "The unique identifier of a dye type.",
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Length": 0,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "DyeType.cdm.json/DyeType",
+						"Name": "DyeTypeId"
+					}
+				},
+				{
+					"Name": "DyeTypeName",
+					"Description": "The name of a dye type.",
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 128,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "DyeType.cdm.json/DyeType",
+						"Name": "DyeTypeName"
+					}
+				},
+				{
+					"Name": "DyeTypeDescription",
+					"Description": "The description of a dye type.",
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 512,
+						"Precision": 0,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"BaseAttributeReference": {
+						"Entity": "DyeType.cdm.json/DyeType",
+						"Name": "DyeTypeDescription"
+					}
+				}
+			],
+			"ColumnSetEntityName": "1a5c7a7e-2dd2-40bb-8abd-04ce121ca7cf",
+			"Format": {
+				"InputFormat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat",
+				"FormatType": "parquet",
+				"SerializeLib": "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe",
+				"Properties": {
+					"path": "abfss://wwi-02@asadatalakeimre.dfs.core.windows.net/test/DyeType",
+					"FormatTypeSetToDatabaseDefault": true
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://wwi-02@asadatalakeimre.dfs.core.windows.net/test/DyeType",
+				"Properties": {
+					"LinkedServiceName": "asadatalakeimre",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"DyeTypeId\":{\"entity\":\"DyeType.cdm.json/DyeType\",\"name\":\"DyeTypeId\"},\"DyeTypeName\":{\"entity\":\"DyeType.cdm.json/DyeType\",\"name\":\"DyeTypeName\"},\"DyeTypeDescription\":{\"entity\":\"DyeType.cdm.json/DyeType\",\"name\":\"DyeTypeDescription\"}}}"
+			},
+			"Compressed": false,
+			"SerDeInfo": null,
+			"IsStoredAsSubdirectories": false
+		},
+		"Owner": null,
+		"CreateTime": 0,
+		"LastAccessTime": 0,
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false,
+		"ViewOriginalText": null,
+		"ViewExpandedText": null,
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"OriginObjectId": null,
+		"IsSharedEntity": false,
+		"PublishStatus": "PUBLISHED",
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"DyeType\",\"path\":\"DyeType.cdm.json/DyeType\"},\"description\":\"The type of dye used to construct the clothing product.\\n\\nEx:\\n\\nPigment dye:  Washed down colors that will continue to soften and age with washing.  Great for outdoor and casual looks. \\n\\nNatural dye\\n\\nSpace dye:  A yarn dyeing process of which one strand received one color at irregular intervals.  Produces an effect of disorganization.\",\"primaryKey\":[\"DyeTypeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"name\":\"DyeTypeId\",\"attributeReference\":{\"entity\":\"DyeType.cdm.json/DyeType\",\"name\":\"DyeTypeId\"},\"dataType\":\"integer\"},{\"type\":\"Existing\",\"name\":\"DyeTypeName\",\"attributeReference\":{\"entity\":\"DyeType.cdm.json/DyeType\",\"name\":\"DyeTypeName\"},\"dataType\":\"string\",\"dataTypeLength\":128},{\"type\":\"Existing\",\"name\":\"DyeTypeDescription\",\"attributeReference\":{\"entity\":\"DyeType.cdm.json/DyeType\",\"name\":\"DyeTypeDescription\"},\"dataType\":\"string\",\"dataTypeLength\":512}]}}}",
+			"Description": "The type of dye used to construct the clothing product.\n\nEx:\n\nPigment dye:  Washed down colors that will continue to soften and age with washing.  Great for outdoor and casual looks. \n\nNatural dye\n\nSpace dye:  A yarn dyeing process of which one strand received one color at irregular intervals.  Produces an effect of disorganization.",
+			"DisplayFolderInfo": "{\"name\":\"Product\",\"colorCode\":\"#BD4B37\"}",
+			"PrimaryKeys": "DyeTypeId",
+			"spark.sql.sources.provider": "parquet",
+			"spark.sql.sources.schema.numParts": "1",
+			"spark.sql.sources.schema.part.0": "{\"type\":\"struct\",\"fields\":[{\"name\":\"DyeTypeId\",\"type\":\"integer\",\"nullable\":false,\"metadata\":{}},{\"name\":\"DyeTypeName\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}},{\"name\":\"DyeTypeDescription\",\"type\":\"string\",\"nullable\":true,\"metadata\":{}}]}",
+			"x-ms-usageinfo": "AzureSynapseDatabaseTemplate"
+		},
+		"ObjectVersion": 2,
+		"ObjectId": "1ce9ab10-e5a0-4f95-9592-acf45972ac22",
+		"Description": "The type of dye used to construct the clothing product.\n\nEx:\n\nPigment dye:  Washed down colors that will continue to soften and age with washing.  Great for outdoor and casual looks. \n\nNatural dye\n\nSpace dye:  A yarn dyeing process of which one strand received one color at irregular intervals.  Produces an effect of disorganization."
+	},
+	"type": "TABLE"
+}
