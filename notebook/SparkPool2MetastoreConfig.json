@@ -21,14 +21,11 @@
 				"spark.dynamicAllocation.enabled": "false",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "2",
-				"spark.autotune.trackingId": "35d27fe6-7938-4ef9-a0c2-843006559c73"
+				"spark.autotune.trackingId": "d29c2994-7d25-4a03-b39b-ce871ccf6fd1"
 			}
 		},
 		"metadata": {
 			"saveOutput": true,
-			"synapse_widget": {
-				"version": "0.1"
-			},
 			"enableDebugMode": false,
 			"kernelspec": {
 				"name": "synapse_pyspark",
@@ -44,14 +41,13 @@
 				"endpoint": "https://asaworkspaceimre.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/SparkPool002",
 				"auth": {
 					"type": "AAD",
-					"authResource": "https://dev.azuresynapse.net",
-					"authHeader": null
+					"authResource": "https://dev.azuresynapse.net"
 				},
 				"sparkVersion": "3.1",
 				"nodeCount": 3,
 				"cores": 8,
 				"memory": 56,
-				"extraHeader": null
+				"automaticScaleJobs": false
 			},
 			"sessionKeepAliveTimeout": 30
 		},
@@ -79,7 +75,7 @@
 					"print(\"spark.hadoop.javax.jdo.option.ConnectionPassword: \", g)\r\n",
 					"print(\"spark.hadoop.javax.jdo.option.ConnectionUserName: \", h)"
 				],
-				"execution_count": 24
+				"execution_count": 9
 			},
 			{
 				"cell_type": "code",
@@ -114,7 +110,8 @@
 					"}\r\n",
 					"\r\n",
 					""
-				]
+				],
+				"execution_count": null
 			},
 			{
 				"cell_type": "code",
@@ -141,7 +138,7 @@
 					"\r\n",
 					""
 				],
-				"execution_count": 5
+				"execution_count": 10
 			},
 			{
 				"cell_type": "code",
@@ -158,7 +155,8 @@
 				},
 				"source": [
 					"spark.sql(\"show databases\").show()"
-				]
+				],
+				"execution_count": null
 			},
 			{
 				"cell_type": "code",
@@ -183,7 +181,7 @@
 					" -- CREATE DATABASE mytestdb;\r\n",
 					"  CREATE TABLE mytestdb.myparquettable(id int, name string, birthdate date) USING Parquet;"
 				],
-				"execution_count": 7
+				"execution_count": null
 			},
 			{
 				"cell_type": "code",
@@ -223,7 +221,7 @@
 					"var df = spark.CreateDataFrame(data, schema);\r\n",
 					"df.Write().Mode(SaveMode.Append).InsertInto(\"mytestdb.myparquettable\");"
 				],
-				"execution_count": 3
+				"execution_count": null
 			},
 			{
 				"cell_type": "code",
@@ -250,7 +248,8 @@
 					"--    LOCATION \"abfss://asadatalakeimre.dfs.core.windows.net/imrehdihive40/myparquettable\"\r\n",
 					"    LOCATION \"abfss://tempdata@asadatalakeimre.dfs.core.windows.net/synapse/workspaces/asaworkspaceimre/warehouse/mytestdb.db/myparquettable\"\r\n",
 					""
-				]
+				],
+				"execution_count": null
 			},
 			{
 				"cell_type": "code",
@@ -274,7 +273,7 @@
 					"\r\n",
 					"SELECT * from mytestdb.myparquettable;"
 				],
-				"execution_count": 4
+				"execution_count": null
 			},
 			{
 				"cell_type": "code",
@@ -301,7 +300,8 @@
 					"--    LOCATION \"abfss://asadatalakeimre.dfs.core.windows.net/imrehdihive40/myparquettable\"\r\n",
 					"    LOCATION \"abfss://wwi-02@asadatalakeimre.dfs.core.windows.net/mytestdb.db/myparquettable\"\r\n",
 					""
-				]
+				],
+				"execution_count": null
 			},
 			{
 				"cell_type": "code",
@@ -326,7 +326,7 @@
 					"USE default;\r\n",
 					"SHOW TABLES;"
 				],
-				"execution_count": 51
+				"execution_count": null
 			},
 			{
 				"cell_type": "code",
@@ -350,7 +350,7 @@
 					"\r\n",
 					"Drop table myexternalparquettable7;"
 				],
-				"execution_count": 33
+				"execution_count": null
 			},
 			{
 				"cell_type": "code",
@@ -377,7 +377,7 @@
 					"--    LOCATION \"abfss://asadatalakeimre.dfs.core.windows.net/imrehdihive40/myparquettable\"\r\n",
 					"    LOCATION \"abfss://wwi-02@asadatalakeimre.dfs.core.windows.net/mytestdb.db/myparquettable8\""
 				],
-				"execution_count": 40
+				"execution_count": null
 			},
 			{
 				"cell_type": "code",
@@ -399,7 +399,7 @@
 					"\r\n",
 					"print(\"hive.metastore.authorization.storage.checks\", a)"
 				],
-				"execution_count": 41
+				"execution_count": null
 			},
 			{
 				"cell_type": "code",
@@ -426,7 +426,31 @@
 					"--    LOCATION \"abfss://asadatalakeimre.dfs.core.windows.net/imrehdihive40/myparquettable\"\r\n",
 					"    LOCATION \"abfss://wwi-02@asadatalakeimre.dfs.core.windows.net/mytestdb.db/myparquettable8\""
 				],
-				"execution_count": 49
+				"execution_count": null
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"microsoft": {
+						"language": "sparksql"
+					},
+					"collapsed": false
+				},
+				"source": [
+					"%%sql \r\n",
+					"\r\n",
+					"CREATE TABLE my_asa_parquettable (id int, name string, birthdate date) ;"
+				],
+				"execution_count": 11
 			},
 			{
 				"cell_type": "code",
@@ -443,24 +467,8 @@
 				},
 				"source": [
 					""
-				]
-			},
-			{
-				"cell_type": "code",
-				"metadata": {
-					"jupyter": {
-						"source_hidden": false,
-						"outputs_hidden": false
-					},
-					"nteract": {
-						"transient": {
-							"deleting": false
-						}
-					}
-				},
-				"source": [
-					""
-				]
+				],
+				"execution_count": null
 			}
 		]
 	}
