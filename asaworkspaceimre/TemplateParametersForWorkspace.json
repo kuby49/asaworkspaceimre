@@ -1,0 +1,60 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"workspaceName": {
+			"value": "asaworkspaceimre"
+		},
+		"AzureSynapse_keyVault_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=asaworkspaceimre.database.windows.net;Initial Catalog=SQLPool01;User ID=asa.sql.admin"
+		},
+		"HMS_Test_connectionString": {
+			"value": ""
+		},
+		"asacosmosdb1_connectionString": {
+			"value": ""
+		},
+		"asadatalakeimre_accountKey": {
+			"value": ""
+		},
+		"asastoreimre_connectionString": {
+			"value": ""
+		},
+		"asaworkspaceimre-WorkspaceDefaultSqlServer_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:asaworkspaceimre.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
+		},
+		"sqlpool01_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=asaworkspaceimre.sql.azuresynapse.net;Initial Catalog=SQLPool01;User ID=asa.sql.admin"
+		},
+		"sqlpool01_highperf_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=asaworkspaceimre.sql.azuresynapse.net;Initial Catalog=SQLPool01;User ID=asa.sql.highperf"
+		},
+		"sqlpool01_import01_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=asaworkspaceimre.sql.azuresynapse.net;Initial Catalog=SQLPool01;User ID=asa.sql.import01"
+		},
+		"sqlpool01_workload01_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=asaworkspaceimre.sql.azuresynapse.net;Initial Catalog=SQLPool01;User ID=asa.sql.workload01"
+		},
+		"sqlpool01_workload02_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=asaworkspaceimre.sql.azuresynapse.net;Initial Catalog=SQLPool01;User ID=asa.sql.workload02"
+		},
+		"AzureKeyValut_v2_properties_typeProperties_baseUrl": {
+			"value": "https://asakeyvaultimre.vault.azure.net/"
+		},
+		"AzureMLService1_properties_typeProperties_subscriptionId": {
+			"value": "fe5aef09-bf0f-4faf-9c28-311200cf35cd"
+		},
+		"AzureMLService1_properties_typeProperties_resourceGroupName": {
+			"value": "Synapse-WS-L400"
+		},
+		"asadatalakeimre_properties_typeProperties_url": {
+			"value": "https://asadatalakeimre.dfs.core.windows.net"
+		},
+		"asakeyvaultimre_properties_typeProperties_baseUrl": {
+			"value": "https://asakeyvaultimre.vault.azure.net/"
+		},
+		"asaworkspaceimre-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"value": "https://asadatalakeimre.dfs.core.windows.net"
+		}
+	}
+}
