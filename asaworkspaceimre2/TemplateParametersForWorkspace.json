@@ -62,8 +62,8 @@
 		"asaworkspaceimre2-WorkspaceDefaultStorage_properties_typeProperties_url": {
 			"value": "https://asadatalakeimre2.dfs.core.windows.net"
 		},
-		"synapse_hackaton_source_sasUri": {
-			"value": ""
+		"synapse_hackaton_source_properties_typeProperties_sasUri_secretName": {
+			"value": "synapsehackatonsourceuri2"
 		}
 	}
 }

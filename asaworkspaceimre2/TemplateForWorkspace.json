@@ -91,9 +91,9 @@
 			"type": "string",
 			"defaultValue": "https://asadatalakeimre2.dfs.core.windows.net"
 		},
-		"synapse_hackaton_source_sasUri": {
-			"type": "secureString",
-			"metadata": "Secure string for 'sasUri' of 'synapse_hackaton_source'"
+		"synapse_hackaton_source_properties_typeProperties_sasUri_secretName": {
+			"type": "string",
+			"defaultValue": "synapsehackatonsourceuri2"
 		}
 	},
 	"variables": {
@@ -2498,7 +2498,14 @@
 				"annotations": [],
 				"type": "AzureBlobStorage",
 				"typeProperties": {
-					"sasUri": "[parameters('synapse_hackaton_source_sasUri')]"
+					"sasUri": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "asakeyvaultimre",
+							"type": "LinkedServiceReference"
+						},
+						"secretName": "[parameters('synapse_hackaton_source_properties_typeProperties_sasUri_secretName')]"
+					}
 				},
 				"connectVia": {
 					"referenceName": "AutoResolveIntegrationRuntime",
@@ -2506,7 +2513,8 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('workspaceId'), '/integrationRuntimes/AutoResolveIntegrationRuntime')]"
+				"[concat(variables('workspaceId'), '/integrationRuntimes/AutoResolveIntegrationRuntime')]",
+				"[concat(variables('workspaceId'), '/linkedServices/asakeyvaultimre')]"
 			]
 		},
 		{
@@ -20337,6 +20345,18 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('workspaceName'), '/SQLPool01')]",
+			"type": "Microsoft.Synapse/workspaces/sqlPools",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"collation": "SQL_Latin1_General_CP1_CI_AS",
+				"maxSizeBytes": 263882790666240,
+				"annotations": []
+			},
+			"dependsOn": [],
+			"location": "eastus"
+		},
+		{
 			"name": "[concat(parameters('workspaceName'), '/SparkPool02')]",
 			"type": "Microsoft.Synapse/workspaces/bigDataPools",
 			"apiVersion": "2019-06-01-preview",
@@ -20381,18 +20401,6 @@
 				"sparkVersion": "2.4",
 				"isComputeIsolationEnabled": false,
 				"sessionLevelPackagesEnabled": false,
-				"annotations": []
-			},
-			"dependsOn": [],
-			"location": "eastus"
-		},
-		{
-			"name": "[concat(parameters('workspaceName'), '/SQLPool01')]",
-			"type": "Microsoft.Synapse/workspaces/sqlPools",
-			"apiVersion": "2019-06-01-preview",
-			"properties": {
-				"collation": "SQL_Latin1_General_CP1_CI_AS",
-				"maxSizeBytes": 263882790666240,
 				"annotations": []
 			},
 			"dependsOn": [],
