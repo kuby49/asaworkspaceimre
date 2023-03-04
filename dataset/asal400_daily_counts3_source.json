@@ -9,10 +9,7 @@
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobFSLocation",
-				"fileName": "dailycounts3-escape.txt",
-				"folderPath": "campaign-analytics",
-				"fileSystem": "wwi-02"
+				"type": "AzureBlobFSLocation"
 			},
 			"columnDelimiter": ";",
 			"rowDelimiter": "\n",

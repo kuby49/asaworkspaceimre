@@ -1,0 +1,27 @@
+{
+	"name": "Copy30Tb",
+	"properties": {
+		"activities": [
+			{
+				"name": "copy30Tb",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"enableStaging": false
+				}
+			}
+		],
+		"folder": {
+			"name": "Synapse_insider_hackaton/Copy_Data"
+		},
+		"annotations": []
+	}
+}

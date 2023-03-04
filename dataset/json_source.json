@@ -1,0 +1,20 @@
+{
+	"name": "json_source",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "synapse_hackaton_source",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Synapse_insider_hackaton/Copy_Data"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation"
+			}
+		},
+		"schema": {}
+	}
+}
