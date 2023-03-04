@@ -1,23 +1,22 @@
 {
 	"name": "synapse_hackaton_source",
-	"type": "Microsoft.Synapse/workspaces/linkedservices",
 	"properties": {
 		"annotations": [],
 		"type": "AzureBlobStorage",
 		"typeProperties": {
-			"sasUri": "https://medicaldl.blob.core.windows.net/source",
-			"sasToken": {
+			"sasUri": {
 				"type": "AzureKeyVaultSecret",
 				"store": {
 					"referenceName": "asakeyvaultimre",
 					"type": "LinkedServiceReference"
 				},
-				"secretName": "synapsehackatonsource"
+				"secretName": "synapsehackatonsourceuri2"
 			}
 		},
 		"connectVia": {
 			"referenceName": "AutoResolveIntegrationRuntime",
 			"type": "IntegrationRuntimeReference"
 		}
-	}
+	},
+	"type": "Microsoft.Synapse/workspaces/linkedservices"
 }
