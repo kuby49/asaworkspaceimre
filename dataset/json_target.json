@@ -1,8 +1,8 @@
 {
-	"name": "json_source",
+	"name": "json_target",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "synapse_hackaton_source",
+			"referenceName": "synapse_hackaton_target",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
@@ -12,9 +12,8 @@
 		"type": "Json",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobStorageLocation",
-				"folderPath": "1tb",
-				"container": "source"
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "synapsehackaton2"
 			}
 		},
 		"schema": {}
