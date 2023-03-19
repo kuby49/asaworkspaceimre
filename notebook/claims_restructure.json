@@ -20,7 +20,7 @@
 				"spark.dynamicAllocation.enabled": "false",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "2",
-				"spark.autotune.trackingId": "09935b4a-dca5-48aa-950d-618c5b768c8c"
+				"spark.autotune.trackingId": "a7e35286-7609-4d4d-8e96-d1423e25b1f2"
 			}
 		},
 		"metadata": {
@@ -84,7 +84,7 @@
 					"dfClaims = spark.read.json(claimsPath);\r\n",
 					"\r\n",
 					"dfClaimsByYear = dfClaims.withColumn('year', year(to_date(dfClaims.created))).where((dfClaimsByYear.year > 2015) and (dfClaimsByYear.year < 2021)) \r\n",
-					"dfClaimsByYear.count()\r\n",
+					"#dfClaimsByYear.count()\r\n",
 					"\r\n",
 					"dfClaimsByYear.write.option(\"mutiline\", \"false\").partitionBy ('year').json(outClaimsPath)"
 				],
