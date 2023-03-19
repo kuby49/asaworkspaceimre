@@ -20,7 +20,7 @@
 				"spark.dynamicAllocation.enabled": "true",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "19",
-				"spark.autotune.trackingId": "63789a54-5e15-4838-a467-de35675a5934"
+				"spark.autotune.trackingId": "1afaf103-a4bf-4750-9643-0e4569998b46"
 			}
 		},
 		"metadata": {
@@ -63,7 +63,7 @@
 					"outObservationsPath = 'abfss://bronze@asadatalakeimre2.dfs.core.windows.net/historic_data/Observation/'\r\n",
 					""
 				],
-				"execution_count": 1
+				"execution_count": 6
 			},
 			{
 				"cell_type": "code",
@@ -81,14 +81,39 @@
 				"source": [
 					"#read the Claims files and filter on the relevant years for yearly split \r\n",
 					"from pyspark.sql.functions import to_date, year, col;\r\n",
-					"dfClaims = spark.read.json(claimsPath);\r\n",
+					"dfClaims = spark.read..option(\"mutiline\", \"true\").json(claimsPath);\r\n",
 					"\r\n",
 					"dfClaimsByYear = dfClaims.withColumn('year', year(to_date(dfClaims.created))).where((dfClaimsByYear.year > 2015) and (dfClaimsByYear.year < 2021)) \r\n",
 					"#dfClaimsByYear.count()\r\n",
 					"\r\n",
-					"dfClaimsByYear.write.option(\"mutiline\", \"false\").partitionBy ('year').json(outClaimsPath)"
+					"dfClaimsByYear.write.option(\"mutiline\", \"true\").partitionBy ('year').json(outClaimsPath)"
 				],
-				"execution_count": 2
+				"execution_count": 5
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"#read the Observations  files and filter on the relevant years for yearly split \r\n",
+					"from pyspark.sql.functions import to_date, year, col;\r\n",
+					"dfObservations = spark.read.json(observationPath);\r\n",
+					"\r\n",
+					"dfObservationsByYear = dfClaims.withColumn('year', year(to_date(dfClaims.created))).where((dfClaimsByYear.year > 2015) and (dfClaimsByYear.year < 2021)) \r\n",
+					"#dfClaimsByYear.count()\r\n",
+					"\r\n",
+					"dfObservationsByYear.write.option(\"mutiline\", \"false\").partitionBy ('year').json(outObservationsPath)"
+				],
+				"execution_count": 7
 			}
 		]
 	}
