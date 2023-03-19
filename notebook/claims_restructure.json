@@ -7,20 +7,20 @@
 		"nbformat": 4,
 		"nbformat_minor": 2,
 		"bigDataPool": {
-			"referenceName": "SparkPool02",
+			"referenceName": "sparkpool33",
 			"type": "BigDataPoolReference"
 		},
 		"sessionProperties": {
-			"driverMemory": "28g",
-			"driverCores": 4,
-			"executorMemory": "28g",
-			"executorCores": 4,
+			"driverMemory": "56g",
+			"driverCores": 8,
+			"executorMemory": "56g",
+			"executorCores": 8,
 			"numExecutors": 2,
 			"conf": {
 				"spark.dynamicAllocation.enabled": "false",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "2",
-				"spark.autotune.trackingId": "b55e4a7b-8def-4bdc-b205-a3ec6f786f21"
+				"spark.autotune.trackingId": "5f32a570-9bbd-412e-a0db-f9e00b814a57"
 			}
 		},
 		"metadata": {
@@ -34,19 +34,19 @@
 				"name": "python"
 			},
 			"a365ComputeOptions": {
-				"id": "/subscriptions/d9001b44-c845-4abb-b589-9b145195aaea/resourceGroups/synapse_asa_l400/providers/Microsoft.Synapse/workspaces/asaworkspaceimre2/bigDataPools/SparkPool02",
-				"name": "SparkPool02",
+				"id": "/subscriptions/d9001b44-c845-4abb-b589-9b145195aaea/resourceGroups/synapse_asa_l400/providers/Microsoft.Synapse/workspaces/asaworkspaceimre2/bigDataPools/sparkpool33",
+				"name": "sparkpool33",
 				"type": "Spark",
-				"endpoint": "https://asaworkspaceimre2.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/SparkPool02",
+				"endpoint": "https://asaworkspaceimre2.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/sparkpool33",
 				"auth": {
 					"type": "AAD",
 					"authResource": "https://dev.azuresynapse.net"
 				},
-				"sparkVersion": "3.1",
-				"nodeCount": 3,
-				"cores": 4,
-				"memory": 28,
-				"automaticScaleJobs": true
+				"sparkVersion": "3.3",
+				"nodeCount": 10,
+				"cores": 8,
+				"memory": 56,
+				"automaticScaleJobs": false
 			},
 			"sessionKeepAliveTimeout": 30
 		},
@@ -58,9 +58,11 @@
 					"dataPath = 'abfss://synapsehackaton@asadatalakeimre2.dfs.core.windows.net/30tb/*/';\r\n",
 					"claimsPath = dataPath + 'Claim.ndjson';\r\n",
 					"observationPath = dataPath + 'Observation.ndjson';\r\n",
-					"print(claimsPath);"
+					"\r\n",
+					"outClaimsPath = 'abfss://bronze@asadatalakeimre2.dfs.core.windows.net/historic_data/claims/'\r\n",
+					""
 				],
-				"execution_count": 39
+				"execution_count": 1
 			},
 			{
 				"cell_type": "code",
@@ -81,9 +83,11 @@
 					"dfClaims = spark.read.json(claimsPath);\r\n",
 					"\r\n",
 					"dfClaimsByYear = dfClaims.withColumn('year', year(to_date(dfClaims.created))).where((dfClaimsByYear.year > 2015) and (dfClaimsByYear.year < 2021)) \r\n",
-					"dfClaimsByYear.count()"
+					"dfClaimsByYear.count()\r\n",
+					"\r\n",
+					"dfClaimsByYear.write.option(\"mutiline\", \"false\").partitionBy ('year').json(outClaimsPath)"
 				],
-				"execution_count": 40
+				"execution_count": 2
 			}
 		]
 	}
