@@ -20,7 +20,7 @@
 				"spark.dynamicAllocation.enabled": "true",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "19",
-				"spark.autotune.trackingId": "c4d89929-9485-4d38-be58-24ac75b63c5d"
+				"spark.autotune.trackingId": "0c08d5f5-4ebe-4756-b50f-e774c2cc1747"
 			}
 		},
 		"metadata": {
@@ -83,7 +83,7 @@
 					"from pyspark.sql.functions import to_date, year, col;\r\n",
 					"dfClaims = spark.read.option(\"mutiline\", \"true\").option(\"samplingRatio\", \"0.01\").json(claimsPath);\r\n",
 					"\r\n",
-					"dfClaimsByYear = dfClaims.withColumn('year', year(to_date(dfClaims.created))).where((dfClaimsByYear.year > 2015) and (dfClaimsByYear.year < 2021)) \r\n",
+					"dfClaimsByYear = dfClaims.withColumn('year', year(to_date(dfClaims.created))).where((col('year') > 2015) and (col('year') < 2021)) \r\n",
 					"#dfClaimsByYear.count()\r\n",
 					"\r\n",
 					"dfClaimsByYear.write.option(\"mutiline\", \"false\").partitionBy ('year').json(outClaimsPath)"
