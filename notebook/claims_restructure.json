@@ -20,7 +20,7 @@
 				"spark.dynamicAllocation.enabled": "false",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "2",
-				"spark.autotune.trackingId": "44f65055-038f-4f9b-98c5-a96d2b4d9be6"
+				"spark.autotune.trackingId": "b55e4a7b-8def-4bdc-b205-a3ec6f786f21"
 			}
 		},
 		"metadata": {
@@ -56,11 +56,11 @@
 				"source": [
 					"#set up variables like file location \r\n",
 					"dataPath = 'abfss://synapsehackaton@asadatalakeimre2.dfs.core.windows.net/30tb/*/';\r\n",
-					"claimsPath = dataPath + 'Claims.ndjson';\r\n",
+					"claimsPath = dataPath + 'Claim.ndjson';\r\n",
 					"observationPath = dataPath + 'Observation.ndjson';\r\n",
 					"print(claimsPath);"
 				],
-				"execution_count": 36
+				"execution_count": 39
 			},
 			{
 				"cell_type": "code",
@@ -77,13 +77,13 @@
 				},
 				"source": [
 					"#read the Claims files and filter on the relevant years for yearly split \r\n",
-					"from pypsark.sql.functions import to_date, year, col\r\n",
+					"from pyspark.sql.functions import to_date, year, col;\r\n",
 					"dfClaims = spark.read.json(claimsPath);\r\n",
 					"\r\n",
 					"dfClaimsByYear = dfClaims.withColumn('year', year(to_date(dfClaims.created))).where((dfClaimsByYear.year > 2015) and (dfClaimsByYear.year < 2021)) \r\n",
 					"dfClaimsByYear.count()"
 				],
-				"execution_count": null
+				"execution_count": 40
 			}
 		]
 	}
