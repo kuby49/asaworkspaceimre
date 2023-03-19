@@ -1,0 +1,94 @@
+{
+	"name": "observations_restructure",
+	"properties": {
+		"folder": {
+			"name": "Insider"
+		},
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "sparkpool33",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "28g",
+			"driverCores": 4,
+			"executorMemory": "28g",
+			"executorCores": 4,
+			"numExecutors": 2,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "false",
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "2",
+				"spark.autotune.trackingId": "544dbc7a-1ec3-415f-9c9b-cb025ea9d404"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"enableDebugMode": false,
+			"kernelspec": {
+				"name": "synapse_pyspark",
+				"display_name": "Synapse PySpark"
+			},
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/d9001b44-c845-4abb-b589-9b145195aaea/resourceGroups/synapse_asa_l400/providers/Microsoft.Synapse/workspaces/asaworkspaceimre2/bigDataPools/sparkpool33",
+				"name": "sparkpool33",
+				"type": "Spark",
+				"endpoint": "https://asaworkspaceimre2.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/sparkpool33",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net"
+				},
+				"sparkVersion": "3.3",
+				"nodeCount": 10,
+				"cores": 8,
+				"memory": 56,
+				"automaticScaleJobs": false
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "code",
+				"source": [
+					"#set up variables like file location \r\n",
+					"dataPath = 'abfss://synapsehackaton@asadatalakeimre2.dfs.core.windows.net/30tb/*/';\r\n",
+					"claimsPath = dataPath + 'Claim.ndjson';\r\n",
+					"observationPath = dataPath + 'Observation.ndjson';\r\n",
+					"\r\n",
+					"outClaimsPath = 'abfss://bronze@asadatalakeimre2.dfs.core.windows.net/historic_data/claims/'\r\n",
+					"outObservationsPath = 'abfss://bronze@asadatalakeimre2.dfs.core.windows.net/historic_data/Observation/'"
+				],
+				"execution_count": null
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"#read the Claims files and filter on the relevant years for yearly split \r\n",
+					"from pyspark.sql.functions import to_date, year, col;\r\n",
+					"dfObservations = spark.read.json(observationPath);\r\n",
+					"\r\n",
+					"dfObservationsByYear = dfClaims.withColumn('year', year(to_date(dfClaims.created))).where((dfClaimsByYear.year > 2015) and (dfClaimsByYear.year < 2021)) \r\n",
+					"#dfClaimsByYear.count()\r\n",
+					"\r\n",
+					"dfObservationsByYear.write.option(\"mutiline\", \"false\").partitionBy ('year').json(outObservationsPath)"
+				],
+				"execution_count": null
+			}
+		]
+	}
+}
