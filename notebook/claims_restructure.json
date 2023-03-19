@@ -1,0 +1,84 @@
+{
+	"name": "claims_restructure",
+	"properties": {
+		"folder": {
+			"name": "Insider"
+		},
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "SparkPool02",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "28g",
+			"driverCores": 4,
+			"executorMemory": "28g",
+			"executorCores": 4,
+			"numExecutors": 2,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "false",
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "2",
+				"spark.autotune.trackingId": "1f251aa7-45c7-4008-9c68-48bae8c5f37a"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"enableDebugMode": false,
+			"kernelspec": {
+				"name": "synapse_pyspark",
+				"display_name": "Synapse PySpark"
+			},
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/d9001b44-c845-4abb-b589-9b145195aaea/resourceGroups/synapse_asa_l400/providers/Microsoft.Synapse/workspaces/asaworkspaceimre2/bigDataPools/SparkPool02",
+				"name": "SparkPool02",
+				"type": "Spark",
+				"endpoint": "https://asaworkspaceimre2.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/SparkPool02",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net"
+				},
+				"sparkVersion": "3.1",
+				"nodeCount": 3,
+				"cores": 4,
+				"memory": 28,
+				"automaticScaleJobs": true
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "code",
+				"source": [
+					"#set up variables like file location \r\n",
+					"dataPath = 'abfss://synapsehackaton@asadatalakeimre2.dfs.core.windows.net/30tb/*/'\r\n",
+					"claimsPath = dataPath + 'Claims.ndjson'\r\n",
+					"observationPath = dataPath + 'Observation.ndjson'"
+				],
+				"execution_count": null
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"#read the Claims files and filter on the relevant years "
+				],
+				"execution_count": null
+			}
+		]
+	}
+}
