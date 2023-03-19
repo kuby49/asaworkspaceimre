@@ -20,7 +20,7 @@
 				"spark.dynamicAllocation.enabled": "false",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "2",
-				"spark.autotune.trackingId": "5f32a570-9bbd-412e-a0db-f9e00b814a57"
+				"spark.autotune.trackingId": "09935b4a-dca5-48aa-950d-618c5b768c8c"
 			}
 		},
 		"metadata": {
@@ -60,6 +60,7 @@
 					"observationPath = dataPath + 'Observation.ndjson';\r\n",
 					"\r\n",
 					"outClaimsPath = 'abfss://bronze@asadatalakeimre2.dfs.core.windows.net/historic_data/claims/'\r\n",
+					"outObservationsPath = 'abfss://bronze@asadatalakeimre2.dfs.core.windows.net/historic_data/observations/'\r\n",
 					""
 				],
 				"execution_count": 1
