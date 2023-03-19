@@ -11,16 +11,16 @@
 			"type": "BigDataPoolReference"
 		},
 		"sessionProperties": {
-			"driverMemory": "56g",
-			"driverCores": 8,
-			"executorMemory": "56g",
-			"executorCores": 8,
+			"driverMemory": "28g",
+			"driverCores": 4,
+			"executorMemory": "28g",
+			"executorCores": 4,
 			"numExecutors": 2,
 			"conf": {
-				"spark.dynamicAllocation.enabled": "false",
+				"spark.dynamicAllocation.enabled": "true",
 				"spark.dynamicAllocation.minExecutors": "2",
-				"spark.dynamicAllocation.maxExecutors": "2",
-				"spark.autotune.trackingId": "a7e35286-7609-4d4d-8e96-d1423e25b1f2"
+				"spark.dynamicAllocation.maxExecutors": "19",
+				"spark.autotune.trackingId": "63789a54-5e15-4838-a467-de35675a5934"
 			}
 		},
 		"metadata": {
@@ -59,8 +59,8 @@
 					"claimsPath = dataPath + 'Claim.ndjson';\r\n",
 					"observationPath = dataPath + 'Observation.ndjson';\r\n",
 					"\r\n",
-					"outClaimsPath = 'abfss://bronze@asadatalakeimre2.dfs.core.windows.net/historic_data/claims/'\r\n",
-					"outObservationsPath = 'abfss://bronze@asadatalakeimre2.dfs.core.windows.net/historic_data/observations/'\r\n",
+					"outClaimsPath = 'abfss://bronze@asadatalakeimre2.dfs.core.windows.net/historic_data/Claim/'\r\n",
+					"outObservationsPath = 'abfss://bronze@asadatalakeimre2.dfs.core.windows.net/historic_data/Observation/'\r\n",
 					""
 				],
 				"execution_count": 1
