@@ -20,7 +20,7 @@
 				"spark.dynamicAllocation.enabled": "true",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "19",
-				"spark.autotune.trackingId": "39c617cc-dfa2-4548-835f-b5dac9a87b04"
+				"spark.autotune.trackingId": "481a4e4c-70cf-47d3-96e2-dfb88b71683b"
 			}
 		},
 		"metadata": {
@@ -198,10 +198,10 @@
 					"#add partition columns\r\n",
 					"dfObservationsByDay = dfObservations.withColumn('year', substring('created', 1,4)).withColumn('month', substring('created', 6,2)).withColumn('day', substring('created', 9,2)).where(col('year') == \"2021\")\r\n",
 					"\r\n",
-					"#write out the incremental data for Claims\r\n",
-					"#without repartitioning this leads to extremely small files 20 KByte) and a huge number of partitions (16910, same as number of input files)\r\n",
+					"#write out the incremental data for Observations\r\n",
+					"#without repartitioning this leads to extremely small files 20 KByte) and a huge number of partitions (31856, same as number of input files)\r\n",
 					"#we will try coallesce it to number of executors we can get, which is 76\r\n",
-					"#this will result in a json file of apporximately 5-7 MBytes going forward\r\n",
+					"#this will result in a json file of apporximately 8-12 MBytes going forward\r\n",
 					"dfObservationsByDay.coalesce(76).write.option(\"mutiline\", \"false\").mode(\"overwrite\").partitionBy ('year', 'month', 'day').json(outIncrementalObservationsPath)"
 				],
 				"execution_count": null
