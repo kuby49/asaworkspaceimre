@@ -20,7 +20,7 @@
 				"spark.dynamicAllocation.enabled": "true",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "19",
-				"spark.autotune.trackingId": "4b595c46-b912-45a2-9622-a35910d75c8b"
+				"spark.autotune.trackingId": "2c675d6d-266d-4d54-a3a9-1b0c3871e634"
 			}
 		},
 		"metadata": {
@@ -66,7 +66,7 @@
 					"\r\n",
 					"#observations output path\r\n",
 					"outObservationsPath = 'abfss://bronze@asadatalakeimre2.dfs.core.windows.net/historic_data/Observation/'\r\n",
-					"outIncrementalObservationPath = 'abfss://bronze@asadatalakeimre2.dfs.core.windows.net/incremental_data/Claim/'\r\n",
+					"outIncrementalObservationsPath = 'abfss://bronze@asadatalakeimre2.dfs.core.windows.net/incremental_data/Claim/'\r\n",
 					"\r\n",
 					"# read the schema to be used from 2 individual json files, in order to avoid scanning all 20000 / 40000 files to be scanned twice\r\n",
 					"schemaClaimsPath = 'abfss://synapsehackaton@asadatalakeimre2.dfs.core.windows.net/30tb/000047ca-00c7-492b-bf65-740805144cd2/Claim.ndjson' \r\n",
@@ -76,7 +76,7 @@
 					"\r\n",
 					""
 				],
-				"execution_count": 76
+				"execution_count": 82
 			},
 			{
 				"cell_type": "code",
@@ -192,7 +192,7 @@
 				},
 				"source": [
 					"#read the Observations files and filter on the relevant years for daily split / incremental data, then partition by year, month, day and write \r\n",
-					"from pyspark.sql.functions import to_date, year, month, dayofmonth, col;\r\n",
+					"from pyspark.sql.functions import to_date, year, month, dayofmonth, substring, col;\r\n",
 					"dfObservations = spark.read.option(\"multiline\", \"false\").option(\"columnNameOfCorruptRecord\", \"corrupt\").schema (schemaClaims).json(observationPath);\r\n",
 					"\r\n",
 					"#add partition columns\r\n",
@@ -208,7 +208,7 @@
 					"#this will result in a json file of approximately 8-12 MBytes going forward\r\n",
 					"dfObservationsByDay.coalesce(76).write.option(\"multiline\", \"false\").mode(\"overwrite\").partitionBy ('year', 'month', 'day').json(outIncrementalObservationsPath)"
 				],
-				"execution_count": null
+				"execution_count": 83
 			},
 			{
 				"cell_type": "code",
