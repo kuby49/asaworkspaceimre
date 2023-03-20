@@ -20,7 +20,7 @@
 				"spark.dynamicAllocation.enabled": "true",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "19",
-				"spark.autotune.trackingId": "2c675d6d-266d-4d54-a3a9-1b0c3871e634"
+				"spark.autotune.trackingId": "7745e553-a173-4896-aa64-53e0851e5bca"
 			}
 		},
 		"metadata": {
@@ -62,7 +62,7 @@
 					"\r\n",
 					"#Claims output paths\r\n",
 					"outClaimsPath = 'abfss://bronze@asadatalakeimre2.dfs.core.windows.net/historic_data/Claim/'\r\n",
-					"outIncrementalClaimsPath = 'abfss://bronze@asadatalakeimre2.dfs.core.windows.net/incremental_data/Claim/'\r\n",
+					"outIncrementalClaimsPath = 'abfss://bronze@asadatalakeimre2.dfs.core.windows.net/incremental_data/Observation/'\r\n",
 					"\r\n",
 					"#observations output path\r\n",
 					"outObservationsPath = 'abfss://bronze@asadatalakeimre2.dfs.core.windows.net/historic_data/Observation/'\r\n",
@@ -89,14 +89,16 @@
 						"transient": {
 							"deleting": false
 						}
-					}
+					},
+					"collapsed": false
 				},
 				"source": [
 					"from    pyspark.sql.functions import substring ;\r\n",
 					"print(substring('2010-02-04', 6,2))\r\n",
-					""
+					"\r\n",
+					"display(spark.read.option(\"multiline\", \"false\").json(schemaObservationPath))"
 				],
-				"execution_count": 36
+				"execution_count": null
 			},
 			{
 				"cell_type": "code",
@@ -122,7 +124,7 @@
 					"\r\n",
 					"dfClaimsByYear.write.option(\"multiline\", \"false\").mode(\"overwrite\").partitionBy ('year').json(outClaimsPath)"
 				],
-				"execution_count": 77
+				"execution_count": 84
 			},
 			{
 				"cell_type": "code",
@@ -151,7 +153,7 @@
 					"#this will result in a json file of apporximately 5-7 MBytes going forward\r\n",
 					"dfClaimsByDay.coalesce(76).write.option(\"multiline\", \"false\").mode(\"overwrite\").partitionBy ('year', 'month', 'day').json(outIncrementalClaimsPath)"
 				],
-				"execution_count": 39
+				"execution_count": 86
 			},
 			{
 				"cell_type": "code",
@@ -193,12 +195,12 @@
 				"source": [
 					"#read the Observations files and filter on the relevant years for daily split / incremental data, then partition by year, month, day and write \r\n",
 					"from pyspark.sql.functions import to_date, year, month, dayofmonth, substring, col;\r\n",
-					"dfObservations = spark.read.option(\"multiline\", \"false\").option(\"columnNameOfCorruptRecord\", \"corrupt\").schema (schemaClaims).json(observationPath);\r\n",
+					"dfObservations = spark.read.option(\"multiline\", \"false\").option(\"columnNameOfCorruptRecord\", \"corrupt\").schema (schemaObservations).json(observationPath);\r\n",
 					"\r\n",
 					"#add partition columns\r\n",
-					"dfObservationsByDay = dfObservations.withColumn('year', substring('created', 1,4)). \\\r\n",
-					"    withColumn('month', substring('created', 6,2)). \\\r\n",
-					"    withColumn('day', substring('created', 9,2)). \\\r\n",
+					"dfObservationsByDay = dfObservations.withColumn('year', substring('issued', 1,4)). \\\r\n",
+					"    withColumn('month', substring('issued', 6,2)). \\\r\n",
+					"    withColumn('day', substring('issued', 9,2)). \\\r\n",
 					"    where(col('year') == \"2021\")\r\n",
 					"\r\n",
 					"\r\n",
@@ -208,7 +210,7 @@
 					"#this will result in a json file of approximately 8-12 MBytes going forward\r\n",
 					"dfObservationsByDay.coalesce(76).write.option(\"multiline\", \"false\").mode(\"overwrite\").partitionBy ('year', 'month', 'day').json(outIncrementalObservationsPath)"
 				],
-				"execution_count": 83
+				"execution_count": 89
 			},
 			{
 				"cell_type": "code",
@@ -227,12 +229,12 @@
 				"source": [
 					"#display(dfClaims.limit(10));\r\n",
 					"\r\n",
-					"print (dfClaims.count());\r\n",
-					"print(dfObservations.count());\r\n",
-					"print (dfClaimsByDay.count());\r\n",
-					"print(dfObservationsByDay.count());"
+					"\r\n",
+					"display(dfObservations.take(10));\r\n",
+					"\r\n",
+					""
 				],
-				"execution_count": 75
+				"execution_count": 85
 			}
 		]
 	}
