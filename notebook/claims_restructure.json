@@ -20,7 +20,7 @@
 				"spark.dynamicAllocation.enabled": "true",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "19",
-				"spark.autotune.trackingId": "1e62fbfe-5fa7-4a70-81bd-2a180e495a56"
+				"spark.autotune.trackingId": "93b27c68-80a6-4ed6-aa48-071f4fb68a3d"
 			}
 		},
 		"metadata": {
@@ -124,9 +124,9 @@
 					"dfClaimsByDay = dfClaims.withColumn('year', year(to_date(dfClaims.created))).withColumn('month', month(to_date(dfClaims.created))).withColumn('day', dayofmonth(to_date(dfClaims.created))).where(col('year') == 2021)\r\n",
 					"\r\n",
 					"#write out the incremental data for Claims\r\n",
-					"dfClaimsByDay.write.option(\"mutiline\", \"false\").mode(\"overwrite\").partitionBy ('year').partitionBy ('month').partitionBy ('day').json(outIncrementalClaimsPath)"
+					"dfClaimsByDay.write.option(\"mutiline\", \"false\").mode(\"overwrite\").partitionBy ('year', 'month', 'day').json(outIncrementalClaimsPath)"
 				],
-				"execution_count": 32
+				"execution_count": 33
 			},
 			{
 				"cell_type": "code",
