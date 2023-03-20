@@ -20,7 +20,7 @@
 				"spark.dynamicAllocation.enabled": "true",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "19",
-				"spark.autotune.trackingId": "481a4e4c-70cf-47d3-96e2-dfb88b71683b"
+				"spark.autotune.trackingId": "82a0838f-1035-4bd6-a0b1-a7ecf3776e9d"
 			}
 		},
 		"metadata": {
@@ -68,7 +68,7 @@
 					"outObservationsPath = 'abfss://bronze@asadatalakeimre2.dfs.core.windows.net/historic_data/Observation/'\r\n",
 					"outIncrementalObservationPath = 'abfss://bronze@asadatalakeimre2.dfs.core.windows.net/incremental_data/Claim/'\r\n",
 					"\r\n",
-					"# read teh schema to be used from 2 individual json files, in order to avoid scanning all 20000 / 40000 files to be scanned twice\r\n",
+					"# read the schema to be used from 2 individual json files, in order to avoid scanning all 20000 / 40000 files to be scanned twice\r\n",
 					"schemaClaimsPath = 'abfss://synapsehackaton@asadatalakeimre2.dfs.core.windows.net/30tb/000047ca-00c7-492b-bf65-740805144cd2/Claim.ndjson' \r\n",
 					"schemaObservationPath = 'abfss://synapsehackaton@asadatalakeimre2.dfs.core.windows.net/30tb/000047ca-00c7-492b-bf65-740805144cd2/Observation.ndjson'\r\n",
 					"schemaClaims =  spark.read.option(\"mutiline\", \"true\").json(schemaClaimsPath).schema\r\n",
@@ -170,7 +170,7 @@
 					"from pyspark.sql.functions import to_date, year, col;\r\n",
 					"dfObservations = spark.read.json(observationPath);\r\n",
 					"\r\n",
-					"dfObservationsByYear = dfClaims.withColumn('year', year(to_date(dfClaims.created))).where((dfClaimsByYear.year > 2015) and (dfClaimsByYear.year < 2021)) \r\n",
+					"dfObservationsByYear = dfClaims.withColumn('year', year(to_date(dfClaims.created))).where((dfClaimsByYear.year > 2015).where(dfClaimsByYear.year < 2021) \r\n",
 					"\r\n",
 					"\r\n",
 					"dfObservationsByYear.write.option(\"mutiline\", \"false\").partitionBy ('year').json(outObservationsPath)"
