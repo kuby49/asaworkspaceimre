@@ -20,7 +20,7 @@
 				"spark.dynamicAllocation.enabled": "true",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "19",
-				"spark.autotune.trackingId": "144cb722-e5dc-4b8f-bc93-d6fc04696fca"
+				"spark.autotune.trackingId": "39c617cc-dfa2-4548-835f-b5dac9a87b04"
 			}
 		},
 		"metadata": {
@@ -74,7 +74,7 @@
 					"schemaClaims =  spark.read.option(\"mutiline\", \"true\").json(schemaClaimsPath).schema\r\n",
 					"schemaObservations =  spark.read.option(\"mutiline\", \"true\").json(schemaObservationPath).schema"
 				],
-				"execution_count": 27
+				"execution_count": 41
 			},
 			{
 				"cell_type": "code",
@@ -147,10 +147,10 @@
 					"#write out the incremental data for Claims\r\n",
 					"#without repartitioning this leads to extremely small files 20 KByte) and a huge number of partitions (16910, same as number of input files)\r\n",
 					"#we will try coallesce it to number of executors we can get, which is 76\r\n",
-					"#this will result in a json file of \r\n",
+					"#this will result in a json file of apporximately 5-7 MBytes going forward\r\n",
 					"dfClaimsByDay.coalesce(76).write.option(\"mutiline\", \"false\").mode(\"overwrite\").partitionBy ('year', 'month', 'day').json(outIncrementalClaimsPath)"
 				],
-				"execution_count": 38
+				"execution_count": 39
 			},
 			{
 				"cell_type": "code",
@@ -175,7 +175,36 @@
 					"\r\n",
 					"dfObservationsByYear.write.option(\"mutiline\", \"false\").partitionBy ('year').json(outObservationsPath)"
 				],
-				"execution_count": 7
+				"execution_count": 43
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"#read the Observations files and filter on the relevant years for daily split / incremental data, then partition by year, month, day and write \r\n",
+					"from pyspark.sql.functions import to_date, year, month, dayofmonth, col;\r\n",
+					"dfObservations = spark.read.option(\"mutiline\", \"true\").option(\"columnNameOfCorruptRecord\", \"corrupt\").schema (schemaClaims).json(observationPath);\r\n",
+					"\r\n",
+					"#add partition columns\r\n",
+					"dfObservationsByDay = dfObservations.withColumn('year', substring('created', 1,4)).withColumn('month', substring('created', 6,2)).withColumn('day', substring('created', 9,2)).where(col('year') == \"2021\")\r\n",
+					"\r\n",
+					"#write out the incremental data for Claims\r\n",
+					"#without repartitioning this leads to extremely small files 20 KByte) and a huge number of partitions (16910, same as number of input files)\r\n",
+					"#we will try coallesce it to number of executors we can get, which is 76\r\n",
+					"#this will result in a json file of apporximately 5-7 MBytes going forward\r\n",
+					"dfObservationsByDay.coalesce(76).write.option(\"mutiline\", \"false\").mode(\"overwrite\").partitionBy ('year', 'month', 'day').json(outIncrementalObservationsPath)"
+				],
+				"execution_count": null
 			}
 		]
 	}
