@@ -20,7 +20,7 @@
 				"spark.dynamicAllocation.enabled": "true",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "19",
-				"spark.autotune.trackingId": "339df26f-fd28-4cf4-88e4-efcb768ab064"
+				"spark.autotune.trackingId": "f213729d-b628-4d9b-b0e5-67f7dac4804b"
 			}
 		},
 		"metadata": {
@@ -145,7 +145,7 @@
 					"#write out the incremental data for Claims\r\n",
 					"dfClaimsByDay.write.option(\"mutiline\", \"false\").mode(\"overwrite\").partitionBy ('year', 'month', 'day').json(outIncrementalClaimsPath)"
 				],
-				"execution_count": 37
+				"execution_count": 38
 			},
 			{
 				"cell_type": "code",
