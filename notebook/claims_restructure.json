@@ -20,7 +20,7 @@
 				"spark.dynamicAllocation.enabled": "true",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "19",
-				"spark.autotune.trackingId": "93b27c68-80a6-4ed6-aa48-071f4fb68a3d"
+				"spark.autotune.trackingId": "339df26f-fd28-4cf4-88e4-efcb768ab064"
 			}
 		},
 		"metadata": {
@@ -87,6 +87,25 @@
 						"transient": {
 							"deleting": false
 						}
+					}
+				},
+				"source": [
+					"from    pyspark.sql.functions import substring ;\r\n",
+					"print(substring('2010-02-04', 6,2))"
+				],
+				"execution_count": 36
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
 					},
 					"collapsed": false
 				},
@@ -100,7 +119,7 @@
 					"\r\n",
 					"dfClaimsByYear.write.option(\"mutiline\", \"false\").mode(\"overwrite\").partitionBy ('year').json(outClaimsPath)"
 				],
-				"execution_count": 31
+				"execution_count": null
 			},
 			{
 				"cell_type": "code",
@@ -121,12 +140,12 @@
 					"dfClaims = spark.read.option(\"mutiline\", \"true\").option(\"columnNameOfCorruptRecord\", \"corrupt\").schema (schemaClaims).json(claimsPath);\r\n",
 					"\r\n",
 					"#add partition columns\r\n",
-					"dfClaimsByDay = dfClaims.withColumn('year', year(to_date(dfClaims.created))).withColumn('month', month(to_date(dfClaims.created))).withColumn('day', dayofmonth(to_date(dfClaims.created))).where(col('year') == 2021)\r\n",
+					"dfClaimsByDay = dfClaims.withColumn('year', substring('created', 1,4)).withColumn('month', substring('created', 6,2)).withColumn('day', substring('created', 9,2)).where(col('year') == \"2021\")\r\n",
 					"\r\n",
 					"#write out the incremental data for Claims\r\n",
 					"dfClaimsByDay.write.option(\"mutiline\", \"false\").mode(\"overwrite\").partitionBy ('year', 'month', 'day').json(outIncrementalClaimsPath)"
 				],
-				"execution_count": 33
+				"execution_count": 37
 			},
 			{
 				"cell_type": "code",
