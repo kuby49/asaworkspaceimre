@@ -20,7 +20,7 @@
 				"spark.dynamicAllocation.enabled": "true",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "19",
-				"spark.autotune.trackingId": "55e52fda-a2c7-4bb4-b969-b81515c2cd80"
+				"spark.autotune.trackingId": "b9866cdf-0229-4969-aa3f-2b7b962a12a3"
 			}
 		},
 		"metadata": {
@@ -46,7 +46,7 @@
 				"nodeCount": 10,
 				"cores": 8,
 				"memory": 56,
-				"automaticScaleJobs": false
+				"automaticScaleJobs": true
 			},
 			"sessionKeepAliveTimeout": 30
 		},
@@ -55,8 +55,6 @@
 				"cell_type": "code",
 				"source": [
 					"#set up variables like file location \r\n",
-					"schemaClaimsPath = 'abfss://synapsehackaton@asadatalakeimre2.dfs.core.windows.net/30tb/000047ca-00c7-492b-bf65-740805144cd2/Claim.ndjson' \r\n",
-					"schemaObservationPath = 'abfss://synapsehackaton@asadatalakeimre2.dfs.core.windows.net/30tb/000047ca-00c7-492b-bf65-740805144cd2/Observation.ndjson'\r\n",
 					"\r\n",
 					"dataPath = 'abfss://synapsehackaton@asadatalakeimre2.dfs.core.windows.net/30tb/*/';\r\n",
 					"claimsPath = dataPath + 'Claim.ndjson';\r\n",
@@ -71,7 +69,7 @@
 					"schemaClaims =  spark.read.option(\"mutiline\", \"true\").json(schemaClaimsPath).schema\r\n",
 					"schemaObservations =  spark.read.option(\"mutiline\", \"true\").json(schemaObservationPath).schema"
 				],
-				"execution_count": 8
+				"execution_count": 24
 			},
 			{
 				"cell_type": "code",
@@ -84,19 +82,20 @@
 						"transient": {
 							"deleting": false
 						}
-					}
+					},
+					"collapsed": false
 				},
 				"source": [
 					"#read the Claims files and filter on the relevant years for yearly split \r\n",
 					"from pyspark.sql.functions import to_date, year, col;\r\n",
-					"dfClaims = spark.read.option(\"mutiline\", \"true\").option(\"samplingRatio\", \"0.01\").json(claimsPath);\r\n",
+					"dfClaims = spark.read.option(\"mutiline\", \"true\").option(\"columnNameOfCorruptRecord\", \"corrupt\").schema (schemaClaims).json(claimsPath);\r\n",
 					"\r\n",
-					"dfClaimsByYear = dfClaims.withColumn('year', year(to_date(dfClaims.created))).where((col('year') > 2015) and (col('year') < 2021)) \r\n",
-					"#dfClaimsByYear.count()\r\n",
+					"dfClaimsByYear = dfClaims.withColumn('year', year(to_date(dfClaims.created))).where(col('year') > 2015).where (col('year') < 2021) \r\n",
+					"#print(dfClaimsByYear.count())\r\n",
 					"\r\n",
-					"dfClaimsByYear.write.option(\"mutiline\", \"false\").partitionBy ('year').json(outClaimsPath)"
+					"dfClaimsByYear.write.option(\"mutiline\", \"false\").mode(\"overwrite\").partitionBy ('year').json(outClaimsPath)"
 				],
-				"execution_count": 11
+				"execution_count": 25
 			},
 			{
 				"cell_type": "code",
