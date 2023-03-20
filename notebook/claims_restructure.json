@@ -20,7 +20,7 @@
 				"spark.dynamicAllocation.enabled": "true",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "19",
-				"spark.autotune.trackingId": "b9866cdf-0229-4969-aa3f-2b7b962a12a3"
+				"spark.autotune.trackingId": "9ec9a127-03c6-4930-80ef-b7fc79fb1248"
 			}
 		},
 		"metadata": {
@@ -95,7 +95,7 @@
 					"\r\n",
 					"dfClaimsByYear.write.option(\"mutiline\", \"false\").mode(\"overwrite\").partitionBy ('year').json(outClaimsPath)"
 				],
-				"execution_count": 25
+				"execution_count": 26
 			},
 			{
 				"cell_type": "code",
