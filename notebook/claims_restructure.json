@@ -20,7 +20,7 @@
 				"spark.dynamicAllocation.enabled": "true",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "19",
-				"spark.autotune.trackingId": "f213729d-b628-4d9b-b0e5-67f7dac4804b"
+				"spark.autotune.trackingId": "144cb722-e5dc-4b8f-bc93-d6fc04696fca"
 			}
 		},
 		"metadata": {
@@ -91,7 +91,9 @@
 				},
 				"source": [
 					"from    pyspark.sql.functions import substring ;\r\n",
-					"print(substring('2010-02-04', 6,2))"
+					"print(substring('2010-02-04', 6,2))\r\n",
+					"\r\n",
+					"display(spark.read.option(\"mutiline\", \"true\").json(schemaClaimsPath))"
 				],
 				"execution_count": 36
 			},
@@ -143,7 +145,10 @@
 					"dfClaimsByDay = dfClaims.withColumn('year', substring('created', 1,4)).withColumn('month', substring('created', 6,2)).withColumn('day', substring('created', 9,2)).where(col('year') == \"2021\")\r\n",
 					"\r\n",
 					"#write out the incremental data for Claims\r\n",
-					"dfClaimsByDay.write.option(\"mutiline\", \"false\").mode(\"overwrite\").partitionBy ('year', 'month', 'day').json(outIncrementalClaimsPath)"
+					"#without repartitioning this leads to extremely small files 20 KByte) and a huge number of partitions (16910, same as number of input files)\r\n",
+					"#we will try coallesce it to number of executors we can get, which is 76\r\n",
+					"#this will result in a json file of \r\n",
+					"dfClaimsByDay.coalesce(76).write.option(\"mutiline\", \"false\").mode(\"overwrite\").partitionBy ('year', 'month', 'day').json(outIncrementalClaimsPath)"
 				],
 				"execution_count": 38
 			},
