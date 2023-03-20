@@ -20,7 +20,7 @@
 				"spark.dynamicAllocation.enabled": "true",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "19",
-				"spark.autotune.trackingId": "c5075d77-b38f-40d8-9669-f12ac665f62c"
+				"spark.autotune.trackingId": "55e52fda-a2c7-4bb4-b969-b81515c2cd80"
 			}
 		},
 		"metadata": {
@@ -55,7 +55,8 @@
 				"cell_type": "code",
 				"source": [
 					"#set up variables like file location \r\n",
-					"schemaPath = 'abfss://synapsehackaton@asadatalakeimre2.dfs.core.windows.net/30tb/\r\n",
+					"schemaClaimsPath = 'abfss://synapsehackaton@asadatalakeimre2.dfs.core.windows.net/30tb/000047ca-00c7-492b-bf65-740805144cd2/Claim.ndjson' \r\n",
+					"schemaObservationPath = 'abfss://synapsehackaton@asadatalakeimre2.dfs.core.windows.net/30tb/000047ca-00c7-492b-bf65-740805144cd2/Observation.ndjson'\r\n",
 					"\r\n",
 					"dataPath = 'abfss://synapsehackaton@asadatalakeimre2.dfs.core.windows.net/30tb/*/';\r\n",
 					"claimsPath = dataPath + 'Claim.ndjson';\r\n",
@@ -63,7 +64,12 @@
 					"\r\n",
 					"outClaimsPath = 'abfss://bronze@asadatalakeimre2.dfs.core.windows.net/historic_data/Claim/'\r\n",
 					"outObservationsPath = 'abfss://bronze@asadatalakeimre2.dfs.core.windows.net/historic_data/Observation/'\r\n",
-					""
+					"\r\n",
+					"# read teh schema to be used from 2 individual json files, in order to avoid scanning all 20000 / 40000 files to be scanned twice\r\n",
+					"schemaClaimsPath = 'abfss://synapsehackaton@asadatalakeimre2.dfs.core.windows.net/30tb/000047ca-00c7-492b-bf65-740805144cd2/Claim.ndjson' \r\n",
+					"schemaObservationPath = 'abfss://synapsehackaton@asadatalakeimre2.dfs.core.windows.net/30tb/000047ca-00c7-492b-bf65-740805144cd2/Observation.ndjson'\r\n",
+					"schemaClaims =  spark.read.option(\"mutiline\", \"true\").json(schemaClaimsPath).schema\r\n",
+					"schemaObservations =  spark.read.option(\"mutiline\", \"true\").json(schemaObservationPath).schema"
 				],
 				"execution_count": 8
 			},
