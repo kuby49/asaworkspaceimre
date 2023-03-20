@@ -20,7 +20,7 @@
 				"spark.dynamicAllocation.enabled": "true",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "19",
-				"spark.autotune.trackingId": "0c08d5f5-4ebe-4756-b50f-e774c2cc1747"
+				"spark.autotune.trackingId": "c5075d77-b38f-40d8-9669-f12ac665f62c"
 			}
 		},
 		"metadata": {
@@ -55,6 +55,8 @@
 				"cell_type": "code",
 				"source": [
 					"#set up variables like file location \r\n",
+					"schemaPath = 'abfss://synapsehackaton@asadatalakeimre2.dfs.core.windows.net/30tb/\r\n",
+					"\r\n",
 					"dataPath = 'abfss://synapsehackaton@asadatalakeimre2.dfs.core.windows.net/30tb/*/';\r\n",
 					"claimsPath = dataPath + 'Claim.ndjson';\r\n",
 					"observationPath = dataPath + 'Observation.ndjson';\r\n",
