@@ -1,0 +1,9 @@
+{
+	"name": "Main_pipeline",
+	"properties": {
+		"folder": {
+			"name": "TEF_CH"
+		},
+		"annotations": []
+	}
+}
