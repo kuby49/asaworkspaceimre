@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "asal400_lab2_writeuserprofiledatatoasa",
+						"referenceName": "v2_asal400_lab2_writeuserprofiledatatoasa",
 						"type": "DataFlowReference"
 					},
 					"staging": {
