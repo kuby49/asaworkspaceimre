@@ -51,26 +51,6 @@
 						"type": "DatasetReference"
 					}
 				]
-			},
-			{
-				"name": "Execute Pipeline CopyFromSynapse",
-				"type": "ExecutePipeline",
-				"dependsOn": [
-					{
-						"activity": "copy1Tb",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"pipeline": {
-						"referenceName": "Lab01 - ASAL400 - Copy December Sales",
-						"type": "PipelineReference"
-					},
-					"waitOnCompletion": true
-				}
 			}
 		],
 		"folder": {
