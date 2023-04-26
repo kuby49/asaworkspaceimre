@@ -15,7 +15,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/Users/eruskal@microsoft.com/Profiler Extract TEF_CH_v2/0.Hadoop Profiler Extract Kick off"
+					"notebookPath": "/Users/eruskal@microsoft.com/2023-03-06 - DBFS Example"
 				},
 				"linkedServiceName": {
 					"referenceName": "TEF_CH_Databricks",
