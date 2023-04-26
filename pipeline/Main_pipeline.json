@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "TEF_CH Yarn Logs processing",
+				"name": "TEF_CH Yarn Logs processing step1",
 				"type": "DatabricksNotebook",
 				"dependsOn": [],
 				"policy": {
